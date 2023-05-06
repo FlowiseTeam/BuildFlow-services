@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  _id: 
+  city: MyString
+  client: MyString
+  start_date: 2023-05-06
+  end_date: 2023-05-06
+  name: MyString
+  status: MyString
+  street: MyString
+  zipcode: MyString
+
+two:
+  _id: 
+  city: MyString
+  client: MyString
+  start_date: 2023-05-06
+  end_date: 2023-05-06
+  name: MyString
+  status: MyString
+  street: MyString
+  zipcode: MyString
