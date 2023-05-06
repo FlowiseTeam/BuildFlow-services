@@ -1,7 +1,7 @@
 class Project
   include Mongoid::Document
   include Mongoid::Timestamps
-  field :_id, type: PrimaryKey
+  field :id, type: String
   field :city, type: String
   field :client, type: String
   field :start_date, type: Date

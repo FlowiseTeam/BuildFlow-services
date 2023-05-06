@@ -1,0 +1,252 @@
+Started GET "/" for 127.0.0.1 at 2023-05-06 16:50:32 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Users/Erwin/.local/share/gem/ruby/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Users/Erwin/.local/share/gem/ruby/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 24.3ms | Allocations: 706)
+Completed 200 OK in 125ms (Views: 50.8ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 6045)
+
+
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:50:40 +0200
+  
+ActionController::RoutingError (uninitialized constant ProjectsController):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-05-06 16:50:41 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/projects/" for 127.0.0.1 at 2023-05-06 16:51:12 +0200
+  
+ActionController::RoutingError (uninitialized constant ProjectsController):
+  
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:51:16 +0200
+  
+ActionController::RoutingError (uninitialized constant ProjectsController):
+  
+Started GET "/projects_path" for 127.0.0.1 at 2023-05-06 16:51:20 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/projects_path"):
+  
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:51:26 +0200
+  
+ActionController::RoutingError (uninitialized constant ProjectsController):
+  
+Started GET "/" for 127.0.0.1 at 2023-05-06 16:52:13 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Users/Erwin/.local/share/gem/ruby/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Users/Erwin/.local/share/gem/ruby/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.7ms | Allocations: 528)
+Completed 200 OK in 17ms (Views: 6.0ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 3780)
+
+
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:52:17 +0200
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 5050)
+
+
+  
+NameError (uninitialized constant Project::PrimaryKey):
+  
+app/models/project.rb:4:in `<class:Project>'
+app/models/project.rb:1:in `<main>'
+app/controllers/projects_controller.rb:4:in `index'
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:53:29 +0200
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 7223)
+
+
+  
+NameError (uninitialized constant Project::PrimaryKey):
+  
+app/models/project.rb:4:in `<class:Project>'
+app/models/project.rb:1:in `<main>'
+app/controllers/projects_controller.rb:4:in `index'
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:53:31 +0200
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 183)
+
+
+  
+NameError (uninitialized constant Project::PrimaryKey):
+  
+app/models/project.rb:4:in `<class:Project>'
+app/models/project.rb:1:in `<main>'
+app/controllers/projects_controller.rb:4:in `index'
+Started GET "/" for 127.0.0.1 at 2023-05-06 16:54:19 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Users/Erwin/.local/share/gem/ruby/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Users/Erwin/.local/share/gem/ruby/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.6ms | Allocations: 528)
+Completed 200 OK in 17ms (Views: 6.3ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 3780)
+
+
+Started GET "/projects" for 127.0.0.1 at 2023-05-06 16:54:27 +0200
+Processing by ProjectsController#index as HTML
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Server localhost:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.99 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 27.99 seconds for servers to be scanned: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]>
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+Completed 500 Internal Server Error in 33053ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 10964)
+
+
+  
+Mongo::Error::NoServerAvailable (No primary_preferred server is available in cluster: #<Cluster topology=Unknown[localhost:27017] servers=[#<Server address=localhost:27017 UNKNOWN>]> with timeout=30, LT=0.015):
+  
+app/controllers/projects_controller.rb:5:in `index'
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
+MONGODB | Error checking localhost:27017: Mongo::Error::SocketError: Errno::ECONNREFUSED: Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia. - connect(2) for 127.0.0.1:27017 (for 127.0.0.1:27017 (no TLS)) (on localhost:27017)
+MONGODB | Server description for localhost:27017 changed from 'unknown' to 'unknown'.
+MONGODB | There was a change in the members of the 'Unknown' topology.
