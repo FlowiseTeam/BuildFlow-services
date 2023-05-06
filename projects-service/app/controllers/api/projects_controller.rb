@@ -15,7 +15,12 @@ module Api
       @projects = Project.create(
         name:params[:name],
         city:params[:city],
-        client: params[:client]
+        client: params[:client],
+        start_date: params[:start_date],
+        end_date:params[:end_date],
+        status:params[:status],
+        street: params[:street],
+        zipcode:params[:zipcode]
       )
       render json: @projects
     end
@@ -25,7 +30,12 @@ module Api
       @projects.update(
         name:params[:name],
         city:params[:city],
-        client: params[:client]
+        client: params[:client],
+        start_date: params[:start_date],
+        end_date:params[:end_date],
+        status:params[:status],
+        street: params[:street],
+        zipcode:params[:zipcode]
       )
       render json: @projects
     end
