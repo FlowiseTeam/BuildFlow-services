@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :projects, only: [:index, :show]
+  namespace :api, defaults: { format: :json } do
+    resources :projects, only: [:index, :show]
+  end
 end
