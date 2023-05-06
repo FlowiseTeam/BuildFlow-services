@@ -13,11 +13,11 @@ module Api
 
     def create
       @projects = Project.create(
-        name:params[:name],
         city:params[:city],
-        client: params[:client],
+        client:params[:client],
         start_date: params[:start_date],
-        end_date:params[:end_date],
+        end_date: params[:end_date],
+        name:params[:name],
         status:params[:status],
         street: params[:street],
         zipcode:params[:zipcode]
@@ -28,11 +28,11 @@ module Api
     def update
       @projects = Project.find(params[:id])
       @projects.update(
-        name:params[:name],
         city:params[:city],
-        client: params[:client],
+        client:params[:client],
         start_date: params[:start_date],
-        end_date:params[:end_date],
+        end_date: params[:end_date],
+        name:params[:name],
         status:params[:status],
         street: params[:street],
         zipcode:params[:zipcode]
