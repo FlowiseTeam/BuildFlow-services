@@ -9,11 +9,10 @@ development:
       # Otherwise define the parameters separately.
       # This defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: projects_service_development
+      #database: BuildFlow
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
+      uri: mongodb+srv://flowise_admin:Drq9NeJCjuAkqCUy@buildflow.fic9xoa.mongodb.net/?retryWrites=true&w=majority
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -119,6 +118,7 @@ development:
 
   # Configure Mongoid specific options. (optional)
   options:
+    #server_selection_timeout: 5
     # Application name that is printed to the mongodb logs upon establishing
     # a connection in server versions >= 3.4. Note that the name cannot
     # exceed 128 bytes. It is also used as the database name if the
@@ -171,6 +171,8 @@ development:
     # further information. Most applications should not use this option.
     # (default: false)
     # use_utc: false
+
+
 
 test:
   clients:
