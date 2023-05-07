@@ -3,13 +3,8 @@ module Api
 
     def index
       @projects = Project.all
-
-      if @projects != []
-        render json: {"response" => @projects}
-      else
-        render json: {"response" => []}
-      end
-
+      @project_count = Project.count
+      render json: { project: @projects, project_count: @project_count }
     end
 
     def show
@@ -19,28 +14,29 @@ module Api
 
     def create
       @projects = Project.create(
-        name:params[:name],
         city:params[:city],
-        client: params[:client],
+        client:params[:client],
         start_date: params[:start_date],
-        end_date:params[:end_date],
+        end_date: params[:end_date],
+        name:params[:name],
         status:params[:status],
         street: params[:street],
         zipcode:params[:zipcode]
       )
-      render json: @projects
+
+      render json: {
+        project: @projects
+      }
     end
-
-
 
     def update
       @projects = Project.find(params[:id])
       @projects.update(
-        name:params[:name],
         city:params[:city],
-        client: params[:client],
+        client:params[:client],
         start_date: params[:start_date],
-        end_date:params[:end_date],
+        end_date: params[:end_date],
+        name:params[:name],
         status:params[:status],
         street: params[:street],
         zipcode:params[:zipcode]
