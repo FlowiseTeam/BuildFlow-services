@@ -3,7 +3,13 @@ module Api
 
     def index
       @projects = Project.all
-      render json: @projects
+
+      if @projects != []
+        render json: {"response" => @projects}
+      else
+        render json: {"response" => []}
+      end
+
     end
 
     def show
@@ -24,6 +30,8 @@ module Api
       )
       render json: @projects
     end
+
+
 
     def update
       @projects = Project.find(params[:id])
