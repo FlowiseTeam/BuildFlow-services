@@ -3,7 +3,8 @@ module Api
 
     def index
       @projects = Project.all
-      render json: @projects
+      @project_count = Project.count
+      render json: { project: @projects, project_count: @project_count }
     end
 
     def show
@@ -22,7 +23,10 @@ module Api
         street: params[:street],
         zipcode:params[:zipcode]
       )
-      render json: @projects
+
+      render json: {
+        project: @projects
+      }
     end
 
     def update
