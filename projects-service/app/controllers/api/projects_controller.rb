@@ -4,12 +4,12 @@ module Api
     def index
       @projects = Project.all
       @project_count = Project.count
-      render json: { project: @projects, project_count: @project_count }
+      render json: { projects: @projects, project_count: @project_count }
     end
 
     def show
       @projects = Project.find(params[:id])
-      render json: @projects
+      render json: {projects: @projects}
     end
 
     def create
@@ -24,9 +24,15 @@ module Api
         zipcode:params[:zipcode]
       )
 
-      render json: {
-        project: @projects
-      }
+      if @projects.save
+        render json: {
+          projects: @projects
+        }, status: :created
+      else
+        render json: {
+          error: @projects.errors.full_messages.to_sentence
+        }, status: :unprocessable_entity
+      end
     end
 
     def update
@@ -41,14 +47,22 @@ module Api
         street: params[:street],
         zipcode:params[:zipcode]
       )
-      render json: @projects
+
+      if @projects.save
+        render json: {
+          projects: @project
+        }, status: :ok
+      else
+        render json: {
+          error: @projects.errors.full_messages.to_sentence
+        }, status: :unprocessable_entity
+      end
     end
 
     def destroy
       @projects = Project.find(params[:id])
       @projects.destroy
-      render json: @projects
+      head :no_content
     end
-
   end
 end
