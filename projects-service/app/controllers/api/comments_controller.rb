@@ -2,19 +2,16 @@ module Api
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show update destroy ]
 
-  # GET /comments
   def index
     @comments = Comment.all
     @comment_count = Comment.count
     render json: {comments: @comments, comment_count: @comment_count}
   end
 
-  # GET /comments/1
   def show
     render json: @comment
   end
 
-  # POST /comments
   def create
     @project = Project.find(params[:project_id])
 
@@ -26,11 +23,10 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment, status: :created, location: api_project_comment_url(@project, @comment)
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: @comment.errors.full_messages.to_sentence, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /comments/1
   def update
     if @comment.update(
       message: params[:message],
@@ -38,11 +34,10 @@ class CommentsController < ApplicationController
     )
       render json: @comment
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: @comment.errors.full_messages.to_sentence, status: :unprocessable_entity
     end
   end
 
-  # DELETE /comments/1
   def destroy
     @comment.destroy
   end
