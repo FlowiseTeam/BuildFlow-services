@@ -3,9 +3,10 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show update destroy ]
 
   def index
-    @comments = Comment.all
-    @comment_count = Comment.count
-    render json: {comments: @comments, comment_count: @comment_count}
+    @project = Project.find(params[:project_id])
+    @comments = @project.comments
+    @comment_count = @comments.count
+    render json: { comments: @comments, comment_count: @comment_count }
   end
 
   def show
