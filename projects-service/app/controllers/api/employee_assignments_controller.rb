@@ -1,20 +1,6 @@
 module Api
   class EmployeeAssignmentsController < ApplicationController
 
-    #def show
-    #  @employee_assignment = EmployeeAssignment.find_by(project_id: params[:project_id], employee_id: params[:id])
-
-    # if @employee_assignment
-    #    render json: {
-    #      employee_assignment: @employee_assignment
-    #    }, status: :ok
-    #  else
-    #    render json: {
-    #      error: 'Employee assignment not found'
-    #    }, status: :not_found
-    #  end
-    #end
-
     def show_by_employee
       @employee_assignments = EmployeeAssignment.where(employee_id: params[:employee_id])
 
