@@ -1546,3 +1546,1880 @@ Started GET "/favicon.ico" for 127.0.0.1 at 2023-05-17 11:23:30 +0200
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+Started POST "/api/projects/10/get_projects_for_worker/2" for 127.0.0.1 at 2023-06-03 14:03:00 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/projects/10/get_projects_for_worker/2"):
+  
+Started GET "/" for 127.0.0.1 at 2023-06-03 14:04:28 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 47.4ms | Allocations: 521)
+Completed 200 OK in 231ms (Views: 97.5ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 3708)
+
+
+Started GET "/api/projects" for 127.0.0.1 at 2023-06-03 14:04:33 +0200
+Processing by Api::ProjectsController#index as JSON
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.72 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:35728 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:35728 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.021s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:35728 | BuildFlow.aggregate | STARTED | {"aggregate"=>"projects", "pipeline"=>[{"$match"=>{}}, {"$group"=>{"_id"=>1, "n"=>{"$sum"=>1}}}], "cursor"=>{}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20080 type=uuid data=0xa95dd77f8fa94a50...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.aggregate | SUCCEEDED | 0.045s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:35728 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000272c4689e38 @seconds=1685793878, @increment=109>, "signature"=>{"hash"=><BSON::Binary:0x20100 type=generic data=0xf6bb93d180bf31d6...>, "ke...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.047s
+Completed 200 OK in 3845ms (Views: 77.3ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 45881)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-06-03 14:04:38 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/employees" for 127.0.0.1 at 2023-06-03 14:04:57 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/employees"):
+  
+Started POST "/api/projects/10/get_projects_for_worker" for 127.0.0.1 at 2023-06-03 14:05:09 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::GetProjectsForWorkerController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/get_projects_for_worker" for 127.0.0.1 at 2023-06-03 14:10:02 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/projects/10/get_projects_for_worker"):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignment" for 127.0.0.1 at 2023-06-03 14:10:18 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignment" for 127.0.0.1 at 2023-06-03 14:10:39 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignment" for 127.0.0.1 at 2023-06-03 14:13:06 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignmnets" for 127.0.0.1 at 2023-06-03 14:14:58 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmnetsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignments" for 127.0.0.1 at 2023-06-03 14:18:57 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignments" for 127.0.0.1 at 2023-06-03 14:20:09 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignments" for 127.0.0.1 at 2023-06-03 14:21:14 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/assignments" for 127.0.0.1 at 2023-06-03 14:23:25 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::AssignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:24:23 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:25:08 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:27:25 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:31:37 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:32:49 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:36:09 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:38:14 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeassignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employeeassignments" for 127.0.0.1 at 2023-06-03 14:48:41 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/projects/10/employeeassignments"):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:48:47 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeAssignmentsController):
+  
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:49:43 +0200
+  
+Zeitwerk::NameError (expected file C:/Users/milos/Desktop/BuildFlowWise/BuildFlow-services/projects-service/app/controllers/api/employee_assignments_controller.rb to define constant Api::EmployeeAssignmentsController, but didn't):
+  
+zeitwerk (2.6.8) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.6.8) lib/zeitwerk/kernel.rb:31:in `require'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `const_get'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (7.0.4.3) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.0.4.3) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.0.4.3) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "project_id": "17",
+  "employee_id": "12",
+  "project_name": "test1",
+}
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:51:19 +0200
+  
+Zeitwerk::NameError (expected file C:/Users/milos/Desktop/BuildFlowWise/BuildFlow-services/projects-service/app/controllers/api/employee_assignments_controller.rb to define constant Api::EmployeeAssignmentsController, but didn't):
+  
+zeitwerk (2.6.8) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.6.8) lib/zeitwerk/kernel.rb:31:in `require'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `const_get'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (7.0.4.3) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.0.4.3) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.0.4.3) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:54:26 +0200
+  
+Zeitwerk::NameError (expected file C:/Users/milos/Desktop/BuildFlowWise/BuildFlow-services/projects-service/app/controllers/api/employee_assignments_controller.rb to define constant Api::EmployeeAssignmentsController, but didn't):
+  
+zeitwerk (2.6.8) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.6.8) lib/zeitwerk/kernel.rb:31:in `require'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `const_get'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (7.0.4.3) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.0.4.3) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.0.4.3) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:54:33 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeAssignmentsController):
+  
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:54:42 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeAssignmentsController):
+  
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:54:53 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeAssignmentsController):
+  
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:55:00 +0200
+  
+ActionController::RoutingError (uninitialized constant Api::EmployeeAssignmentsController):
+  
+Started POST "/api/projects/10/employee_assignments" for 127.0.0.1 at 2023-06-03 14:55:36 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"10", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"10", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.77 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.29 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37244 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37244 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.023s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37244 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>10}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19820 type=uuid data=0xe900115385fa40ca...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+Completed 404 Not Found in 3661ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 27695)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class Project with id(s) 10.
+summary:
+  When calling Project.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 10 ... (1 total) and the following ids were not found: 10.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 14:57:26 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:43 conn:1:1 sconn:37244 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001498f7e77d0 @seconds=1685796941, @increment=28>, "signature"=>{"hash"=><BSON::Binary:0x21340 type=generic data=0xbaea1eb3ee213713....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:43 | BuildFlow.find | SUCCEEDED | 0.034s
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1124)
+
+
+  
+NoMethodError (undefined method `employee_assignments' for #<Project _id: 17, created_at: 2023-05-07 12:21:28.142 UTC, updated_at: 2023-05-30 10:16:05.116 UTC, city: "test BSON increment  _id2", client: "testBSON increment  _id2", start_date: 0005-05-05 00:00:00 UTC, end_date: 2020-09-18 00:00:00 UTC, name: "test1", status: "W trakcie", street: "kaliska 2", zipcode: "65-123", workers: [{"_id"=>BSON::ObjectId('645797cb6d2e3859c0213e16'), "name"=>"Jakub", "surname"=>"Test"}]>):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 14:57:43 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"17", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:50 conn:1:1 sconn:37244 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001498f27b0d0 @seconds=1685797047, @increment=103>, "signature"=>{"hash"=><BSON::Binary:0x21700 type=generic data=0x1016ee2cf11916cd...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:50 | BuildFlow.find | SUCCEEDED | 0.029s
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 998)
+
+
+  
+NoMethodError (undefined method `employee_assignments' for #<Project _id: 17, created_at: 2023-05-07 12:21:28.142 UTC, updated_at: 2023-05-30 10:16:05.116 UTC, city: "test BSON increment  _id2", client: "testBSON increment  _id2", start_date: 0005-05-05 00:00:00 UTC, end_date: 2020-09-18 00:00:00 UTC, name: "test1", status: "W trakcie", street: "kaliska 2", zipcode: "65-123", workers: [{"_id"=>BSON::ObjectId('645797cb6d2e3859c0213e16'), "name"=>"Jakub", "surname"=>"Test"}]>):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 15:00:26 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.69 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.40 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37579 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37579 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37579 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19820 type=uuid data=0xb33f5ec2a90d43de...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.027s
+Completed 500 Internal Server Error in 3486ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28444)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 15:04:03 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.84 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.54 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37648 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37648 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37648 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19860 type=uuid data=0x5770afae16894824...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.027s
+Completed 500 Internal Server Error in 3360ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28412)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 15:05:06 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"17", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.85 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.59 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:36770 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:36770 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.024s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:36770 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19820 type=uuid data=0x7f4c348e49af4f2f...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.027s
+Completed 500 Internal Server Error in 3308ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28215)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:08:59 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:82 conn:1:1 sconn:36770 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001c47f42af50 @seconds=1685797510, @increment=61>, "signature"=>{"hash"=><BSON::Binary:0x32120 type=generic data=0xb7705290d2d4f98b....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:82 | BuildFlow.find | SUCCEEDED | 0.033s
+Completed 500 Internal Server Error in 57ms (MongoDB: 0.0ms | Allocations: 7655)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:10:47 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.80 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.50 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37493 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37493 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.023s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37493 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19820 type=uuid data=0xa537023b924c4afb...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+Completed 500 Internal Server Error in 3417ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28207)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:38:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:12:33 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.80 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.50 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37769 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37769 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.024s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37769 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19820 type=uuid data=0x22f06d35d5ad4c2b...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 500 Internal Server Error in 3357ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28409)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:12:44 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:37769 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000013267da53a0 @seconds=1685797957, @increment=163>, "signature"=>{"hash"=><BSON::Binary:0x20160 type=generic data=0x8307e76492abd7ae...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.033s
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1112)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:14:38 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.69 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.39 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37894 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37894 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37894 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19820 type=uuid data=0x836b425d4ec34507...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 500 Internal Server Error in 3629ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28498)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:15:51 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 8220)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:18:11 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 183)
+
+
+  
+NameError (undefined local variable or method `employee_assignments' for #<Api::EmployeeAssignmentsController:0x00000000009790>):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:21:10 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 183)
+
+
+  
+NameError (undefined local variable or method `employee_assignments' for #<Api::EmployeeAssignmentsController:0x00000000009790>):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:21:48 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1698)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:22:16 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 169)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:40:in `set_employee_assignment'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:28:24 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 29.99 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.84 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.58 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Waiting for up to 28.21 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:38293 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.027s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:38293 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.037s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:38293 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19880 type=uuid data=0xdc67a98c9d1f4f92...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 500 Internal Server Error in 3433ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 30189)
+
+
+  
+NoMethodError (undefined method `projectId' for #<EmployeeAssignment _id: , created_at: nil, updated_at: nil, project_id: 19, employee_id: 12, project_name: "test1">):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `create'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:28:34 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:38293 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001a221c3d830 @seconds=1685798908, @increment=115>, "signature"=>{"hash"=><BSON::Binary:0x20180 type=generic data=0xa2ba77d6f1c49e1e...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.030s
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1204)
+
+
+  
+NoMethodError (undefined method `projectId' for #<EmployeeAssignment _id: , created_at: nil, updated_at: nil, project_id: 19, employee_id: 12, project_name: "test1">):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `create'
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:29:13 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.84 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.57 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.20 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:38172 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.031s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:38172 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:38172 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19880 type=uuid data=0xd450b32a64f641f6...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 500 Internal Server Error in 3252ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 30391)
+
+
+  
+NoMethodError (undefined method `projectId' for #<EmployeeAssignment _id: , created_at: nil, updated_at: nil, project_id: 19, employee_id: 12, project_name: "test1">):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `create'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:29:23 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:38172 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000023be99a2b18 @seconds=1685798957, @increment=137>, "signature"=>{"hash"=><BSON::Binary:0x20180 type=generic data=0x102a0e9fd7bcf438...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.036s
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1219)
+
+
+  
+NoMethodError (undefined method `projectId' for #<EmployeeAssignment _id: , created_at: nil, updated_at: nil, project_id: 19, employee_id: 12, project_name: "test1">):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `create'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:31:26 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.79 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.48 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:38372 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.027s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:38372 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.023s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:38372 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19880 type=uuid data=0x1e7ac860e9ec4ae5...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 500 Internal Server Error in 3423ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 30299)
+
+
+  
+NoMethodError (undefined method `projectId' for #<EmployeeAssignment _id: , created_at: nil, updated_at: nil, project_id: 19, employee_id: 12, project_name: "test1">):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `create'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:32:13 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1", "employee_assignment"=>{"project_id"=>"19", "employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.76 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.46 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:38391 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:38391 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.024s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:38391 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19880 type=uuid data=0xf9adf14a993b401e...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+Completed 500 Internal Server Error in 3414ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 30101)
+
+
+  
+NoMethodError (undefined method `projectId' for #<EmployeeAssignment _id: , created_at: nil, updated_at: nil, project_id: 19, employee_id: 12, project_name: "test1">):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `create'
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:34:45 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"12", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"12", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.79 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.16 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:38125 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.025s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:38125 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.023s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19880 type=uuid data=0xaccbacfb647d463d...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{}, "limit"=>1, "sort"=>{"_id"=>-1}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000022190c15418 @seconds=1685799290, @increment=10>, "signature"=>{"hash"=><BSON::Binary:0x19900 t...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.027s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:14 conn:1:1 sconn:38125 | BuildFlow.insert | STARTED | {"insert"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "documents"=>[{"project_id"=>19, "employee_id"=>12, "project_name"=>"test1", "updated_at"=>2023-06-03 13:34:49.4370875 UTC, "created_at"=>2023-06-03 13:34:49.437087...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:14 | BuildFlow.insert | SUCCEEDED | 0.119s
+Completed 201 Created in 3435ms (Views: 1.0ms | ActiveRecord: 0.0ms | MongoDB: 0.2ms | Allocations: 32737)
+
+
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:35:28 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"13", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"13", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:27 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000022190d2b118 @seconds=1685799290, @increment=22>, "signature"=>{"hash"=><BSON::Binary:0x29900 type=generic data=0xf82a08925874b5f5....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:27 | BuildFlow.find | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:28 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{}, "limit"=>1, "sort"=>{"_id"=>-1}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000022191d00818 @seconds=1685799332, @increment=19>, "signature"=>{"hash"=><BSON::Binary:0x29920 t...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:28 | BuildFlow.find | SUCCEEDED | 0.025s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:29 conn:1:1 sconn:38125 | BuildFlow.insert | STARTED | {"insert"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "documents"=>[{"project_id"=>19, "employee_id"=>13, "project_name"=>"test1", "updated_at"=>2023-06-03 13:35:31.5119571 UTC, "created_at"=>2023-06-03 13:35:31.511957...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:29 | BuildFlow.insert | SUCCEEDED | 0.029s
+Completed 201 Created in 112ms (Views: 0.8ms | MongoDB: 0.1ms | Allocations: 9860)
+
+
+Started POST "/api/projects/21/employee_assignments" for 127.0.0.1 at 2023-06-03 15:35:39 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"13", "project_name"=>"test1", "project_id"=>"21", "employee_assignment"=>{"employee_id"=>"13", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:33 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>21}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000022191d4ba48 @seconds=1685799332, @increment=22>, "signature"=>{"hash"=><BSON::Binary:0x30180 type=generic data=0x2cad5f45b8d05a77....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:33 | BuildFlow.find | SUCCEEDED | 0.029s
+Completed 404 Not Found in 44ms (MongoDB: 0.0ms | Allocations: 2381)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class Project with id(s) 21.
+summary:
+  When calling Project.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 21 ... (1 total) and the following ids were not found: 21.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/api/employee_assignments_controller.rb:10:in `create'
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 15:35:46 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"13", "project_name"=>"test1", "project_id"=>"17", "employee_assignment"=>{"employee_id"=>"13", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:34 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000022191d842f8 @seconds=1685799340, @increment=48>, "signature"=>{"hash"=><BSON::Binary:0x30280 type=generic data=0xc5a81f7075957d88....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:34 | BuildFlow.find | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:35 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{}, "limit"=>1, "sort"=>{"_id"=>-1}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002218ee16fe8 @seconds=1685799347, @increment=75>, "signature"=>{"hash"=><BSON::Binary:0x30300 t...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:35 | BuildFlow.find | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:36 conn:1:1 sconn:38125 | BuildFlow.insert | STARTED | {"insert"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "documents"=>[{"project_id"=>17, "employee_id"=>13, "project_name"=>"test1", "updated_at"=>2023-06-03 13:35:46.73755 UTC, "created_at"=>2023-06-03 13:35:46.73755 UT...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:36 | BuildFlow.insert | SUCCEEDED | 0.043s
+Completed 201 Created in 103ms (Views: 0.6ms | MongoDB: 0.1ms | Allocations: 2876)
+
+
+Started DELETE "/api/projects/17/employee_assignments/2" for 127.0.0.1 at 2023-06-03 15:36:26 +0200
+Processing by Api::EmployeeAssignmentsController#destroy as JSON
+  Parameters: {"project_id"=>"17", "id"=>"2"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:49 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"_id"=>2}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002218f84e178 @seconds=1685799347, @increment=81>, "signature"=>{"hash"=><BSON::Binary:0x30880 type=generic data=0x9dd4c8...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:49 | BuildFlow.find | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:50 conn:1:1 sconn:38125 | BuildFlow.delete | STARTED | {"delete"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "deletes"=>[{"q"=>{"_id"=>2}, "limit"=>1}], "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000221908af620 @seconds=1685799387, @increment...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:50 | BuildFlow.delete | SUCCEEDED | 0.029s
+Completed 204 No Content in 57ms (MongoDB: 0.1ms | Allocations: 1672)
+
+
+Started POST "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 15:36:43 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"122", "project_name"=>"test1", "project_id"=>"17", "employee_assignment"=>{"employee_id"=>"122", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:57 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000221902fe1b8 @seconds=1685799387, @increment=101>, "signature"=>{"hash"=><BSON::Binary:0x31240 type=generic data=0xa4385dc855ee30e4...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:57 | BuildFlow.find | SUCCEEDED | 0.035s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:58 conn:1:1 sconn:38125 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{}, "limit"=>1, "sort"=>{"_id"=>-1}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000022190c16250 @seconds=1685799404, @increment=25>, "signature"=>{"hash"=><BSON::Binary:0x31260 t...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:58 | BuildFlow.find | SUCCEEDED | 0.026s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:59 conn:1:1 sconn:38125 | BuildFlow.insert | STARTED | {"insert"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "documents"=>[{"project_id"=>17, "employee_id"=>122, "project_name"=>"test1", "updated_at"=>2023-06-03 13:36:43.6339786 UTC, "created_at"=>2023-06-03 13:36:43.63397...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:59 | BuildFlow.insert | SUCCEEDED | 0.028s
+Completed 201 Created in 100ms (Views: 0.8ms | MongoDB: 0.1ms | Allocations: 2867)
+
+
+Started GET "/api/projects/10/employee_assignments/122" for 127.0.0.1 at 2023-06-03 15:37:14 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"10", "id"=>"122"}
+Completed 500 Internal Server Error in 1ms (MongoDB: 0.0ms | Allocations: 223)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:5:in `show'
+Started GET "/api/projects/10/employee_assignments/122" for 127.0.0.1 at 2023-06-03 15:37:54 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"10", "id"=>"122"}
+Overwriting existing field _id in class EmployeeAssignment.
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 9666)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:5:in `show'
+Started GET "/api/projects/10/employee_assignments/122" for 127.0.0.1 at 2023-06-03 15:39:05 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"10", "id"=>"122"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.82 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.55 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:37897 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:37897 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:37897 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>10}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19860 type=uuid data=0x4e96304d584540e3...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.027s
+Completed 404 Not Found in 3307ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 30284)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class Project with id(s) 10.
+summary:
+  When calling Project.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 10 ... (1 total) and the following ids were not found: 10.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/api/employee_assignments_controller.rb:5:in `show'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 15:39:19 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"17", "id"=>"122"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:16 conn:1:1 sconn:37897 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000020e3f596e70 @seconds=1685799550, @increment=2>, "signature"=>{"hash"=><BSON::Binary:0x20280 type=generic data=0x9c92b6b857c537d0.....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:16 | BuildFlow.find | SUCCEEDED | 0.030s
+Overwriting existing field _id in class EmployeeAssignment.
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 7177)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:6:in `show'
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 15:44:22 +0200
+Overwriting existing field _id in class EmployeeAssignment.
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"122", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"122", "project_name"=>"test1"}}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.84 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.51 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:38744 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:38744 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.036s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:38744 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x19880 type=uuid data=0x08302ef48e6246d8...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.027s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:38744 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{}, "limit"=>1, "sort"=>{"_id"=>-1}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001dc446d5c50 @seconds=1685799867, @increment=89>, "signature"=>{"hash"=><BSON::Binary:0x19900 t...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.026s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:14 conn:1:1 sconn:38744 | BuildFlow.insert | STARTED | {"insert"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "documents"=>[{"project_id"=>19, "employee_id"=>122, "project_name"=>"test1", "updated_at"=>2023-06-03 13:44:26.5933771 UTC, "created_at"=>2023-06-03 13:44:26.59337...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:14 | BuildFlow.insert | SUCCEEDED | 0.044s
+Completed 201 Created in 3521ms (Views: 1.2ms | ActiveRecord: 0.0ms | MongoDB: 0.2ms | Allocations: 32712)
+
+
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 15:44:43 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"17", "id"=>"122"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:18 conn:1:1 sconn:38744 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17, "employee_id"=>122}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001dc43102cc0 @seconds=1685799867, @increment=102>, "signature"=>{"hash"=><BSON::Binary:0x201...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:18 | BuildFlow.find | SUCCEEDED | 0.031s
+Completed 200 OK in 35ms (Views: 0.6ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 969)
+
+
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 16:27:57 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.68 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Waiting for up to 28.37 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:39643 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:39643 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.022s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:39643 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20060 type=uuid data=0xdd054735003849d9...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.027s
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:39643 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001a968427698 @seconds=1685802482, @increment=17>, "signature"=>{"hash"=><BSON::Binary:0x20280 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.035s
+Completed 200 OK in 3692ms (Views: 39.1ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 36207)
+
+
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:28:07 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:31:03 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 16:31:07 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.68 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.38 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:39462 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:39462 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.021s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:39462 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20280 type=uuid data=0x3525d7ac07484f3d...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:39462 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001de62950f00 @seconds=1685802672, @increment=10>, "signature"=>{"hash"=><BSON::Binary:0x20320 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.023s
+Completed 200 OK in 3547ms (Views: 28.9ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 36321)
+
+
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:31:15 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:34:33 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 16:34:36 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 29.98 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.77 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.46 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:39933 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.025s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:39933 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.021s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:39933 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20300 type=uuid data=0xeb47b00db91c426e...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:39933 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001603d102d10 @seconds=1685802880, @increment=29>, "signature"=>{"hash"=><BSON::Binary:0x20340 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.025s
+Completed 200 OK in 3481ms (Views: 30.5ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 36220)
+
+
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:34:46 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:36:36 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:39:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 16:39:36 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.83 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Waiting for up to 27.78 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:40062 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:40062 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.024s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:40062 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20120 type=uuid data=0xaca5eb95480e46f9...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:40062 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000001b58daf5188 @seconds=1685803180, @increment=30>, "signature"=>{"hash"=><BSON::Binary:0x20340 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.036s
+Completed 200 OK in 3441ms (Views: 41.5ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 36132)
+
+
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:39:51 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:40:29 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:40:54 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:43:02 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:43:09 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"17", "id"=>"122"}
+Overwriting existing field _id in class EmployeeAssignment.
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 9659)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:19:in `show'
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:43:39 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"17", "id"=>"122"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.81 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.49 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 28.12 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=7,e=7fffffff000000000000018d] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:40147 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.027s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:40147 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.031s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:40147 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20060 type=uuid data=0x38b97b193a96448e...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+Overwriting existing field _id in class EmployeeAssignment.
+Completed 500 Internal Server Error in 3417ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 35992)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:20:in `show'
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 16:43:58 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:16 conn:1:1 sconn:40147 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002004f964118 @seconds=1685803424, @increment=28>, "signature"=>{"hash"=><BSON::Binary:0x20500 type=generic data=0x59d61f63f335975c....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:16 | BuildFlow.find | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:17 conn:1:1 sconn:40147 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002004e853838 @seconds=1685803439, @increment=38>, "signature"=>{"hash"=><BSON::Binary:0x20520 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:17 | BuildFlow.find | SUCCEEDED | 0.027s
+Completed 200 OK in 65ms (Views: 32.0ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 2724)
+
+
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:44:26 +0200
+Processing by Api::EmployeeAssignmentsController#show as JSON
+  Parameters: {"project_id"=>"17", "id"=>"122"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:27 conn:1:1 sconn:40147 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002004e7f19f8 @seconds=1685803439, @increment=39>, "signature"=>{"hash"=><BSON::Binary:0x20940 type=generic data=0x1be30e1ccd3460fe....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:27 | BuildFlow.find | SUCCEEDED | 0.035s
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1023)
+
+
+  
+Mongoid::Errors::InvalidFind (
+message:
+  Calling Document.find with nil is invalid.
+summary:
+  Document.find expects the parameters to be 1 or more ids, and will return a single document if 1 id is provided, otherwise an array of documents if multiple ids are provided.
+resolution:
+  Most likely this is caused by passing parameters directly through to the find, and the parameter either is not present or the key from which it is accessed is incorrect.):
+  
+app/controllers/api/employee_assignments_controller.rb:20:in `show'
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:45:47 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/17/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 16:46:27 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.79 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.47 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:40213 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:40213 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.023s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:40213 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20220 type=uuid data=0xadc9742072c6483f...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.029s
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:40213 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000014944f121b8 @seconds=1685803592, @increment=46>, "signature"=>{"hash"=><BSON::Binary:0x20260 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.026s
+Completed 200 OK in 3536ms (Views: 32.0ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 36319)
+
+
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:47:29 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/17/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:48:54 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:55:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:56:51 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 16:57:53 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/17/employee_assignments/122"):
+  
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 17:00:54 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_employee as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"122"}
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.83 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.52 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:40364 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.027s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:40364 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.023s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:40364 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"employee_id"=>nil}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20060 type=uuid data=0xfe64ad166eac4c19...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.030s
+Completed 200 OK in 3361ms (Views: 3320.2ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28015)
+
+
+Started GET "/api/projects/employee_assignments/122" for 127.0.0.1 at 2023-06-03 17:01:03 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/projects/employee_assignments/122"):
+  
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 17:01:46 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_employee as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"122"}
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Waiting for up to 28.90 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.59 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetNoPrimary' topology.
+MONGODB | Waiting for up to 28.22 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:40130 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:40130 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.024s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"employee_id"=>122}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x20100 type=uuid data=0x92da7f183181426d...>}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 200 OK in 3202ms (Views: 3169.1ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 28791)
+
+
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 17:01:58 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+Overwriting existing field _id in class Project.
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026333d49070 @seconds=1685804511, @increment=23>, "signature"=>{"hash"=><BSON::Binary:0x20200 type=generic data=0x85bd9c1fca6c2d03....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.034s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:14 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026333f34e20 @seconds=1685804519, @increment=11>, "signature"=>{"hash"=><BSON::Binary:0x20220 type=generic data=...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:14 | BuildFlow.find | SUCCEEDED | 0.026s
+Completed 200 OK in 93ms (Views: 32.1ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 8980)
+
+
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/projects/17/employee_assignments" for 127.0.0.1 at 2023-06-03 17:02:26 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_project as JSON
+  Parameters: {"project_id"=>"17"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:24 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026333f6aef8 @seconds=1685804519, @increment=14>, "signature"=>{"hash"=><BSON::Binary:0x20640 type=generic data=0xb809523c428575b7....
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:24 | BuildFlow.find | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:25 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>17}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002632ea37e68 @seconds=1685804547, @increment=144>, "signature"=>{"hash"=><BSON::Binary:0x20660 type=generic data...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:25 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 200 OK in 86ms (Views: 33.5ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 2035)
+
+
+Started POST "/api/projects/19/employee_assignments" for 127.0.0.1 at 2023-06-03 17:02:34 +0200
+Processing by Api::EmployeeAssignmentsController#create as JSON
+  Parameters: {"employee_id"=>"122", "project_name"=>"test1", "project_id"=>"19", "employee_assignment"=>{"employee_id"=>"122", "project_name"=>"test1"}}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:29 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{"_id"=>19}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002632e5e8e70 @seconds=1685804547, @increment=158>, "signature"=>{"hash"=><BSON::Binary:0x21060 type=generic data=0x9698a2d3ca484b6e...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:29 | BuildFlow.find | SUCCEEDED | 0.026s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:30 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{}, "limit"=>1, "sort"=>{"_id"=>-1}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026330016e00 @seconds=1685804555, @increment=90>, "signature"=>{"hash"=><BSON::Binary:0x21080 t...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:30 | BuildFlow.find | SUCCEEDED | 0.026s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:31 conn:1:1 sconn:40130 | BuildFlow.insert | STARTED | {"insert"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "documents"=>[{"project_id"=>19, "employee_id"=>122, "project_name"=>"test1", "updated_at"=>2023-06-03 15:02:34.8881431 UTC, "created_at"=>2023-06-03 15:02:34.88814...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:31 | BuildFlow.insert | SUCCEEDED | 0.044s
+Completed 201 Created in 109ms (Views: 1.0ms | ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 3711)
+
+
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 17:02:41 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_employee as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"122"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:35 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"employee_id"=>122}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000002633046ac90 @seconds=1685804555, @increment=94>, "signature"=>{"hash"=><BSON::Binary:0x21300 type=generic dat...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:35 | BuildFlow.find | SUCCEEDED | 0.028s
+Completed 200 OK in 33ms (Views: 32.9ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1274)
+
+
+Started DELETE "/api/projects/17/employee_assignments/2" for 127.0.0.1 at 2023-06-03 17:02:50 +0200
+Processing by Api::EmployeeAssignmentsController#destroy as JSON
+  Parameters: {"project_id"=>"17", "id"=>"2"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:39 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"_id"=>2}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026331524f90 @seconds=1685804562, @increment=22>, "signature"=>{"hash"=><BSON::Binary:0x21440 type=generic data=0x3bba8f...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:39 | BuildFlow.find | SUCCEEDED | 0.036s
+Completed 404 Not Found in 52ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 3192)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class EmployeeAssignment with id(s) 2.
+summary:
+  When calling EmployeeAssignment.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 2 ... (1 total) and the following ids were not found: 2.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/api/employee_assignments_controller.rb:56:in `destroy'
+Started DELETE "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 17:02:54 +0200
+Processing by Api::EmployeeAssignmentsController#destroy as JSON
+  Parameters: {"project_id"=>"17", "id"=>"122"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:40 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"_id"=>122}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000263325ec648 @seconds=1685804571, @increment=10>, "signature"=>{"hash"=><BSON::Binary:0x21560 type=generic data=0x9deb...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:40 | BuildFlow.find | SUCCEEDED | 0.023s
+Completed 404 Not Found in 26ms (ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 953)
+
+
+  
+Mongoid::Errors::DocumentNotFound (
+message:
+  Document(s) not found for class EmployeeAssignment with id(s) 122.
+summary:
+  When calling EmployeeAssignment.find with an id or array of ids, each parameter must match a document in the database or this error will be raised. The search was for the id(s): 122 ... (1 total) and the following ids were not found: 122.
+resolution:
+  Search for an id that is in the database or set the Mongoid.raise_not_found_error configuration option to false, which will cause a nil to be returned instead of raising this error when searching for a single id, or only the matched documents when searching for multiples.):
+  
+app/controllers/api/employee_assignments_controller.rb:56:in `destroy'
+Started DELETE "/api/projects/17/employee_assignments/6" for 127.0.0.1 at 2023-06-03 17:03:00 +0200
+Processing by Api::EmployeeAssignmentsController#destroy as JSON
+  Parameters: {"project_id"=>"17", "id"=>"6"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:44 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"_id"=>6}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000263302da498 @seconds=1685804575, @increment=90>, "signature"=>{"hash"=><BSON::Binary:0x21700 type=generic data=0x89cb8f...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:44 | BuildFlow.find | SUCCEEDED | 0.026s
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:45 conn:1:1 sconn:40130 | BuildFlow.delete | STARTED | {"delete"=>"employee_assignments", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "deletes"=>[{"q"=>{"_id"=>6}, "limit"=>1}], "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026333f699e0 @seconds=1685804581, @increment...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:45 | BuildFlow.delete | SUCCEEDED | 0.026s
+Completed 204 No Content in 59ms (ActiveRecord: 0.0ms | MongoDB: 0.1ms | Allocations: 1666)
+
+
+Started GET "/api/projects/17/employee_assignments/122" for 127.0.0.1 at 2023-06-03 17:03:07 +0200
+Processing by Api::EmployeeAssignmentsController#show_by_employee as JSON
+  Parameters: {"project_id"=>"17", "employee_id"=>"122"}
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:46 conn:1:1 sconn:40130 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"employee_id"=>122}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x0000026333f61858 @seconds=1685804581, @increment=4>, "signature"=>{"hash"=><BSON::Binary:0x21860 type=generic data...
+MONGODB | ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 req:46 | BuildFlow.find | SUCCEEDED | 0.026s
+Completed 200 OK in 30ms (Views: 29.4ms | ActiveRecord: 0.0ms | MongoDB: 0.0ms | Allocations: 1106)
+
+
