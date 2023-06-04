@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
     @comment = @project.comments.build(
       message: params[:message],
       status: params[:status],
+      image: params[:image],
     )
 
     if @comment.save
