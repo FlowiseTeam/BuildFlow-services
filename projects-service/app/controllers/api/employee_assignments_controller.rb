@@ -1,17 +1,14 @@
 module Api
   class EmployeeAssignmentsController < ApplicationController
 
-    def show_by_employee
-      @employee_assignments = EmployeeAssignment.where(employee_id: params[:employee_id])
-
-      render json: {
-        employee_assignments: @employee_assignments
-      }, status: :ok
-    end
-
-    def show_by_project
-      @project = Project.find(params[:project_id])
-      @employee_assignments = @project.employee_assignments
+    def show
+      if params[:project_id].present?
+        @employee_assignments = EmployeeAssignment.where(project_id: params[:project_id])
+      elsif params[:employee_id].present?
+        @employee_assignments = EmployeeAssignment.where(employee_id: params[:employee_id])
+      else
+        return render json: { error: "Missing parameter: either project_id or employee_id must be provided" }, status: :bad_request
+      end
 
       render json: {
         employee_assignments: @employee_assignments
@@ -19,10 +16,8 @@ module Api
     end
 
     def create
-      @project = Project.find(params[:project_id])
-
-      @employee_assignment = @project.employee_assignments.build(
-        project_id: @project.id,
+      @employee_assignment = EmployeeAssignment.create(
+        project_id: params[:project_id],
         employee_id: params[:employee_id],
         project_name: params[:project_name]
       )
@@ -30,7 +25,7 @@ module Api
       if @employee_assignment.save
         render json: {
           employee_assignments: @employee_assignment
-        }, status: :created, location: api_project_employee_assignment_url(@project, @employee_assignment)
+        }, status: :created
       else
         render json: {
           error: @employee_assignment.errors.full_messages.to_sentence
@@ -43,8 +38,6 @@ module Api
       @employee_assignment.destroy
       head :no_content
     end
-
-    private
 
   end
 end

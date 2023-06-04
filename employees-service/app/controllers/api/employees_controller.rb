@@ -1,6 +1,7 @@
 module Api
   class EmployeesController < ApplicationController
-
+    require 'uri'
+    require 'net/http'
     # GET /employees
     def index
       @employees = Employee.all
@@ -11,7 +12,21 @@ module Api
     # GET /employees/1
     def show
       @employees = Employee.find(params[:id])
-      render json: {employees: @employees}
+
+       uri = URI('http://127.0.0.1:3000/api/projects/employee_assignments')
+       uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+
+       response = Net::HTTP.get_response(uri)
+
+       if response.is_a?(Net::HTTPSuccess)
+         employee_assignments_data = JSON.parse(response.body)
+       else
+         employee_assignments_data = { employee_assignments: "Błąd wczytywania danych" }
+       end
+
+       @employees[:assigned_project] = employee_assignments_data['employee_assignments']
+
+       render json: {employees: @employees}
     end
 
     # POST /employees
@@ -20,7 +35,6 @@ module Api
         first_name:params[:first_name],
         last_name:params[:last_name],
         role: params[:role],
-        assigned_project: params[:assigned_project],
         status:params[:status]
       )
 
@@ -42,7 +56,6 @@ module Api
         first_name:params[:first_name],
         last_name:params[:last_name],
         role: params[:role],
-        assigned_project: params[:assigned_project],
         status:params[:status]
       )
       if @employees.save

@@ -6,12 +6,12 @@ class Employee
   field :last_name, type: String
   field :role, type: String
   field :qualifications, type: Array
-  field :assigned_project, type: String
+  field :assigned_project, type: Array
   field :status, type: String
 
   before_create :set_id
 
-  validates :first_name, :last_name, :role, :status, :assigned_project, presence: true
+  validates :first_name, :last_name, :role, :status, presence: true
 
   private
   def set_id
