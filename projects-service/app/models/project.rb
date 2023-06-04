@@ -13,7 +13,10 @@ class Project
   field :workers, type: Array, default: []
   before_create :set_id
 
+  has_many :comments, dependent: :destroy
+
   validates :city, :client, :start_date, :end_date, :name, :status, :street, :zipcode, presence: true
+
 
   private
   def set_id
