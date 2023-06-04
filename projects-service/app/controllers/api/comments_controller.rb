@@ -9,9 +9,11 @@ class CommentsController < ApplicationController
     render json: { comments: @comments, comment_count: @comment_count }
   end
 
+=begin
   def show
     render json: @comment
   end
+=end
 
   def create
     @project = Project.find(params[:project_id])
@@ -29,6 +31,7 @@ class CommentsController < ApplicationController
     end
   end
 
+=begin
   def update
     if @comment.update(
       message: params[:message],
@@ -39,6 +42,7 @@ class CommentsController < ApplicationController
       render json: @comment.errors.full_messages.to_sentence, status: :unprocessable_entity
     end
   end
+=end
 
   def destroy
     @comment.destroy
@@ -49,6 +53,5 @@ class CommentsController < ApplicationController
     def set_comment
       @comment = Comment.find(params[:id])
     end
-
 end
 end
