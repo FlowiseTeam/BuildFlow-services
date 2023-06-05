@@ -21,8 +21,8 @@ class CommentsController < ApplicationController
     @comment = @project.comments.build(
       message: params[:message],
       status: params[:status],
-      image: params[:image],
-    )
+      images: params[:images],
+      )
 
     if @comment.save
       render json: @comment, status: :created, location: api_project_comment_url(@project, @comment)
@@ -35,7 +35,8 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(
       message: params[:message],
-      status: params[:status]
+      status: params[:status],
+      images: params[:images]
     )
       render json: @comment
     else
