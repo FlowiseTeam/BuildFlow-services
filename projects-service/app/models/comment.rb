@@ -4,7 +4,7 @@ class Comment
   field :_id, type: Integer
   field :message, type: String
   field :status, type: String
-  mount_uploader :image, CommentsImagesUploader
+  mount_uploaders :images, CommentsImagesUploader
   belongs_to :project
   before_create :set_id
 
