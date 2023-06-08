@@ -1,0 +1,23 @@
+version: '3'
+services:
+  projects-service:
+    build:
+      context: ./projects-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./projects-service:/projects-service
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_ENV=development
+
+  employees-service:
+    build:
+      context: ./employees-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./employees-service:/employees-service
+    ports:
+      - "3001:3000"
+    environment:
+      - RAILS_ENV=development

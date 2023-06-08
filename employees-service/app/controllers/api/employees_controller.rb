@@ -14,7 +14,8 @@ module Api
       @employee = Employee.find(params[:id])
 
       begin
-        uri = URI('http://127.0.0.1:3000/api/projects/employee_assignments')
+
+        uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
         uri.query = URI.encode_www_form({'employee_id' => params[:id]})
 
         response = Net::HTTP.get_response(uri)
