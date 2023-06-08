@@ -43,7 +43,7 @@ module Api
         last_name:params[:last_name],
         role: params[:role],
         status:params[:status],
-        qualifications: params[:qualifications],
+        qualifications: params[:qualifications]
       )
 
       if @employees.save
@@ -64,7 +64,8 @@ module Api
         first_name:params[:first_name],
         last_name:params[:last_name],
         role: params[:role],
-        status:params[:status]
+        status:params[:status],
+        qualifications: params[:qualifications]
       )
       if @employees.save
         render json: {
