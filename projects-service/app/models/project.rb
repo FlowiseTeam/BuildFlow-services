@@ -10,7 +10,7 @@ class Project
   field :status, type: String
   field :street, type: String
   field :zipcode, type: String
-  field :workers, type: Array, default: []
+  field :employees, type: Array, default: []
   before_create :set_id
 
   has_many :comments, dependent: :destroy
