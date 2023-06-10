@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       @comments = @project.comments
       @comment_count = @comments.count
       if @comment_count.zero?
-        render json: { message: 'Nie znaleziono' }
+        render json: { message: 'Nie znaleziono' }, status: :not_found
       else
         render json: { comments: @comments, comment_count: @comment_count }
       end

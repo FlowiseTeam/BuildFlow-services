@@ -4,40 +4,73 @@ module Api
     require 'net/http'
     # GET /employees
     def index
-      @employees = Employee.all
-      @employees_count = Employee.count
-      if @employees_count.zero?
-        render json: { message: 'Nie znaleziono' }
-      else
-        render json: { employees: @employees, employees_count: @employees_count }
+      begin
+        @employees = Employee.all
+        @employees_count = Employee.count
+
+        if @employees_count.zero?
+          render json: { message: 'Nie znaleziono' }, status: :not_found
+        else
+          employees_with_assigned_projects = @employees.map do |employee|
+            uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+            uri.query = URI.encode_www_form({'employee_id' => employee['_id']})
+            response = Net::HTTP.get_response(uri)
+
+            if response.is_a?(Net::HTTPSuccess)
+              data = JSON.parse(response.body)
+              employee_assignments_data = data['employee_assignments']
+            else
+              employee_assignments_data = ["Brak przypisania"]
+            end
+
+            {
+              id: employee['_id'],
+              created_at: employee['created_at'],
+              updated_at: employee['updated_at'],
+              first_name: employee['first_name'],
+              last_name: employee['last_name'],
+              role: employee['role'],
+              qualifications: employee['qualifications'],
+              assigned_project: employee_assignments_data,
+              status: employee['status']
+            }
+          end
+
+          render json: { employees: employees_with_assigned_projects, employees_count: @employees_count }
+        end
+      rescue Mongoid::Errors::DocumentNotFound
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
     # GET /employees/1
     def show
-      @employee = Employee.find(params[:id])
-
       begin
+        @employee = Employee.find(params[:id])
 
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-        uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          #"#{ENV['PROJECTS_SERVICE']}/employee_assignments"
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
 
-        response = Net::HTTP.get_response(uri)
+          response = Net::HTTP.get_response(uri)
 
-        if response.is_a?(Net::HTTPSuccess)
-          data = JSON.parse(response.body)
-          employee_assignments_data = data['employee_assignments']
-        else
-          employee_assignments_data = ["Błąd wczytywania danych"]
-        end
+          if response.is_a?(Net::HTTPSuccess)
+            data = JSON.parse(response.body)
+            employee_assignments_data = data['employee_assignments']
+          else
+            employee_assignments_data = ["Brak przypisania"]
+          end
 
+        @employee[:assigned_project] = employee_assignments_data
+
+        render json: {employee: @employee}
+      rescue Mongoid::Errors::DocumentNotFound
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
-        employee_assignments_data = ["Błąd połączenia"]
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
-
-      @employee[:assigned_project] = employee_assignments_data
-
-      render json: {employee: @employee}
     end
 
 

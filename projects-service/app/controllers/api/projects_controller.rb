@@ -5,7 +5,7 @@ module Api
       @projects = Project.all
       @project_count = Project.count
       if @project_count.zero?
-        render json: { message: 'Nie znaleziono' }
+        render json: { message: 'Nie znaleziono' }, status: :not_found
       else
         render json: { projects: @projects, project_count: @project_count }
       end
