@@ -6,7 +6,11 @@ module Api
     def index
       @employees = Employee.all
       @employees_count = Employee.count
-      render json: { employees: @employees, employees_count: @employees_count }
+      if @employees_count.zero?
+        render json: { message: 'Nie znaleziono' }
+      else
+        render json: { employees: @employees, employees_count: @employees_count }
+      end
     end
 
     # GET /employees/1
@@ -39,51 +43,67 @@ module Api
 
     # POST /employees
     def create
-      @employees = Employee.create(
-        first_name:params[:first_name],
-        last_name:params[:last_name],
-        role: params[:role],
-        status:params[:status],
-        qualifications: params[:qualifications]
-      )
-
-      if @employees.save
-        render json: {
-          employees: @employees
-        }, status: :created
-      else
-        render json: {
-          error: @employees.errors.full_messages.to_sentence
-        }, status: :unprocessable_entity
+      begin
+        @employees = Employee.create(
+          first_name:params[:first_name],
+          last_name:params[:last_name],
+          role: params[:role],
+          status:params[:status],
+          qualifications: params[:qualifications]
+        )
+        if @employees.save
+          render json: {
+            employees: @employees
+          }, status: :created
+        else
+          render json: {
+            error: @employees.errors.full_messages.to_sentence
+          }, status: :unprocessable_entity
+        end
+      rescue StandardError => e
+        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
       end
     end
 
     # PATCH/PUT /employees/1
     def update
-      @employees = Employee.find(params[:id])
-      @employees.update(
-        first_name:params[:first_name],
-        last_name:params[:last_name],
-        role: params[:role],
-        status:params[:status],
-        qualifications: params[:qualifications]
-      )
-      if @employees.save
-        render json: {
-          employees: @employees
-        }, status: :ok
-      else
-        render json: {
-          error: @employees.errors.full_messages.to_sentence
-        }, status: :unprocessable_entity
+      begin
+        @employees = Employee.find(params[:id])
+        @employees.update(
+          first_name: params[:first_name],
+          last_name: params[:last_name],
+          role: params[:role],
+          status: params[:status],
+          qualifications: params[:qualifications]
+        )
+        if @employees.save
+          render json: {
+            employees: @employees
+          }, status: :ok
+        else
+          render json: {
+            error: @employees.errors.full_messages.to_sentence
+          }, status: :unprocessable_entity
+        end
+      rescue Mongoid::Errors::DocumentNotFound
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
     # DELETE /employees/1
     def destroy
-      @employees = Employee.find(params[:id])
-      @employees.destroy
-      head :no_content
+      begin
+        @employee = Employee.find(params[:id])
+        @employee.destroy
+        head :no_content
+      rescue Mongoid::Errors::DocumentNotFound
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+      end
     end
+
   end
 end
