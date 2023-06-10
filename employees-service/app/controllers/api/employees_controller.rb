@@ -63,14 +63,15 @@ module Api
             employee_assignments_data = ["Brak przypisania"]
           end
 
-        @employee[:assigned_project] = employee_assignments_data
-
-        render json: {employee: @employee}
       rescue Mongoid::Errors::DocumentNotFound
-        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+        employee_assignments_data = ["Brak przypisania"]
       rescue StandardError => e
-        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+        employee_assignments_data = ["Błąd serwera"]
       end
+
+      @employee[:assigned_project] = employee_assignments_data
+
+      render json: {employee: @employee}
     end
 
 
