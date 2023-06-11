@@ -9,6 +9,11 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 # Set main database
 gem 'mongoid', '~> 7.3.0'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
+gem 'rswag'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
