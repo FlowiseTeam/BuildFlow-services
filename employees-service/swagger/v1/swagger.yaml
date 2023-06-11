@@ -1,0 +1,89 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Employees",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/employees": {
+      "get": {
+        "summary": "list employees",
+        "tags": [
+          "Employee"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      },
+      "post": {
+        "summary": "create employee",
+        "tags": [
+          "Employee"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/employees/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "show employee",
+        "tags": [
+          "Employee"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      },
+      "put": {
+        "summary": "update employee",
+        "tags": [
+          "Employee"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete employee",
+        "tags": [
+          "Employee"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://{defaultHost}",
+      "variables": {
+        "defaultHost": {
+          "default": "localhost:3001"
+        }
+      }
+    }
+  ]
+}
