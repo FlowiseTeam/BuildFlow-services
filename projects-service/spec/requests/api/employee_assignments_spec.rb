@@ -1,10 +1,11 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/employee_assignments', type: :request do
+RSpec.describe 'employee_assignments API', type: :request do
 
   path '/api/projects/employee_assignments' do
 
     get('show employee_assignment') do
+      tags 'Employee assigments'
       response(200, 'successful') do
 
         after do |example|
@@ -19,6 +20,7 @@ RSpec.describe 'api/employee_assignments', type: :request do
     end
 
     post('create employee_assignment') do
+      tags 'Employee assigments'
       response(200, 'successful') do
 
         after do |example|
@@ -33,6 +35,7 @@ RSpec.describe 'api/employee_assignments', type: :request do
     end
 
     delete('delete employee_assignment') do
+      tags 'Employee assigments'
       response(200, 'successful') do
 
         after do |example|

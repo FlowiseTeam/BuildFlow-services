@@ -5,6 +5,7 @@ RSpec.describe 'api/projects', type: :request do
   path '/api/projects' do
 
     get('list projects') do
+      tags 'Projects'
       response(200, 'successful') do
 
         after do |example|
@@ -19,6 +20,7 @@ RSpec.describe 'api/projects', type: :request do
     end
 
     post('create project') do
+      tags 'Projects'
       response(200, 'successful') do
 
         after do |example|
@@ -38,6 +40,7 @@ RSpec.describe 'api/projects', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show project') do
+      tags 'Projects'
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -53,6 +56,7 @@ RSpec.describe 'api/projects', type: :request do
     end
 
     delete('delete project') do
+      tags 'Projects'
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -68,6 +72,7 @@ RSpec.describe 'api/projects', type: :request do
     end
 
     put('update project') do
+      tags 'Projects'
       response(200, 'successful') do
         let(:id) { '123' }
 
