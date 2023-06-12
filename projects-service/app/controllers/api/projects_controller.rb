@@ -4,17 +4,26 @@ module Api
     def index
       @projects = Project.all
       @project_count = Project.count
+      @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
       if @project_count.zero?
         render json: { message: 'Nie znaleziono' }, status: :not_found
       else
-        render json: { projects: @projects, project_count: @project_count }
+        projects_with_assignments = @projects.map do |project|
+          assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)
+          project.attributes.merge(employees: assigned_employees)
+        end
+        render json: { projects: projects_with_assignments, project_count: @project_count }
+
       end
     end
 
     def show
       begin
-        @projects = Project.find(params[:id])
-        render json: {projects: @projects}
+        @project = Project.find(params[:id])
+        employee_ids = EmployeeAssignment.where(project_id: @project.id).pluck(:employee_id)
+        project_data = @project.attributes.merge(employees: employee_ids)
+
+        render json: {projects: project_data}
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
@@ -60,8 +69,15 @@ module Api
           name:params[:name],
           status:params[:status],
           street: params[:street],
-          zipcode:params[:zipcode]
+          zipcode:params[:zipcode],
         )
+        EmployeeAssignment.where(project_id: params[:id]).delete
+
+        unless params[:employees].empty?
+          params[:employees].each do |employee_id|
+            EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
+          end
+        end
 
         if @projects.save
           render json: {
@@ -83,6 +99,8 @@ module Api
       begin
         @projects = Project.find(params[:id])
         @projects.destroy
+        EmployeeAssignment.where(project_id: params[:id]).delete
+
         head :no_content
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
