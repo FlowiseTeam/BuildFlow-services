@@ -24,7 +24,7 @@ module Api
             end
 
             {
-              id: employee['_id'],
+              _id: employee['_id'],
               created_at: employee['created_at'],
               updated_at: employee['updated_at'],
               first_name: employee['first_name'],
