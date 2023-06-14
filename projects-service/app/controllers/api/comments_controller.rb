@@ -17,12 +17,6 @@ class CommentsController < ApplicationController
     end
   end
 
-=begin
-  def show
-    render json: @comment
-  end
-=end
-
   def create
     begin
       @project = Project.find(params[:project_id])
@@ -67,6 +61,10 @@ class CommentsController < ApplicationController
     rescue StandardError => e
       render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
     end
+  end
+
+  def latest
+    render json: Comment.latest_comments(4)
   end
 
   private

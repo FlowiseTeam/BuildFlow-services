@@ -49,9 +49,14 @@ module Api
 
     def destroy
       begin
-        @employee_assignment = EmployeeAssignment.find(params[:id])
-        @employee_assignment.destroy
-        head :no_content
+        if params[:project_id].present?
+          @employee_assignments = EmployeeAssignment.where(project_id: params[:project_id]).delete
+        elsif params[:employee_id].present?
+          @employee_assignments = EmployeeAssignment.where(employee_id: params[:employee_id]).delete
+        else
+          return render json: { error: "Missing parameter: either project_id or employee_id must be provided" }, status: :bad_request
+        end
+          head :no_content
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e

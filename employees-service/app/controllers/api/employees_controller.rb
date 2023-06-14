@@ -110,6 +110,26 @@ module Api
           status: params[:status],
           qualifications: params[:qualifications]
         )
+
+
+        uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+        uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+
+        http = Net::HTTP.new(uri.host, uri.port)
+        request = Net::HTTP::Delete.new(uri.request_uri)
+
+        response = http.request(request) # TODO handle errors
+
+        unless params[:assigned_project].empty?
+          params[:assigned_project].each do |assigned_project|
+            logger.info(assigned_project)
+            request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
+            request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
+            response = http.request(request)
+          end
+        end
+
+
         if @employees.save
           render json: {
             employees: @employees
