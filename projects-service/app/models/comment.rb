@@ -14,4 +14,7 @@ class Comment
     self._id = last_comment ? last_comment._id + 1 : 1
   end
 
+  def self.latest_comments(amount)
+    order_by(created_at: 'desc').limit(amount)
+  end
 end

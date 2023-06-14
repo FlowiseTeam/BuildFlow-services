@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   namespace :api, defaults: { format: :json } do
+    get 'projects/comments/latest', to: 'comments#latest'
 
     # Employee_Assignments Routing
     get 'projects/employee_assignments', to: 'employee_assignments#show'
