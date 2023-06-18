@@ -6,7 +6,7 @@ module Api
       @project_count = Project.count
       @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
       if @project_count.zero?
-        render json: { message: 'Nie znaleziono' }, status: :not_found
+        render json: { projects: [] }, status: :ok
       else
         projects_with_assignments = @projects.map do |project|
           assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)

@@ -12,7 +12,7 @@ module Api
         end
 
         if @employee_assignments.empty?
-          render json: { error: "Nie znaleziono" }, status: :not_found
+          render json: { employee_assignments: []}, status: :ok
         else
           render json: { employee_assignments: @employee_assignments }, status: :ok
         end

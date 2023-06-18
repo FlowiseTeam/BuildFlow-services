@@ -20,7 +20,7 @@ module Api
               data = JSON.parse(response.body)
               employee_assignments_data = data['employee_assignments']
             else
-              employee_assignments_data = ["Brak przypisania"]
+              employee_assignments_data = []
             end
 
             {
@@ -50,28 +50,26 @@ module Api
       begin
         @employee = Employee.find(params[:id])
 
-          #"#{ENV['PROJECTS_SERVICE']}/employee_assignments"
-          uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+        #"#{ENV['PROJECTS_SERVICE']}/employee_assignments"
+        uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+        uri.query = URI.encode_www_form({'employee_id' => params[:id]})
 
-          response = Net::HTTP.get_response(uri)
+        response = Net::HTTP.get_response(uri)
 
-          if response.is_a?(Net::HTTPSuccess)
-            data = JSON.parse(response.body)
-            employee_assignments_data = data['employee_assignments']
-          else
-            employee_assignments_data = ["Brak przypisania"]
-          end
+        if response.is_a?(Net::HTTPSuccess)
+          data = JSON.parse(response.body)
+          employee_assignments_data = data['employee_assignments']
+        else
+          employee_assignments_data = []
+        end
+        @employee[:assigned_project] = employee_assignments_data
 
+        render json: {employee: @employee}
       rescue Mongoid::Errors::DocumentNotFound
-        employee_assignments_data = ["Brak przypisania"]
+        render(json: { error: 'Nie znaleziono' }, status: :not_found)
       rescue StandardError => e
-        employee_assignments_data = ["Błąd serwera"]
+        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
       end
-
-      @employee[:assigned_project] = employee_assignments_data
-
-      render json: {employee: @employee}
     end
 
 
