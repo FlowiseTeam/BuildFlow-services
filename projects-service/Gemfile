@@ -11,6 +11,7 @@ gem "sqlite3", "~> 1.4"
 
 # Set main database
 gem 'mongoid', '~> 7.3.0'
+gem "minitest"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
