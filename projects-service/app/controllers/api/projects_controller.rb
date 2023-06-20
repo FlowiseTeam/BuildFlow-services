@@ -2,18 +2,21 @@ module Api
   class ProjectsController < ApplicationController
 
     def index
-      @projects = Project.all
-      @project_count = Project.count
-      @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
-      if @project_count.zero?
-        render json: { projects: [] }, status: :ok
-      else
-        projects_with_assignments = @projects.map do |project|
-          assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)
-          project.attributes.merge(employees: assigned_employees)
+      begin
+        @projects = Project.all
+        @project_count = Project.count
+        @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
+        if @project_count.zero?
+          render json: { projects: [] }, status: :ok
+        else
+          projects_with_assignments = @projects.map do |project|
+            assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)
+            project.attributes.merge(employees: assigned_employees)
+          end
+          render json: { projects: projects_with_assignments, project_count: @project_count }
         end
-        render json: { projects: projects_with_assignments, project_count: @project_count }
-
+      rescue
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
