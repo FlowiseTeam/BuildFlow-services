@@ -21,8 +21,23 @@ RSpec.describe 'api/projects', type: :request do
 
     post('create project') do
       tags 'Projects'
+      consumes 'application/json'
+      parameter name: :project, in: :body, schema: {
+        type: :object,
+        properties: {
+          city: { type: :string },
+          client: { type: :string },
+          start_date: { type: :string, format: 'date' },
+          end_date: { type: :string, format: 'date' },
+          name: { type: :string },
+          status: { type: :string },
+          street: { type: :string },
+          zipcode: { type: :string }
+        },
+        required: ['city', 'client', 'start_date', 'end_date', 'name', 'status', 'street', 'zipcode']
+      }
       response(200, 'successful') do
-
+        let(:project) { { city: 'City', client: 'Client', start_date: '2023-06-23', end_date: '2023-06-23', name: 'Project Name', status: 'Status', street: 'Street', zipcode: 'Zipcode' } }
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -36,7 +51,6 @@ RSpec.describe 'api/projects', type: :request do
   end
 
   path '/api/projects/{id}' do
-    # You'll want to customize the parameter types...
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show project') do
@@ -73,9 +87,24 @@ RSpec.describe 'api/projects', type: :request do
 
     put('update project') do
       tags 'Projects'
+      consumes 'application/json'
+      parameter name: :project, in: :body, schema: {
+        type: :object,
+        properties: {
+          city: { type: :string },
+          client: { type: :string },
+          start_date: { type: :string, format: 'date' },
+          end_date: { type: :string, format: 'date' },
+          name: { type: :string },
+          status: { type: :string },
+          street: { type: :string },
+          zipcode: { type: :string }
+        },
+        required: ['city', 'client', 'start_date', 'end_date', 'name', 'status', 'street', 'zipcode']
+      }
       response(200, 'successful') do
         let(:id) { '123' }
-
+        let(:project) { { city: 'City', client: 'Client', start_date: '2023-06-23', end_date: '2023-06-23', name: 'Project Name', status: 'Status', street: 'Street', zipcode: 'Zipcode' } }
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
