@@ -24,31 +24,20 @@ RSpec.describe 'api/comments', type: :request do
 
     post('create comment') do
       tags 'Comments'
+      consumes 'application/json'
+      parameter name: :comment, in: :body, schema: {
+        type: :object,
+        properties: {
+          message: { type: :string },
+          status: { type: :string },
+          images: { type: :array, items: { type: :string } },
+        },
+        required: ['message', 'status']
+      }
+
       response(200, 'successful') do
         let(:project_id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
-  end
-
-  path '/api/projects/{project_id}/comments/{id}' do
-    # You'll want to customize the parameter types...
-    parameter name: 'project_id', in: :path, type: :string, description: 'project_id'
-    parameter name: 'id', in: :path, type: :string, description: 'id'
-
-    get('show comment') do
-      tags 'Comments'
-      response(200, 'successful') do
-        let(:project_id) { '123' }
-        let(:id) { '123' }
+        let(:comment) { { message: 'Example message', status: 'active', images: ['image1.png', 'image2.png'] } }
 
         after do |example|
           example.metadata[:response][:content] = {
@@ -61,38 +50,28 @@ RSpec.describe 'api/comments', type: :request do
       end
     end
 
-    put('update comment') do
-      tags 'Comments'
-      response(200, 'successful') do
-        let(:project_id) { '123' }
-        let(:id) { '123' }
+    path '/api/projects/{project_id}/comments/{id}' do
+      # You'll want to customize the parameter types...
+      parameter name: 'project_id', in: :path, type: :string, description: 'project_id'
+      parameter name: 'id', in: :path, type: :string, description: 'id'
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
+      delete('delete comment') do
+        tags 'Comments'
+        response(200, 'successful') do
+          let(:project_id) { '123' }
+          let(:id) { '123' }
+
+          after do |example|
+            example.metadata[:response][:content] = {
+              'application/json' => {
+                example: JSON.parse(response.body, symbolize_names: true)
+              }
             }
-          }
+          end
+          run_test!
         end
-        run_test!
       end
     end
 
-    delete('delete comment') do
-      tags 'Comments'
-      response(200, 'successful') do
-        let(:project_id) { '123' }
-        let(:id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
-    end
   end
 end
