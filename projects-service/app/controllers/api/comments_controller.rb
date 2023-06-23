@@ -3,31 +3,37 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show update destroy ]
 
   def index
-    @project = Project.find(params[:project_id])
-    @comments = @project.comments
-    @comment_count = @comments.count
-    render json: { comments: @comments, comment_count: @comment_count }
+    begin
+      @project = Project.find(params[:project_id])
+      @comments = @project.comments
+      @comment_count = @comments.count
+      if @comment_count.zero?
+        render json: { comments: [] }, status: :ok
+      else
+        render json: { comments: @comments, comment_count: @comment_count }
+      end
+    rescue StandardError => e
+      render(json: { error: 'Wystąpił błąd' }, status: :internal_server_error)
+    end
   end
-
-=begin
-  def show
-    render json: @comment
-  end
-=end
 
   def create
-    @project = Project.find(params[:project_id])
+    begin
+      @project = Project.find(params[:project_id])
 
-    @comment = @project.comments.build(
-      message: params[:message],
-      status: params[:status],
-      images: params[:images],
-      )
+      @comment = @project.comments.build(
+        message: params[:message],
+        status: params[:status],
+        images: params[:images],
+        )
 
-    if @comment.save
-      render json: @comment, status: :created, location: api_project_comment_url(@project, @comment)
-    else
-      render json: @comment.errors.full_messages.to_sentence, status: :unprocessable_entity
+      if @comment.save
+        render json: @comment, status: :created, location: api_project_comment_url(@project, @comment)
+      else
+        render json: @comment.errors.full_messages.to_sentence, status: :unprocessable_entity
+      end
+    rescue StandardError => e
+      render(json: { error: 'Wystąpił błąd' }, status: :internal_server_error)
     end
   end
 
@@ -46,13 +52,31 @@ class CommentsController < ApplicationController
 =end
 
   def destroy
-    @comment.destroy
+    begin
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+      head :no_content
+    rescue Mongoid::Errors::DocumentNotFound
+      render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+    rescue StandardError => e
+      render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+    end
+  end
+
+  def latest
+    render json: Comment.latest_comments(4)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      begin
+        @comment = Comment.find(params[:id])
+      rescue Mongoid::Errors::DocumentNotFound
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+      end
     end
 end
 end

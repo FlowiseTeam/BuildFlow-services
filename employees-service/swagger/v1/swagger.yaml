@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Employees",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/employees": {
+      "get": {
+        "summary": "list employees",
+        "tags": [
+          "Employees"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      },
+      "post": {
+        "summary": "create employee",
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "201": {
+            "description": "created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "qualifications": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "first_name",
+                  "last_name",
+                  "role",
+                  "status",
+                  "qualifications"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/employees/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "summary": "show employee",
+        "tags": [
+          "Employees"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete employee",
+        "tags": [
+          "Employees"
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted"
+          }
+        }
+      },
+      "put": {
+        "summary": "update employee",
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "qualifications": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "first_name",
+                  "last_name",
+                  "role",
+                  "status",
+                  "qualifications"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://{defaultHost}",
+      "variables": {
+        "defaultHost": {
+          "default": "localhost:3001"
+        }
+      }
+    }
+  ]
+}

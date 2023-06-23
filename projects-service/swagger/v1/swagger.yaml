@@ -1,0 +1,240 @@
+---
+openapi: 3.0.1
+info:
+  title: API Projects
+  version: v1
+paths:
+  "/api/projects/{project_id}/comments":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list comments
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create comment
+      tags:
+      - Comments
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                status:
+                  type: string
+                images:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - message
+              - status
+  "/api/projects/{project_id}/comments/{id}":
+    parameters:
+    - name: project_id
+      in: path
+      description: project_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: delete comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: successful
+  "/api/projects/employee_assignments":
+    get:
+      summary: show employee_assignment
+      tags:
+      - Employee assigments
+      parameters:
+      - name: employee_id
+        in: query
+        description: Employee ID
+        schema:
+          type: string
+      - name: project_id
+        in: query
+        description: Project ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create employee_assignment
+      tags:
+      - Employee assigments
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  type: integer
+                employee_id:
+                  type: integer
+                project_name:
+                  type: string
+              required:
+              - project_id
+              - employee_id
+              - project_name
+    delete:
+      summary: delete employee_assignment
+      tags:
+      - Employee assigments
+      parameters:
+      - name: id
+        in: query
+        description: Employee Assignment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/api/projects":
+    get:
+      summary: list projects
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create project
+      tags:
+      - Projects
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                client:
+                  type: string
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                name:
+                  type: string
+                status:
+                  type: string
+                street:
+                  type: string
+                zipcode:
+                  type: string
+              required:
+              - city
+              - client
+              - start_date
+              - end_date
+              - name
+              - status
+              - street
+              - zipcode
+  "/api/projects/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show project
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete project
+      tags:
+      - Projects
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update project
+      tags:
+      - Projects
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                client:
+                  type: string
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                name:
+                  type: string
+                status:
+                  type: string
+                street:
+                  type: string
+                zipcode:
+                  type: string
+              required:
+              - city
+              - client
+              - start_date
+              - end_date
+              - name
+              - status
+              - street
+              - zipcode
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
