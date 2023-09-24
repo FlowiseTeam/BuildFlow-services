@@ -6,6 +6,7 @@ Rails.application.configure do
   # Set trusted hosts:
   config.hosts << "projects-service"
   config.hosts << "employees-service"
+  config.hosts << "vehicles-service"
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

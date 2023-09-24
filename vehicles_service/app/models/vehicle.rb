@@ -8,7 +8,7 @@ class Vehicle
   field :mileage, type: Integer
   field :reg_number, type: String
   field :rev_date, type: Date
-  field :assign_project, type: Array, default: []
+  field :assigned_project, type: Array, default: []
   field :capacity, type: Integer
 
 
