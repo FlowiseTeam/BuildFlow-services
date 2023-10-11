@@ -1,8 +1,8 @@
 FROM ruby:3.2.2
 
-ADD . /Dockerfile-service
+ADD . /vehicles-service
 
-WORKDIR /Dockerfile-service
+WORKDIR /vehicles-service
 RUN bundle install
 
 EXPOSE 3000
