@@ -16,6 +16,8 @@ pickle-email-*.html
 # Ignore all logfiles and tempfiles.
 /projects-service/log/.keep
 /projects-service/tmp/*
+/vehicles-service/tmp/*
+/vehicles-service/log/.keep
 
 /tmp/*
 !/log/.keep
@@ -75,3 +77,4 @@ yarn-debug.log*
 /employees-service/tmp/*
 /projects-service/log/development.log
 /employees-service/log/development.log
+/vehicles-service/log/development.log
