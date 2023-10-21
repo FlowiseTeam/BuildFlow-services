@@ -34,26 +34,37 @@ module Api
       end
     end
 
+    def process_subcontractors(subcontractor_params)
+      subcontractor_params.map do |subcontractor|
+        {
+          name: subcontractor[:name] || "",
+          email: subcontractor[:email] || "",
+          address: subcontractor[:address] || "",
+          phone: subcontractor[:phone] || ""
+        }
+      end
+    end
+
     def create
       begin
-        @projects = Project.create(
-          city:params[:city],
-          client:params[:client],
+        @project = Project.new(
+          city: params[:city],
+          client: params[:client],
           start_date: params[:start_date],
           end_date: params[:end_date],
-          name:params[:name],
-          status:params[:status],
+          name: params[:name],
+          status: params[:status],
           street: params[:street],
-          zipcode:params[:zipcode]
+          zipcode: params[:zipcode],
         )
 
-        if @projects.save
+        if @project.save
           render json: {
-            projects: @projects
+            project: @project
           }, status: :created
         else
           render json: {
-            error: @projects.errors.full_messages.to_sentence
+            error: @project.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue StandardError => e
@@ -61,8 +72,10 @@ module Api
       end
     end
 
+
     def update
       begin
+        subcontractors = process_subcontractors(params[:subcontractors])
         @projects = Project.find(params[:id])
         @projects.update(
           city:params[:city],
@@ -73,7 +86,9 @@ module Api
           status:params[:status],
           street: params[:street],
           zipcode:params[:zipcode],
+          subcontractors: subcontractors
         )
+
         EmployeeAssignment.where(project_id: params[:id]).delete
 
         unless params[:employees].empty?
