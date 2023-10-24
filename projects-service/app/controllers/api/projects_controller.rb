@@ -6,12 +6,14 @@ module Api
         @projects = Project.all
         @project_count = Project.count
         @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
+        @assigned_employees = VehicleAssignment.where(project_id: params[:id])
         if @project_count.zero?
           render json: { projects: [] }, status: :ok
         else
           projects_with_assignments = @projects.map do |project|
             assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)
-            project.attributes.merge(employees: assigned_employees)
+            assigned_vehicles = VehicleAssignment.where(project_id: project.id).pluck(:vehicle_id)
+            project.attributes.merge(employees: assigned_employees,vehicles: assigned_vehicles)
           end
           render json: { projects: projects_with_assignments, project_count: @project_count }
         end
@@ -24,7 +26,8 @@ module Api
       begin
         @project = Project.find(params[:id])
         employee_ids = EmployeeAssignment.where(project_id: @project.id).pluck(:employee_id)
-        project_data = @project.attributes.merge(employees: employee_ids)
+        vehicle_ids = VehicleAssignment.where(project_id: @project.id).pluck(:vehicle_id)
+        project_data = @project.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
 
         render json: {projects: project_data}
       rescue Mongoid::Errors::DocumentNotFound
@@ -90,16 +93,22 @@ module Api
         )
 
         EmployeeAssignment.where(project_id: params[:id]).delete
+        VehicleAssignment.where(project_id: params[:id]).delete
 
         unless params[:employees].empty?
           params[:employees].each do |employee_id|
             EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
           end
         end
+        unless params[:vehicles].empty?
+          params[:vehicles].each do |vehicle_id|
+            VehicleAssignment.create!(project_id: params[:id], vehicle_id: vehicle_id, project_name: params[:name])
+          end
+        end
 
         if @projects.save
           render json: {
-            projects: @project
+            projects: @projects
           }, status: :ok
         else
           render json: {
@@ -118,6 +127,7 @@ module Api
         @projects = Project.find(params[:id])
         @projects.destroy
         EmployeeAssignment.where(project_id: params[:id]).delete
+        VehicleAssignment.where(project_id: params[:id]).delete
 
         head :no_content
       rescue Mongoid::Errors::DocumentNotFound

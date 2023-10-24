@@ -12,10 +12,12 @@ class Project
   field :zipcode, type: String
   field :employees, type: Array, default: []
   field :subcontractors, type: Array, default: []
+  field :vehicles, type: Array, default: []
   before_create :set_id
 
   has_many :comments, dependent: :destroy
   has_many :employee_assignments, dependent: :destroy
+  has_many :vehicle_assignments, dependent: :destroy
 
   validates :city, :client, :start_date, :end_date, :name, :status, :street, :zipcode, presence: true
 
