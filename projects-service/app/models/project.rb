@@ -11,6 +11,7 @@ class Project
   field :street, type: String
   field :zipcode, type: String
   field :employees, type: Array, default: []
+  field :subcontractors, type: Array, default: []
   field :vehicles, type: Array, default: []
   before_create :set_id
 

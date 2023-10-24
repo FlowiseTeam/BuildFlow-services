@@ -24,10 +24,10 @@ module Api
 
     def show
       begin
-        @project = Project.find(params[:id])
-        employee_ids = EmployeeAssignment.where(project_id: @project.id).pluck(:employee_id)
-        vehicle_ids = VehicleAssignment.where(project_id: @project.id).pluck(:vehicle_id)
-        project_data = @project.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
+        @projects = Project.find(params[:id])
+        employee_ids = EmployeeAssignment.where(project_id: @projects.id).pluck(:employee_id)
+        vehicle_ids = VehicleAssignment.where(project_id: @projects.id).pluck(:vehicle_id)
+        project_data = @projects.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
 
         render json: {projects: project_data}
       rescue Mongoid::Errors::DocumentNotFound
@@ -37,22 +37,33 @@ module Api
       end
     end
 
+    def process_subcontractors(subcontractor_params)
+      subcontractor_params.map do |subcontractor|
+        {
+          name: subcontractor[:name] || "",
+          email: subcontractor[:email] || "",
+          address: subcontractor[:address] || "",
+          phone: subcontractor[:phone] || ""
+        }
+      end
+    end
+
     def create
       begin
         @projects = Project.create(
-          city:params[:city],
-          client:params[:client],
+          city: params[:city],
+          client: params[:client],
           start_date: params[:start_date],
           end_date: params[:end_date],
-          name:params[:name],
-          status:params[:status],
+          name: params[:name],
+          status: params[:status],
           street: params[:street],
-          zipcode:params[:zipcode]
+          zipcode: params[:zipcode],
         )
 
         if @projects.save
           render json: {
-            projects: @projects
+            project: @projects
           }, status: :created
         else
           render json: {
@@ -64,8 +75,10 @@ module Api
       end
     end
 
+
     def update
       begin
+        subcontractors = process_subcontractors(params[:subcontractors])
         @projects = Project.find(params[:id])
         @projects.update(
           city:params[:city],
@@ -76,7 +89,9 @@ module Api
           status:params[:status],
           street: params[:street],
           zipcode:params[:zipcode],
+          subcontractors: subcontractors
         )
+
         EmployeeAssignment.where(project_id: params[:id]).delete
         VehicleAssignment.where(project_id: params[:id]).delete
 
