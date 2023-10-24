@@ -24,10 +24,10 @@ module Api
 
     def show
       begin
-        @project = Project.find(params[:id])
-        employee_ids = EmployeeAssignment.where(project_id: @project.id).pluck(:employee_id)
-        vehicle_ids = VehicleAssignment.where(project_id: @project.id).pluck(:vehicle_id)
-        project_data = @project.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
+        @projects = Project.find(params[:id])
+        employee_ids = EmployeeAssignment.where(project_id: @projects.id).pluck(:employee_id)
+        vehicle_ids = VehicleAssignment.where(project_id: @projects.id).pluck(:vehicle_id)
+        project_data = @projects.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
 
         render json: {projects: project_data}
       rescue Mongoid::Errors::DocumentNotFound
@@ -50,7 +50,7 @@ module Api
 
     def create
       begin
-        @project = Project.new(
+        @projects = Project.create(
           city: params[:city],
           client: params[:client],
           start_date: params[:start_date],
@@ -61,13 +61,13 @@ module Api
           zipcode: params[:zipcode],
         )
 
-        if @project.save
+        if @projects.save
           render json: {
-            project: @project
+            project: @projects
           }, status: :created
         else
           render json: {
-            error: @project.errors.full_messages.to_sentence
+            error: @projects.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue StandardError => e
