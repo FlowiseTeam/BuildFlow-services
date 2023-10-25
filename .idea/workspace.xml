@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e732acba-e25e-4f04-955b-1c0d208bdf4d" name="Changes" comment="Fix one endpoint">
+      <change afterPath="$PROJECT_DIR$/projects-service/spec/controllers/api/projects_controller_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employees-service/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/employees-service/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employees-service/app/controllers/api/employees_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/employees-service/app/controllers/api/employees_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects-service/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicles_service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/vehicles_service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/app/controllers/api/projects_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/app/controllers/api/projects_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/config/mongoid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/config/mongoid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/log/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/spec/factories/projects.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/spec/rails_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/spec/requests/api/comments_spec.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/spec/requests/api/employee_assignments_spec.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/spec/requests/api/projects_spec.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +31,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "ruby.structure.view.model.defaults.configured": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projects-service/spec/controllers/api" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file enabled="true" id="RUBY_CUCUMBER" />
@@ -157,7 +171,7 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPTS_PATHS" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="CUSTOM_SET_OF_FILES" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
@@ -165,7 +179,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml.vehicles-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
