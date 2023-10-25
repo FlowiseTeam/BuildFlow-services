@@ -10,6 +10,8 @@ services:
       - "3000:3000"
     environment:
       - RAILS_ENV=development
+    networks:
+      - flowiseNetwork
 
   employees-service:
     build:
@@ -21,6 +23,8 @@ services:
       - "3001:3000"
     environment:
       - RAILS_ENV=development
+    networks:
+      - flowiseNetwork
 
   vehicles-service:
     build:
@@ -32,3 +36,8 @@ services:
       - "3002:3000"
     environment:
       - RAILS_ENV=development
+    networks:
+      - flowiseNetwork
+
+networks:
+  flowiseNetwork:
