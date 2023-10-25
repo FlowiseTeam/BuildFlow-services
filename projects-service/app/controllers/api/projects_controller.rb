@@ -5,17 +5,17 @@ module Api
       begin
         @projects = Project.all
         @project_count = Project.count
-        @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
-        @assigned_employees = VehicleAssignment.where(project_id: params[:id])
+        # @assigned_employees = EmployeeAssignment.where(project_id: params[:id])
+        # @assigned_employees = VehicleAssignment.where(project_id: params[:id])
         if @project_count.zero?
           render json: { projects: [] }, status: :ok
         else
-          projects_with_assignments = @projects.map do |project|
-            assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)
-            assigned_vehicles = VehicleAssignment.where(project_id: project.id).pluck(:vehicle_id)
-            project.attributes.merge(employees: assigned_employees,vehicles: assigned_vehicles)
-          end
-          render json: { projects: projects_with_assignments, project_count: @project_count }
+          # projects_with_assignments = @projects.map do |project|
+          #   assigned_employees = EmployeeAssignment.where(project_id: project.id).pluck(:employee_id)
+          #   assigned_vehicles = VehicleAssignment.where(project_id: project.id).pluck(:vehicle_id)
+          #   project.attributes.merge(employees: assigned_employees,vehicles: assigned_vehicles)
+          # end
+          render json: { projects: @projects, project_count: @project_count }
         end
       rescue
         render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
