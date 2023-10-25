@@ -11,7 +11,32 @@ module Api
         if @employees_count.zero?
           render json: { message: 'Nie znaleziono' }, status: :not_found
         else
-          render json: { employees: @employees, employees_count: @employees_count }
+          employees_with_assigned_projects = @employees.map do |employee|
+            uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+            uri.query = URI.encode_www_form({'employee_id' => employee['_id']})
+            response = Net::HTTP.get_response(uri)
+
+            if response.is_a?(Net::HTTPSuccess)
+              data = JSON.parse(response.body)
+              employee_assignments_data = data['employee_assignments']
+            else
+              employee_assignments_data = []
+            end
+
+            {
+              _id: employee['_id'],
+              created_at: employee['created_at'],
+              updated_at: employee['updated_at'],
+              first_name: employee['first_name'],
+              last_name: employee['last_name'],
+              role: employee['role'],
+              qualifications: employee['qualifications'],
+              assigned_project: employee_assignments_data,
+              status: employee['status']
+            }
+          end
+
+          render json: { employees: employees_with_assigned_projects, employees_count: @employees_count }
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
