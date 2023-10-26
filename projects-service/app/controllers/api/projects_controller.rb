@@ -95,19 +95,19 @@ module Api
           subcontractors: subcontractors
         )
 
-        # EmployeeAssignment.where(project_id: params[:id]).delete
-        # VehicleAssignment.where(project_id: params[:id]).delete
-        #
-        # unless params[:employees].empty?
-        #   params[:employees].each do |employee_id|
-        #     EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
-        #   end
-        # end
-        # unless params[:vehicles].empty?
-        #   params[:vehicles].each do |vehicle_id|
-        #     VehicleAssignment.create!(project_id: params[:id], vehicle_id: vehicle_id, project_name: params[:name])
-        #   end
-        # end
+        EmployeeAssignment.where(project_id: params[:id]).delete
+        VehicleAssignment.where(project_id: params[:id]).delete
+
+        unless params[:employees].empty?
+          params[:employees].each do |employee_id|
+            EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
+          end
+        end
+        unless params[:vehicles].empty?
+          params[:vehicles].each do |vehicle_id|
+            VehicleAssignment.create!(project_id: params[:id], vehicle_id: vehicle_id, project_name: params[:name])
+          end
+        end
 
         if @projects.save
           render json: {
