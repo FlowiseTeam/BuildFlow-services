@@ -38,6 +38,8 @@ module Api
     end
 
     def process_subcontractors(subcontractor_params)
+      return [] unless subcontractor_params
+
       subcontractor_params.map do |subcontractor|
         {
           name: subcontractor[:name] || "",
@@ -79,6 +81,7 @@ module Api
     def update
       begin
         subcontractors = process_subcontractors(params[:subcontractors])
+
         @projects = Project.find(params[:id])
         @projects.update(
           city:params[:city],
@@ -92,19 +95,19 @@ module Api
           subcontractors: subcontractors
         )
 
-        EmployeeAssignment.where(project_id: params[:id]).delete
-        VehicleAssignment.where(project_id: params[:id]).delete
-
-        unless params[:employees].empty?
-          params[:employees].each do |employee_id|
-            EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
-          end
-        end
-        unless params[:vehicles].empty?
-          params[:vehicles].each do |vehicle_id|
-            VehicleAssignment.create!(project_id: params[:id], vehicle_id: vehicle_id, project_name: params[:name])
-          end
-        end
+        # EmployeeAssignment.where(project_id: params[:id]).delete
+        # VehicleAssignment.where(project_id: params[:id]).delete
+        #
+        # unless params[:employees].empty?
+        #   params[:employees].each do |employee_id|
+        #     EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
+        #   end
+        # end
+        # unless params[:vehicles].empty?
+        #   params[:vehicles].each do |vehicle_id|
+        #     VehicleAssignment.create!(project_id: params[:id], vehicle_id: vehicle_id, project_name: params[:name])
+        #   end
+        # end
 
         if @projects.save
           render json: {
@@ -128,8 +131,8 @@ module Api
         @projects.destroy
         EmployeeAssignment.where(project_id: params[:id]).delete
         VehicleAssignment.where(project_id: params[:id]).delete
-
         head :no_content
+
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
