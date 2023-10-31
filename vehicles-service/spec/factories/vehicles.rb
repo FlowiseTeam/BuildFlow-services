@@ -1,12 +1,10 @@
 FactoryBot.define do
-  factory :project do
-    city {'Poznan'}
-    client {'Klient'}
-    start_date { Date.today }
-    end_date { Date.today + 1.week }
-    name {'testowy projekt'}
-    status {'rozpoczety'}
-    street {'Street'}
-    zipcode {'66-500'}
+  factory :vehicle do
+    name {'Koparka'}
+    status {'zajety'}
+    mileage {109888}
+    capacity {2001}
+    reg_number {'WWA10922'}
+    rev_date { Date.today + 1.year}
   end
 end

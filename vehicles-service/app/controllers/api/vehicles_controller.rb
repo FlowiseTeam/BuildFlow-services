@@ -44,8 +44,8 @@ module Api
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
-        # rescue StandardError => e
-        #  render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -121,7 +121,7 @@ module Api
 
         response = http.request(request) # TODO handle errors
 
-        unless params[:assigned_project].empty?
+        unless params[:assigned_project].nil? || params[:assigned_project].empty?
           params[:assigned_project].each do |assigned_project|
             logger.info(assigned_project)
             request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
