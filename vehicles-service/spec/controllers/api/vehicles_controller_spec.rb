@@ -73,7 +73,6 @@ RSpec.describe Api::VehiclesController, type: :controller do
 
       it 'returns the vehicle details' do
         parsed_response = JSON.parse(response.body)
-        puts parsed_response
 
         expect(response).to have_http_status(:ok)
         expect(parsed_response["vehicle"]["_id"].to_s).to eq(vehicle.id.to_s)
@@ -224,7 +223,6 @@ RSpec.describe Api::VehiclesController, type: :controller do
       it 'updates the vehicle' do
         put :update, params: valid_attributes.merge(id: vehicle.id), format: :json
         parsed_response = JSON.parse(response.body)
-        puts parsed_response
         vehicle.reload
 
         expect(vehicle.name).to eq(valid_attributes[:name])
