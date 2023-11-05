@@ -102,16 +102,20 @@ module Api
           params[:employees].each do |employee_id|
             EmployeeAssignment.create!(project_id: params[:id], employee_id: employee_id, project_name: params[:name])
           end
+          employees_ids = params[:employees]
         end
         unless params[:vehicles].empty?
           params[:vehicles].each do |vehicle_id|
             VehicleAssignment.create!(project_id: params[:id], vehicle_id: vehicle_id, project_name: params[:name])
           end
+          vehicles_ids = params[:vehicles]
         end
+
+        project_data = @projects.attributes.merge(vehicles: vehicles_ids,employees: employees_ids)
 
         if @projects.save
           render json: {
-            projects: @projects
+            projects: project_data
           }, status: :ok
         else
           render json: {
@@ -121,7 +125,7 @@ module Api
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
-        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+        render json: { error: "Wystąpił błąd serwera #{e.message}" }, status: :internal_server_error
       end
     end
 
