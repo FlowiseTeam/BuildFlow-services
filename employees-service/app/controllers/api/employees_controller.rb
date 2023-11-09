@@ -23,7 +23,7 @@ module Api
               employee_assignments_data = data['employee_assignments']
             end
             rescue StandardError => e
-              employee_assignments_data = ['Błąd brak połączenia z tabelą']
+              employee_assignments_data = ['Błąd brak połączenia z serwisem']
             end
             {
               _id: employee['_id'],
@@ -63,7 +63,7 @@ module Api
             employee_assignments_data = data['employee_assignments']
           end
         rescue StandardError => e
-          employee_assignments_data = ['Błąd brak połączenia z tabelą']
+          employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
         @employee[:assigned_project] = employee_assignments_data
 
@@ -120,25 +120,25 @@ module Api
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Delete.new(uri.request_uri)
 
-          response = http.request(request)
+          http.request(request)
 
-        unless params[:assigned_project].nil? || params[:assigned_project].empty?
-          employee_assignments_data = []
-          params[:assigned_project].each do |assigned_project|
-            logger.info(assigned_project)
-            request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-            request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
-            response = http.request(request)
-            if response.is_a?(Net::HTTPSuccess)
-              data = JSON.parse(response.body)
-              employee_assignments_data << data['employee_assignments']
+          unless params[:assigned_project].nil? || params[:assigned_project].empty?
+            employee_assignments_data = []
+            params[:assigned_project].each do |assigned_project|
+              logger.info(assigned_project)
+              request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
+              request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
+              response = http.request(request)
+              if response.is_a?(Net::HTTPSuccess)
+                data = JSON.parse(response.body)
+                employee_assignments_data << data['employee_assignments']
+              end
             end
           end
-          @employees[:assigned_project] = employee_assignments_data
-        end
         rescue StandardError => e
+          employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
-
+        @employees[:assigned_project] = employee_assignments_data
         if @employees.save
           render json: {
             employees: @employees
