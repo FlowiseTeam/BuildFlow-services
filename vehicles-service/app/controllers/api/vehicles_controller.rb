@@ -44,8 +44,8 @@ module Api
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
-        # rescue StandardError => e
-        #  render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -113,23 +113,30 @@ module Api
           reg_number:params[:reg_number]
         )
 
+        @vehicles[:assigned_project] = params[:assigned_project]
+
         uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
         uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
 
         http = Net::HTTP.new(uri.host, uri.port)
         request = Net::HTTP::Delete.new(uri.request_uri)
 
-        response = http.request(request) # TODO handle errors
+        response = http.request(request)
 
-        unless params[:assigned_project].empty?
+        unless params[:assigned_project].nil? || params[:assigned_project].empty?
+          vehicle_assignments_data = []
           params[:assigned_project].each do |assigned_project|
             logger.info(assigned_project)
             request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
             request.body = {vehicle_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
             response = http.request(request)
+            if response.is_a?(Net::HTTPSuccess)
+              data = JSON.parse(response.body)
+              vehicle_assignments_data << data['vehicle_assignments']
+            end
           end
+          @vehicles[:assigned_project] = vehicle_assignments_data
         end
-
 
         if @vehicles.save
           render json: {

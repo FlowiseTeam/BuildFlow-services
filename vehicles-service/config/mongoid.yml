@@ -173,15 +173,10 @@ development:
   # (default: false)
   # use_utc: false
 
-
-#
-#test:
-#  clients:
-#    default:
-#      database: vehicles_service_test
-#      hosts:
-#        - localhost:27017
-#      options:
-#        read:
-#          mode: :primary
-#        max_pool_size: 1
+test:
+  clients:
+    default:
+      uri: mongodb+srv://flowise_admin:Drq9NeJCjuAkqCUy@buildflow.fic9xoa.mongodb.net/BuildFlowTest?retryWrites=true&w=majority
+      options:
+        auth_source: admin
+  options:

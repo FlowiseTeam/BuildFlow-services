@@ -111,6 +111,8 @@ module Api
           status: params[:status],
           qualifications: params[:qualifications]
         )
+
+        @employees[:assigned_project] = params[:assigned_project]
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({'employee_id' => params[:id]})
@@ -118,16 +120,22 @@ module Api
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Delete.new(uri.request_uri)
 
-          response = http.request(request) # TODO handle errors
+          response = http.request(request)
 
-          unless params[:assigned_project].empty?
-            params[:assigned_project].each do |assigned_project|
-              logger.info(assigned_project)
-              request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-              request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
-              response = http.request(request)
+        unless params[:assigned_project].nil? || params[:assigned_project].empty?
+          employee_assignments_data = []
+          params[:assigned_project].each do |assigned_project|
+            logger.info(assigned_project)
+            request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
+            request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
+            response = http.request(request)
+            if response.is_a?(Net::HTTPSuccess)
+              data = JSON.parse(response.body)
+              employee_assignments_data << data['employee_assignments']
             end
           end
+          @employees[:assigned_project] = employee_assignments_data
+        end
         rescue StandardError => e
         end
 
