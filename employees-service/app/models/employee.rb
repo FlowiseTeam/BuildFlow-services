@@ -11,7 +11,7 @@ class Employee
 
   before_create :set_id
 
-  validates :first_name, :last_name, :role, :status, presence: true
+  validates :first_name, :last_name, :status, presence: true
 
   private
   def set_id

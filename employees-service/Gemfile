@@ -10,7 +10,9 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem 'mongoid', '~> 7.3.0'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 5.0'
+  gem 'factory_bot_rails'
+  gem 'webmock'
 end
 gem 'rswag'
 
