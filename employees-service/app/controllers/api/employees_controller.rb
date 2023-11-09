@@ -2,6 +2,7 @@ module Api
   class EmployeesController < ApplicationController
     require 'uri'
     require 'net/http'
+
     # GET /employees
     def index
       begin
@@ -12,6 +13,7 @@ module Api
           render json: { error: 'Brak rekordów' }, status: :not_found
         else
           employees_with_assigned_projects = @employees.map do |employee|
+            begin
             uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
             uri.query = URI.encode_www_form({'employee_id' => employee['_id']})
             response = Net::HTTP.get_response(uri)
@@ -19,10 +21,10 @@ module Api
             if response.is_a?(Net::HTTPSuccess)
               data = JSON.parse(response.body)
               employee_assignments_data = data['employee_assignments']
-            else
-              employee_assignments_data = []
             end
-
+            rescue StandardError => e
+              employee_assignments_data = ['Błąd brak połączenia z tabelą']
+            end
             {
               _id: employee['_id'],
               created_at: employee['created_at'],
@@ -49,18 +51,19 @@ module Api
     def show
       begin
         @employee = Employee.find(params[:id])
+        begin
+          "#{ENV['PROJECTS_SERVICE']}/employee_assignments"
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
 
-        "#{ENV['PROJECTS_SERVICE']}/employee_assignments"
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-        uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          response = Net::HTTP.get_response(uri)
 
-        response = Net::HTTP.get_response(uri)
-
-        if response.is_a?(Net::HTTPSuccess)
-          data = JSON.parse(response.body)
-          employee_assignments_data = data['employee_assignments']
-        else
-          employee_assignments_data = []
+          if response.is_a?(Net::HTTPSuccess)
+            data = JSON.parse(response.body)
+            employee_assignments_data = data['employee_assignments']
+          end
+        rescue StandardError => e
+          employee_assignments_data = ['Błąd brak połączenia z tabelą']
         end
         @employee[:assigned_project] = employee_assignments_data
 
@@ -108,22 +111,24 @@ module Api
           status: params[:status],
           qualifications: params[:qualifications]
         )
+        begin
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
 
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-        uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Delete.new(uri.request_uri)
 
-        http = Net::HTTP.new(uri.host, uri.port)
-        request = Net::HTTP::Delete.new(uri.request_uri)
+          response = http.request(request) # TODO handle errors
 
-        response = http.request(request) # TODO handle errors
-
-        unless params[:assigned_project].empty?
-          params[:assigned_project].each do |assigned_project|
-            logger.info(assigned_project)
-            request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-            request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
-            response = http.request(request)
+          unless params[:assigned_project].empty?
+            params[:assigned_project].each do |assigned_project|
+              logger.info(assigned_project)
+              request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
+              request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
+              response = http.request(request)
+            end
           end
+        rescue StandardError => e
         end
 
         if @employees.save
