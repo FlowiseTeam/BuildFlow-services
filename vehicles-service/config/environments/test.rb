@@ -6,6 +6,18 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+
+  # Set the environment variable for the microservice URL
+  ENV['PROJECTS_SERVICE'] = 'http://127.0.0.1:3000/api/projects'
+
+  # Set trusted hosts:
+  config.hosts << "projects-service"
+  config.hosts << "vehicles-service"
+  config.hosts << "employees-service"
+
+  config.logger = Logger.new(Rails.root.join('log', 'my_custom_log.log'))
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.

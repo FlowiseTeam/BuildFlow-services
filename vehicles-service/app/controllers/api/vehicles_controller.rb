@@ -44,8 +44,8 @@ module Api
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
-        # rescue StandardError => e
-        #  render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
