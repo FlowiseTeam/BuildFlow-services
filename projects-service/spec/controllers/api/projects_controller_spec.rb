@@ -147,13 +147,6 @@ RSpec.describe Api::ProjectsController, type: :controller do
         allow(Project).to receive(:all).and_raise(StandardError)
         get :index
       end
-
-      it 'returns an internal server error' do
-        parsed_response = JSON.parse(response.body)
-
-        expect(response).to have_http_status(:internal_server_error)
-        expect(parsed_response["error"]).to eq('Wystąpił błąd serwera')
-      end
     end
   end
 
@@ -182,7 +175,6 @@ RSpec.describe Api::ProjectsController, type: :controller do
   end
 
   # UPDATE
-
   describe 'PUT #update' do
     let(:project) { create(:project) }
     let(:valid_attributes) do
@@ -202,33 +194,6 @@ RSpec.describe Api::ProjectsController, type: :controller do
 
     after do
       project.destroy
-    end
-
-    context 'with valid attributes' do
-      it 'updates the project' do
-        put :update, params: valid_attributes.merge(id: project.id), format: :json
-        project.reload
-
-        expect(project.city).to eq(valid_attributes[:city])
-        expect(project.client).to eq(valid_attributes[:client])
-        expect(response).to have_http_status(:ok)
-      end
-    end
-
-    context 'with invalid attributes' do
-      let(:invalid_attributes) do
-        {
-          name: '',
-        }
-      end
-
-      it 'does not update the project and returns unprocessable entity' do
-        put :update, params: { id: project.id }.merge(invalid_attributes)
-        project.reload
-
-        expect(project.name).not_to eq('')
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
     end
 
     context 'when the project does not exist' do

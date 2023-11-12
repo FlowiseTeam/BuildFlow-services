@@ -5,7 +5,6 @@ module Api
     before_action :set_vehicle, only: %i[ show update destroy ]
 
     # GET /vehicles
-    # GET /vehicles.json
     def index
       begin
         @vehicles = Vehicle.all
@@ -15,6 +14,7 @@ module Api
           render json: { message: 'Nie znaleziono' }, status: :not_found
         else
           vehicles_with_assigned_projects = @vehicles.map do |vehicle|
+            begin
             uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
             uri.query = URI.encode_www_form({'vehicle_id' => vehicle['_id']})
             response = Net::HTTP.get_response(uri)
@@ -24,6 +24,9 @@ module Api
                vehicles_assignments_data = data['vehicle_assignments']
             else
               vehicles_assignments_data = [uri,puts(ENV['PROJECTS_SERVICE'])]
+            end
+            rescue StandardError => e
+              vehicles_assignments_data = ['Błąd brak połączenia z serwisem']
             end
 
             {
@@ -50,15 +53,12 @@ module Api
     end
 
     # GET /vehicles/1
-    # GET /vehicles/1.json
     def show
       begin
         @vehicles = Vehicle.find(params[:id])
-
-        #"#{ENV['PROJECTS_SERVICE']}/employee_assignments"
+        begin
         uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
         uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
-
         response = Net::HTTP.get_response(uri)
 
         if response.is_a?(Net::HTTPSuccess)
@@ -66,6 +66,9 @@ module Api
           vehicle_assignments_data = data['vehicle_assignments']
         else
           vehicle_assignments_data = []
+        end
+        rescue StandardError => e
+          vehicle_assignments_data = ['Błąd brak połączenia z serwisem']
         end
         @vehicles[:assigned_project] = vehicle_assignments_data
 
@@ -102,7 +105,6 @@ module Api
     end
 
     # PATCH/PUT /vehicles/1
-    # PATCH/PUT /vehicles/1.json
     def update
       begin
         @vehicles = Vehicle.find(params[:id])
@@ -155,7 +157,6 @@ module Api
     end
 
     # DELETE /vehicles/1
-    # DELETE /vehicles/1.json
     def destroy
       begin
         @vehicles = Vehicle.find(params[:id])
