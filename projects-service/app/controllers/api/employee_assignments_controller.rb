@@ -41,9 +41,8 @@ module Api
             error: @employee_assignment.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
-      rescue
-        StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+      rescue StandardError => e
+          render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
       end
     end
 

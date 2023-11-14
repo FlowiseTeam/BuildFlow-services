@@ -202,18 +202,18 @@ RSpec.describe Api::VehiclesController, type: :controller do
       }
     end
 
-      # before do
-      #   project_service_url = "#{ENV['PROJECTS_SERVICE']}/vehicle_assignments"
-      #
-      #   stub_request(:delete, "#{project_service_url}?vehicle_id=#{vehicle.id}")
-      #     .to_return(status: 200, body: "", headers: {})
-      #
-      #   valid_attributes[:assigned_project].each do |project|
-      #     stub_request(:post, project_service_url)
-      #       .with(body: { vehicle_id: vehicle.id, project_id: project[:project_id], project_name: project[:project_name] }.to_json)
-      #       .to_return(status: 200, body: "", headers: {})
-      #   end
-      # end
+    before do
+      project_service_url = "#{ENV['PROJECTS_SERVICE']}/vehicle_assignments"
+
+      stub_request(:delete, "#{project_service_url}?vehicle_id=#{vehicle.id}")
+        .to_return(status: 200, body: "", headers: {})
+
+      valid_attributes[:assigned_project].each do |project|
+        stub_request(:post, project_service_url)
+          .with(body: { vehicle_id: vehicle.id, project_id: project[:project_id], project_name: project[:project_name] }.to_json)
+          .to_return(status: 200, body: "", headers: {})
+      end
+    end
 
     after do
       vehicle.destroy

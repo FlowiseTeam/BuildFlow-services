@@ -17,8 +17,8 @@ module Api
           end
           render json: { projects: projects_with_assignments, project_count: @project_count }
         end
-      rescue => e
-        render json: { error: 'Wystąpił błąd serwera', message: e.message }, status: :internal_server_error
+      rescue StandardError => e
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -143,6 +143,5 @@ module Api
         render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
-
   end
 end
