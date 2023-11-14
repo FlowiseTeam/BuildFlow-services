@@ -1,0 +1,370 @@
+---
+openapi: 3.0.1
+info:
+  title: API Vehicles
+  version: v1
+paths:
+  "/api/vehicles":
+    get:
+      summary: list vehicles
+      tags:
+      - Vehicles
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        created_at:
+                          type: string
+                          format: date-time
+                        updated_at:
+                          type: string
+                          format: date-time
+                        name:
+                          type: string
+                        status:
+                          type: string
+                        mileage:
+                          type: integer
+                        reg_number:
+                          type: string
+                        rev_date:
+                          type: string
+                          format: date-time
+                        assigned_project:
+                          type: array
+                        capacity:
+                          type: integer
+                  vehicles_count:
+                    type: integer
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+                example:
+                  message: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+    post:
+      summary: create vehicle
+      tags:
+      - Vehicles
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicles:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      status:
+                        type: string
+                      mileage:
+                        type: integer
+                      reg_number:
+                        type: string
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                status:
+                  type: string
+                mileage:
+                  type: integer
+                reg_number:
+                  type: string
+              required:
+              - name
+              - status
+              - mileage
+              - reg_number
+  "/api/vehicles/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show vehicle
+      tags:
+      - Vehicles
+      parameters:
+      - name: id
+        in: path
+        description: Vehicle ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicle:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
+                      name:
+                        type: string
+                      status:
+                        type: string
+                      mileage:
+                        type: integer
+                      reg_number:
+                        type: string
+                      rev_date:
+                        type: string
+                        format: date-time
+                      assigned_project:
+                        type: array
+                      capacity:
+                        type: integer
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+    put:
+      summary: update vehicle
+      tags:
+      - Vehicles
+      parameters:
+      - name: id
+        in: path
+        description: Vehicle ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicles:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      status:
+                        type: string
+                      mileage:
+                        type: integer
+                      reg_number:
+                        type: string
+                      assigned_project:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            project_id:
+                              type: string
+                            project_name:
+                              type: string
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                status:
+                  type: string
+                mileage:
+                  type: integer
+                reg_number:
+                  type: string
+                assigned_project:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      project_id:
+                        type: string
+                      project_name:
+                        type: string
+              required:
+              - name
+              - status
+              - mileage
+              - reg_number
+    delete:
+      summary: delete vehicle
+      tags:
+      - Vehicles
+      parameters:
+      - name: id
+        in: path
+        description: Vehicle ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: no content
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3002
