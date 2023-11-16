@@ -79,20 +79,20 @@ module Api
     # POST /employees
     def create
       begin
-        @employees = Employee.create(
+        @employee = Employee.create(
           first_name:params[:first_name],
           last_name:params[:last_name],
           role: params[:role],
           status:params[:status],
           qualifications: params[:qualifications]
         )
-        if @employees.save
+        if @employee.save
           render json: {
-            employees: @employees
+            employee: @employee
           }, status: :created
         else
           render json: {
-            error: @employees.errors.full_messages.to_sentence
+            error: @employee.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue StandardError => e
@@ -103,8 +103,8 @@ module Api
     # PATCH/PUT /employees/1
     def update
       begin
-        @employees = Employee.find(params[:id])
-        @employees.update(
+        @employee = Employee.find(params[:id])
+        @employee.update(
           first_name: params[:first_name],
           last_name: params[:last_name],
           role: params[:role],
@@ -112,7 +112,7 @@ module Api
           qualifications: params[:qualifications]
         )
 
-        @employees[:assigned_project] = params[:assigned_project]
+        @employee[:assigned_project] = params[:assigned_project]
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({'employee_id' => params[:id]})
@@ -138,14 +138,14 @@ module Api
         rescue StandardError => e
           employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
-        @employees[:assigned_project] = employee_assignments_data
-        if @employees.save
+        @employee[:assigned_project] = employee_assignments_data
+        if @employee.save
           render json: {
-            employees: @employees
+            employee: @employee
           }, status: :ok
         else
           render json: {
-            error: @employees.errors.full_messages.to_sentence
+            error: @employee.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound

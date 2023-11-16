@@ -53,7 +53,7 @@ module Api
     # GET /vehicles/1.json
     def show
       begin
-        @vehicles = Vehicle.find(params[:id])
+        @vehicle = Vehicle.find(params[:id])
 
         #"#{ENV['PROJECTS_SERVICE']}/employee_assignments"
         uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
@@ -67,9 +67,9 @@ module Api
         else
           vehicle_assignments_data = []
         end
-        @vehicles[:assigned_project] = vehicle_assignments_data
+        @vehicle[:assigned_project] = vehicle_assignments_data
 
-        render json: {vehicle: @vehicles}
+        render json: {vehicle: @vehicle}
       rescue Mongoid::Errors::DocumentNotFound
         render(json: { error: 'Nie znaleziono' }, status: :not_found)
       rescue StandardError => e
@@ -81,19 +81,19 @@ module Api
     # POST /vehicles.json
     def create
       begin
-        @vehicles = Vehicle.create(
+        @vehicle = Vehicle.create(
           name:params[:name],
           status:params[:status],
           mileage: params[:mileage],
           reg_number:params[:reg_number]
         )
-        if @vehicles.save
+        if @vehicle.save
           render json: {
-            vehicles: @vehicles
+            vehicle: @vehicle
           }, status: :created
         else
           render json: {
-            error: @vehicles.errors.full_messages.to_sentence
+            error: @vehicle.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue StandardError => e
@@ -105,15 +105,15 @@ module Api
     # PATCH/PUT /vehicles/1.json
     def update
       begin
-        @vehicles = Vehicle.find(params[:id])
-        @vehicles.update(
+        @vehicle = Vehicle.find(params[:id])
+        @vehicle.update(
           name:params[:name],
           status:params[:status],
           mileage: params[:mileage],
           reg_number:params[:reg_number]
         )
 
-        @vehicles[:assigned_project] = params[:assigned_project]
+        @vehicle[:assigned_project] = params[:assigned_project]
 
         uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
         uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
@@ -135,16 +135,16 @@ module Api
               vehicle_assignments_data << data['vehicle_assignments']
             end
           end
-          @vehicles[:assigned_project] = vehicle_assignments_data
+          @vehicle[:assigned_project] = vehicle_assignments_data
         end
 
-        if @vehicles.save
+        if @vehicle.save
           render json: {
-            vehicles: @vehicles
+            vehicle: @vehicle
           }, status: :ok
         else
           render json: {
-            error: @vehicles.errors.full_messages.to_sentence
+            error: @vehicle.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
@@ -158,8 +158,8 @@ module Api
     # DELETE /vehicles/1.json
     def destroy
       begin
-        @vehicles = Vehicle.find(params[:id])
-        @vehicles.destroy
+        @vehicle = Vehicle.find(params[:id])
+        @vehicle.destroy
         head :no_content
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
@@ -171,7 +171,7 @@ module Api
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle
-      @vehicles = Vehicle.find(params[:id])
+      @vehicle = Vehicle.find(params[:id])
     rescue Mongoid::Errors::DocumentNotFound
       render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
     rescue StandardError => e

@@ -4,9 +4,9 @@ module Api
     def index
       begin
         @projects = Project.includes(:employee_assignments, :vehicle_assignments).all
-        @project_count = @projects.count
+        @projects_count = @projects.count
 
-        if @project_count.zero?
+        if @projects_count.zero?
           render json: { projects: [] }, status: :ok
         else
           projects_with_assignments = @projects.map do |project|
@@ -15,7 +15,7 @@ module Api
             project_data['vehicles'] = project.vehicle_assignments.pluck(:vehicle_id)
             project_data
           end
-          render json: { projects: projects_with_assignments, project_count: @project_count }
+          render json: { projects: projects_with_assignments, projects_count: @projects_count }
         end
       rescue => e
         render json: { error: 'Wystąpił błąd serwera', message: e.message }, status: :internal_server_error
@@ -24,12 +24,12 @@ module Api
 
     def show
       begin
-        @projects = Project.find(params[:id])
-        employee_ids = EmployeeAssignment.where(project_id: @projects.id).pluck(:employee_id)
-        vehicle_ids = VehicleAssignment.where(project_id: @projects.id).pluck(:vehicle_id)
-        project_data = @projects.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
+        @project = Project.find(params[:id])
+        employee_ids = EmployeeAssignment.where(project_id: @project.id).pluck(:employee_id)
+        vehicle_ids = VehicleAssignment.where(project_id: @project.id).pluck(:vehicle_id)
+        project_data = @project.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
 
-        render json: {projects: project_data}
+        render json: {project: project_data}
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
@@ -52,7 +52,7 @@ module Api
 
     def create
       begin
-        @projects = Project.create(
+        @project = Project.create(
           city: params[:city],
           client: params[:client],
           start_date: params[:start_date],
@@ -63,13 +63,13 @@ module Api
           zipcode: params[:zipcode],
         )
 
-        if @projects.save
+        if @project.save
           render json: {
-            project: @projects
+            project: @project
           }, status: :created
         else
           render json: {
-            error: @projects.errors.full_messages.to_sentence
+            error: @project.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue StandardError => e
@@ -82,8 +82,8 @@ module Api
       begin
         subcontractors = process_subcontractors(params[:subcontractors])
 
-        @projects = Project.find(params[:id])
-        @projects.update(
+        @project = Project.find(params[:id])
+        @project.update(
           city:params[:city],
           client:params[:client],
           start_date: params[:start_date],
@@ -111,15 +111,15 @@ module Api
           vehicles_ids = params[:vehicles]
         end
 
-        project_data = @projects.attributes.merge(vehicles: vehicles_ids,employees: employees_ids)
+        project_data = @project.attributes.merge(vehicles: vehicles_ids,employees: employees_ids)
 
-        if @projects.save
+        if @project.save
           render json: {
-            projects: project_data
+            project: project_data
           }, status: :ok
         else
           render json: {
-            error: @projects.errors.full_messages.to_sentence
+            error: @project.errors.full_messages.to_sentence
           }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
@@ -131,8 +131,8 @@ module Api
 
     def destroy
       begin
-        @projects = Project.find(params[:id])
-        @projects.destroy
+        @project = Project.find(params[:id])
+        @project.destroy
         EmployeeAssignment.where(project_id: params[:id]).delete
         VehicleAssignment.where(project_id: params[:id]).delete
         head :no_content
