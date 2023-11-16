@@ -12,7 +12,7 @@ module Api
         @vehicles_count = Vehicle.count
 
         if @vehicles_count.zero?
-          render json: { message: 'Nie znaleziono' }, status: :not_found
+          render json: { vehicles: [] }, status: :ok
         else
           vehicles_with_assigned_projects = @vehicles.map do |vehicle|
             uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")

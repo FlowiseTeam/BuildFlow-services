@@ -10,7 +10,7 @@ module Api
         @employees_count = Employee.count
 
         if @employees_count.zero?
-          render json: { error: 'Brak rekordów' }, status: :not_found
+          render json: { employees: [] }, status: :ok
         else
           employees_with_assigned_projects = @employees.map do |employee|
             begin
