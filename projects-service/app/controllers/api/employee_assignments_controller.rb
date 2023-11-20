@@ -12,7 +12,7 @@ module Api
         end
 
         if @employee_assignments.empty?
-          render json: { employee_assignments: []}, status: :ok
+          render json: { employee_assignments: [] }, status: :ok
         else
           render json: { employee_assignments: @employee_assignments }, status: :ok
         end
@@ -33,16 +33,12 @@ module Api
         )
 
         if @employee_assignment.save
-          render json: {
-            employee_assignments: @employee_assignment
-          }, status: :created
+          render json: { employee_assignments: @employee_assignment }, status: :created
         else
-          render json: {
-            error: @employee_assignment.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @employee_assignment.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-          render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+          render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
