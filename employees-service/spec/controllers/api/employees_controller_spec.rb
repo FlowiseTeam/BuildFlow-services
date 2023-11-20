@@ -20,10 +20,10 @@ RSpec.describe Api::EmployeesController, type: :controller do
         }.to change(Employee, :count).by(1)
         parsed_response = JSON.parse(response.body)
         expect(response).to have_http_status(:created)
-        expect(parsed_response["employees"]["first_name"]).to eq(valid_attributes[:first_name])
+        expect(parsed_response["employee"]["first_name"]).to eq(valid_attributes[:first_name])
       end
       after do
-        employee_id = JSON.parse(response.body)["employees"]["_id"]
+        employee_id = JSON.parse(response.body)["employee"]["_id"]
         Employee.find(employee_id)&.destroy
       end
     end

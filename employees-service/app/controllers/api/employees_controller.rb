@@ -10,7 +10,7 @@ module Api
         @employees_count = Employee.count
 
         if @employees_count.zero?
-          render json: { error: 'Brak rekordów' }, status: :not_found
+          render json: { employees: [] }, status: :ok
         else
           employees_with_assigned_projects = @employees.map do |employee|
             begin
@@ -79,17 +79,17 @@ module Api
     # POST /employees
     def create
       begin
-        @employees = Employee.create(
+        @employee = Employee.create(
           first_name:params[:first_name],
           last_name:params[:last_name],
           role: params[:role],
           status:params[:status],
           qualifications: params[:qualifications]
         )
-        if @employees.save
-          render json: { employees: @employees }, status: :created
+        if @employee.save
+          render json: { employees: @employee }, status: :created
         else
-          render json: { error: @employees.errors.full_messages.to_sentence }, status: :unprocessable_entity
+          render json: { error: @employee.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
         render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
@@ -99,8 +99,8 @@ module Api
     # PATCH/PUT /employees/1
     def update
       begin
-        @employees = Employee.find(params[:id])
-        @employees.update(
+        @employee = Employee.find(params[:id])
+        @employee.update(
           first_name: params[:first_name],
           last_name: params[:last_name],
           role: params[:role],
@@ -108,7 +108,7 @@ module Api
           qualifications: params[:qualifications]
         )
 
-        @employees[:assigned_project] = params[:assigned_project]
+        @employee[:assigned_project] = params[:assigned_project]
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({'employee_id' => params[:id]})
@@ -134,11 +134,11 @@ module Api
         rescue StandardError => e
           employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
-        @employees[:assigned_project] = employee_assignments_data
-        if @employees.save
-          render json: { employees: @employees }, status: :ok
+        @employee[:assigned_project] = employee_assignments_data
+        if @employee.save
+          render json: { employees: @employee }, status: :ok
         else
-          render json: { error: @employees.errors.full_messages.to_sentence }, status: :unprocessable_entity
+          render json: { error: @employee.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
