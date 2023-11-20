@@ -12,19 +12,22 @@ module Api
         if @employees_count.zero?
           render json: { error: 'Brak rekordów' }, status: :not_found
         else
-          employees_with_assigned_projects = @employees.map do |employee|
-            begin
+            employee_ids = @employees.map { |employee| employee['_id'] }
             uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-            uri.query = URI.encode_www_form({'employee_id' => employee['_id']})
+            uri.query = URI.encode_www_form({'employee_ids' => employee_ids.join(',')})
             response = Net::HTTP.get_response(uri)
 
-            if response.is_a?(Net::HTTPSuccess)
-              data = JSON.parse(response.body)
-              employee_assignments_data = data['employee_assignments']
+            assignments = if response.is_a?(Net::HTTPSuccess)
+                            JSON.parse(response.body)['employee_assignments'] || []
+                          else
+                            []
+                          end
+
+            assignments_map = assignments.each_with_object({}) do |assignment, map|
+              (map[assignment['employee_id']] ||= []) << assignment
             end
-            rescue StandardError => e
-              employee_assignments_data = ['Błąd brak połączenia z serwisem']
-            end
+
+            employees_with_assigned_projects = @employees.map do |employee|
             {
               _id: employee['_id'],
               created_at: employee['created_at'],
@@ -33,7 +36,7 @@ module Api
               last_name: employee['last_name'],
               role: employee['role'],
               qualifications: employee['qualifications'],
-              assigned_project: employee_assignments_data,
+              assigned_project: assignments_map[employee['_id']] || [],
               status: employee['status']
             }
           end

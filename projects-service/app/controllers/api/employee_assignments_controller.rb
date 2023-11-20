@@ -8,7 +8,7 @@ module Api
         elsif params[:employee_id].present?
           @employee_assignments = EmployeeAssignment.where(employee_id: params[:employee_id])
         else
-          return render json: { error: "Missing parameter: either project_id or employee_id must be provided" }, status: :bad_request
+          @employee_assignments = EmployeeAssignment.all
         end
 
         if @employee_assignments.empty?
