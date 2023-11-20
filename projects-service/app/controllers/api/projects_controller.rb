@@ -15,7 +15,7 @@ module Api
             project_data['vehicles'] = project.vehicle_assignments.pluck(:vehicle_id)
             project_data
           end
-          render json: { projects: projects_with_assignments, projects_count: @projects_count }
+          render json: { projects: projects_with_assignments, project_count: @projects_count }, status: :ok
         end
       rescue StandardError => e
         render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
@@ -29,7 +29,7 @@ module Api
         vehicle_ids = VehicleAssignment.where(project_id: @project.id).pluck(:vehicle_id)
         project_data = @project.attributes.merge(vehicles: vehicle_ids,employees: employee_ids)
 
-        render json: {project: project_data}
+        render json: { project: project_data }, status: :ok
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
@@ -64,13 +64,9 @@ module Api
         )
 
         if @project.save
-          render json: {
-            project: @project
-          }, status: :created
+          render json: { project: @project }, status: :created
         else
-          render json: {
-            error: @project.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @project.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
         render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
@@ -114,13 +110,9 @@ module Api
         project_data = @project.attributes.merge(vehicles: vehicles_ids,employees: employees_ids)
 
         if @project.save
-          render json: {
-            project: project_data
-          }, status: :ok
+          render json: { project: project_data }, status: :ok
         else
-          render json: {
-            error: @project.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @project.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found

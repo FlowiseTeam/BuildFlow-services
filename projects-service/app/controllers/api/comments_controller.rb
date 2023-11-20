@@ -10,10 +10,10 @@ class CommentsController < ApplicationController
       if @comment_count.zero?
         render json: { comments: [] }, status: :ok
       else
-        render json: { comments: @comments, comment_count: @comment_count }
+        render json: { comments: @comments, comment_count: @comment_count }, status: :ok
       end
     rescue StandardError => e
-      render(json: { error: 'Wystąpił błąd' }, status: :internal_server_error)
+      render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
     end
   end
 
@@ -28,12 +28,12 @@ class CommentsController < ApplicationController
         )
 
       if @comment.save
-        render json: @comment, status: :created, location: api_project_comment_url(@project, @comment)
+        render json: @comment, status: :created, location: api_project_comment_url(@project, @comment), status: :ok
       else
         render json: @comment.errors.full_messages.to_sentence, status: :unprocessable_entity
       end
     rescue StandardError => e
-      render(json: { error: 'Wystąpił błąd' }, status: :internal_server_error)
+      render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
     end
   end
 

@@ -15,16 +15,16 @@ module Api
         else
           vehicles_with_assigned_projects = @vehicles.map do |vehicle|
             begin
-            uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-            uri.query = URI.encode_www_form({'vehicle_id' => vehicle['_id']})
-            response = Net::HTTP.get_response(uri)
+              uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
+              uri.query = URI.encode_www_form({'vehicle_id' => vehicle['_id']})
+              response = Net::HTTP.get_response(uri)
 
-            if response.is_a?(Net::HTTPSuccess)
-               data = JSON.parse(response.body)
-               vehicles_assignments_data = data['vehicle_assignments']
-            else
-              vehicles_assignments_data = [uri,puts(ENV['PROJECTS_SERVICE'])]
-            end
+              if response.is_a?(Net::HTTPSuccess)
+                data = JSON.parse(response.body)
+                vehicles_assignments_data = data['vehicle_assignments']
+              else
+                vehicles_assignments_data = [uri,puts(ENV['PROJECTS_SERVICE'])]
+              end
             rescue StandardError => e
               vehicles_assignments_data = ['Błąd brak połączenia z serwisem']
             end
@@ -43,7 +43,7 @@ module Api
             }
           end
 
-          render json: { vehicles: vehicles_with_assigned_projects, vehicles_count: @vehicles_count }
+          render json: { vehicles: vehicles_with_assigned_projects, vehicles_count: @vehicles_count }, status: :ok
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
@@ -57,26 +57,26 @@ module Api
       begin
         @vehicle = Vehicle.find(params[:id])
         begin
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-        uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
-        response = Net::HTTP.get_response(uri)
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
+          uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
+          response = Net::HTTP.get_response(uri)
 
-        if response.is_a?(Net::HTTPSuccess)
-          data = JSON.parse(response.body)
-          vehicle_assignments_data = data['vehicle_assignments']
-        else
-          vehicle_assignments_data = []
-        end
+          if response.is_a?(Net::HTTPSuccess)
+            data = JSON.parse(response.body)
+            vehicle_assignments_data = data['vehicle_assignments']
+          else
+            vehicle_assignments_data = []
+          end
         rescue StandardError => e
           vehicle_assignments_data = ['Błąd brak połączenia z serwisem']
         end
         @vehicle[:assigned_project] = vehicle_assignments_data
 
-        render json: {vehicle: @vehicle}
+        render json: { vehicle: @vehicle }, status: :ok
       rescue Mongoid::Errors::DocumentNotFound
-        render(json: { error: 'Nie znaleziono' }, status: :not_found)
+        render json: { error: 'Nie znaleziono' }, status: :not_found
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -91,16 +91,12 @@ module Api
           reg_number:params[:reg_number]
         )
         if @vehicle.save
-          render json: {
-            vehicle: @vehicle
-          }, status: :created
+          render json: { vehicles: @vehicle }, status: :created
         else
-          render json: {
-            error: @vehicle.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @vehicle.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -123,7 +119,7 @@ module Api
         http = Net::HTTP.new(uri.host, uri.port)
         request = Net::HTTP::Delete.new(uri.request_uri)
 
-        response = http.request(request)
+        http.request(request)
 
         unless params[:assigned_project].nil? || params[:assigned_project].empty?
           vehicle_assignments_data = []
@@ -141,19 +137,15 @@ module Api
         end
 
         if @vehicle.save
-          render json: {
-            vehicle: @vehicle
-          }, status: :ok
+          render json: { vehicle: @vehicle }, status: :ok
         else
-          render json: {
-            error: @vehicle.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @vehicle.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
         render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
-         end
+      end
     end
 
     # DELETE /vehicles/1
