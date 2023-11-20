@@ -12,22 +12,22 @@ module Api
         if @employees_count.zero?
           render json: { error: 'Brak rekordów' }, status: :not_found
         else
-            employee_ids = @employees.map { |employee| employee['_id'] }
-            uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-            uri.query = URI.encode_www_form({'employee_ids' => employee_ids.join(',')})
-            response = Net::HTTP.get_response(uri)
+          employee_ids = @employees.map { |employee| employee['_id'] }
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+          uri.query = URI.encode_www_form({ 'employee_ids' => employee_ids.join(',') })
+          response = Net::HTTP.get_response(uri)
 
-            assignments = if response.is_a?(Net::HTTPSuccess)
-                            JSON.parse(response.body)['employee_assignments'] || []
-                          else
-                            []
-                          end
+          assignments = if response.is_a?(Net::HTTPSuccess)
+                          JSON.parse(response.body)['employee_assignments'] || []
+                        else
+                          []
+                        end
 
-            assignments_map = assignments.each_with_object({}) do |assignment, map|
-              (map[assignment['employee_id']] ||= []) << assignment
-            end
+          assignments_map = assignments.each_with_object({}) do |assignment, map|
+            (map[assignment['employee_id']] ||= []) << assignment
+          end
 
-            employees_with_assigned_projects = @employees.map do |employee|
+          employees_with_assigned_projects = @employees.map do |employee|
             {
               _id: employee['_id'],
               created_at: employee['created_at'],
@@ -57,7 +57,7 @@ module Api
         begin
           "#{ENV['PROJECTS_SERVICE']}/employee_assignments"
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
           response = Net::HTTP.get_response(uri)
 
@@ -78,15 +78,14 @@ module Api
       end
     end
 
-
     # POST /employees
     def create
       begin
         @employees = Employee.create(
-          first_name:params[:first_name],
-          last_name:params[:last_name],
+          first_name: params[:first_name],
+          last_name: params[:last_name],
           role: params[:role],
-          status:params[:status],
+          status: params[:status],
           qualifications: params[:qualifications]
         )
         if @employees.save
@@ -114,7 +113,7 @@ module Api
         @employees[:assigned_project] = params[:assigned_project]
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Delete.new(uri.request_uri)
@@ -125,8 +124,8 @@ module Api
             employee_assignments_data = []
             params[:assigned_project].each do |assigned_project|
               logger.info(assigned_project)
-              request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-              request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
+              request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
+              request.body = { employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
               response = http.request(request)
               if response.is_a?(Net::HTTPSuccess)
                 data = JSON.parse(response.body)
