@@ -33,16 +33,12 @@ module Api
         )
 
         if @vehicle_assignments.save
-          render json: {
-            vehicle_assignments: @vehicle_assignments
-          }, status: :created
+          render json: { vehicle_assignments: @vehicle_assignments }, status: :created
         else
-          render json: {
-            error: @vehicle_assignments.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @vehicle_assignments.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 

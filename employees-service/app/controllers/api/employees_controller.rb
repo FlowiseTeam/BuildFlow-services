@@ -41,7 +41,7 @@ module Api
             }
           end
 
-          render json: { employees: employees_with_assigned_projects, employees_count: @employees_count }
+          render json: { employees: employees_with_assigned_projects, employees_count: @employees_count }, status: :ok
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
@@ -70,11 +70,11 @@ module Api
         end
         @employee[:assigned_project] = employee_assignments_data
 
-        render json: {employee: @employee}
+        render json: { employee: @employee }, status: :ok
       rescue Mongoid::Errors::DocumentNotFound
-        render(json: { error: 'Nie znaleziono rekordu' }, status: :not_found)
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -90,16 +90,12 @@ module Api
           qualifications: params[:qualifications]
         )
         if @employees.save
-          render json: {
-            employees: @employees
-          }, status: :created
+          render json: { employees: @employees }, status: :created
         else
-          render json: {
-            error: @employees.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @employees.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -143,13 +139,9 @@ module Api
         end
         @employees[:assigned_project] = employee_assignments_data
         if @employees.save
-          render json: {
-            employees: @employees
-          }, status: :ok
+          render json: { employees: @employees }, status: :ok
         else
-          render json: {
-            error: @employees.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @employees.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found

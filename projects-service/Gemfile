@@ -16,6 +16,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0'
   gem 'factory_bot_rails'
 end
+
 gem 'rswag'
 
 # Use the Puma web server [https://github.com/puma/puma]
