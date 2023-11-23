@@ -9,23 +9,23 @@ router = APIRouter(
 )
 
 db = get_database()
-keo_collection = db.get_collection('keo')
+bdo_info_collection = db.get_collection('bdo_info')
 
 
 @router.get('/')
 def get_cards() -> CardCollection:
-    return CardCollection(cards=keo_collection.find(limit=1000))
+    return CardCollection(cards=bdo_info_collection.find(limit=1000))
 
 
 @router.get('/{card_id}')
 def show_card(card_id: str) -> Card:
-    return keo_collection.find_one({"_id": ObjectId(card_id)})
+    return bdo_info_collection.find_one({"_id": ObjectId(card_id)})
 
 
 @router.post('/', status_code=201)
 def create_new_card(card: CardCreate) -> dict:
     card_dict = card.model_dump()
-    result = keo_collection.insert_one(card_dict)
+    result = bdo_info_collection.insert_one(card_dict)
 
     # Convert ObjectId to string
     return {"created_id": str(result.inserted_id)}
@@ -38,7 +38,7 @@ def update_card(card_id: str):
 
 @router.delete("/{card_id}")
 def delete_student(card_id: str):
-    delete_result = keo_collection.delete_one({"_id": ObjectId(card_id)})
+    delete_result = bdo_info_collection.delete_one({"_id": ObjectId(card_id)})
 
     if delete_result.deleted_count == 1:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
