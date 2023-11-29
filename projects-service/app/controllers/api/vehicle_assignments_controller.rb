@@ -8,7 +8,7 @@ module Api
         elsif params[:vehicle_id].present?
           @vehicle_assignments = VehicleAssignment.where(vehicle_id: params[:vehicle_id])
         else
-          return render json: { error: "Missing parameter: either project_id or vehicle_id must be provided" }, status: :bad_request
+          @vehicle_assignments = VehicleAssignment.all
         end
 
         if @vehicle_assignments.empty?

@@ -13,44 +13,39 @@ module Api
         if @vehicles_count.zero?
           render json: { vehicles: [] }, status: :ok
         else
-          vehicles_with_assigned_projects = @vehicles.map do |vehicle|
-            begin
-              uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-              uri.query = URI.encode_www_form({'vehicle_id' => vehicle['_id']})
-              response = Net::HTTP.get_response(uri)
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
+          response = Net::HTTP.get_response(uri)
 
-              if response.is_a?(Net::HTTPSuccess)
-                data = JSON.parse(response.body)
-                vehicles_assignments_data = data['vehicle_assignments']
-              else
-                vehicles_assignments_data = [uri,puts(ENV['PROJECTS_SERVICE'])]
-              end
-            rescue StandardError => e
-              vehicles_assignments_data = ['Błąd brak połączenia z serwisem']
-            end
-
-            {
-              _id: vehicle['_id'],
-              created_at: vehicle['created_at'],
-              updated_at: vehicle['updated_at'],
-              name: vehicle['name'],
-              status: vehicle['status'],
-              mileage: vehicle['mileage'],
-              reg_number: vehicle['reg_number'],
-              rev_date: vehicle['rev_date'],
-              assigned_project: vehicles_assignments_data,
-              capacity: vehicle['capacity'],
-            }
+          if response.is_a?(Net::HTTPSuccess)
+            data = JSON.parse(response.body)
+            vehicle_assignments_data = data['vehicle_assignments']
+          else
+            vehicle_assignments_data = [uri, puts(ENV['PROJECTS_SERVICE'])]
           end
 
-          render json: { vehicles: vehicles_with_assigned_projects, vehicles_count: @vehicles_count }, status: :ok
+          vehicles_with_assigned_projects = @vehicles.map do |vehicle|
+          {
+            _id: vehicle['_id'],
+            created_at: vehicle['created_at'],
+            updated_at: vehicle['updated_at'],
+            name: vehicle['name'],
+            status: vehicle['status'],
+            mileage: vehicle['mileage'],
+            reg_number: vehicle['reg_number'],
+            rev_date: vehicle['rev_date'],
+            assigned_project: vehicle_assignments_data.select { |assignment| assignment['vehicle_id'] == vehicle['_id'] },
+            capacity: vehicle['capacity'],
+          }
         end
-      rescue Mongoid::Errors::DocumentNotFound
-        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
-      rescue StandardError => e
-        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
+
+        render json: { vehicles: vehicles_with_assigned_projects, vehicles_count: @vehicles_count }, status: :ok
       end
+    rescue Mongoid::Errors::DocumentNotFound
+      render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
+    rescue StandardError => e
+      render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
     end
+  end
 
     # GET /vehicles/1
     def show
@@ -113,13 +108,13 @@ module Api
 
         @vehicle[:assigned_project] = params[:assigned_project]
 
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-        uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
+      uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
+      uri.query = URI.encode_www_form({ 'vehicle_id' => params[:id] })
 
-        http = Net::HTTP.new(uri.host, uri.port)
-        request = Net::HTTP::Delete.new(uri.request_uri)
+      http = Net::HTTP.new(uri.host, uri.port)
+      request = Net::HTTP::Delete.new(uri.request_uri)
 
-        http.request(request)
+      http.request(request)
 
         unless params[:assigned_project].nil? || params[:assigned_project].empty?
           vehicle_assignments_data = []
@@ -171,9 +166,9 @@ module Api
       render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
     end
 
-    # Only allow a list of trusted parameters through.
-    def vehicle_params
-      params.fetch(:vehicle, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def vehicle_params
+    params.fetch(:vehicle, {})
   end
+end
 end
