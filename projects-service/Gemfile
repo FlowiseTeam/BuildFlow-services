@@ -17,6 +17,8 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
+gem 'jwt'
+
 gem 'rswag'
 
 # Use the Puma web server [https://github.com/puma/puma]
