@@ -15,7 +15,14 @@ module Api
           employee_ids = @employees.map { |employee| employee['_id'] }
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_ids' => employee_ids.join(',') })
-          response = Net::HTTP.get_response(uri)
+
+          auth_header = request.headers['Authorization']
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri)
+          request['Authorization'] = auth_header
+
+          response = http.request(request)
 
           assignments = if response.is_a?(Net::HTTPSuccess)
                           JSON.parse(response.body)['employee_assignments'] || []
@@ -59,7 +66,13 @@ module Api
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
-          response = Net::HTTP.get_response(uri)
+          auth_header = request.headers['Authorization']
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri)
+          request['Authorization'] = auth_header
+
+          response = http.request(request)
 
           if response.is_a?(Net::HTTPSuccess)
             data = JSON.parse(response.body)
@@ -81,7 +94,7 @@ module Api
     # POST /employees
     def create
       begin
-        @employees = Employee.create(
+        @employee = Employee.new(
           first_name: params[:first_name],
           last_name: params[:last_name],
           role: params[:role],
@@ -89,7 +102,7 @@ module Api
           qualifications: params[:qualifications]
         )
         if @employee.save
-          render json: { employees: @employee }, status: :created
+          render json: { employee: @employee }, status: :created
         else
           render json: { error: @employee.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
@@ -115,18 +128,23 @@ module Api
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
-          http = Net::HTTP.new(uri.host, uri.port)
-          request = Net::HTTP::Delete.new(uri.request_uri)
+          auth_header = request.headers['Authorization']
 
-          http.request(request)
+          http = Net::HTTP.new(uri.host, uri.port)
+
+          delete_request = Net::HTTP::Delete.new(uri.request_uri)
+          delete_request['Authorization'] = auth_header
+          http.request(delete_request)
 
           unless params[:assigned_project].nil? || params[:assigned_project].empty?
             employee_assignments_data = []
             params[:assigned_project].each do |assigned_project|
               logger.info(assigned_project)
-              request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
-              request.body = { employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
-              response = http.request(request)
+              post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
+              post_request['Authorization'] = auth_header
+              post_request.body = { employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
+
+              response = http.request(post_request)
               if response.is_a?(Net::HTTPSuccess)
                 data = JSON.parse(response.body)
                 employee_assignments_data << data['employee_assignments']
