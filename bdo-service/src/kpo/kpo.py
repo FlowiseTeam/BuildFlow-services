@@ -1,11 +1,10 @@
+import os
 import requests
 
-from schemas import CardCreate
+from src.kpo.schemas import BdoCardCreate
 
 
-bdo_base_url = 'https://bdo.mos.gov.pl'
-
-
+bdo_base_url = os.getenv('BDO_BASE_URL')
 
 
 def fetch_token(client_id: str, client_secret: str, eup_id: str) -> tuple:
@@ -38,14 +37,17 @@ def get_planned_card(access_token:str, card_id: str):
     return response.json()
 
 
-def create_planned_card(access_token: str, data: CardCreate) -> dict:
+def create_planned_card(access_token: str, data: BdoCardCreate) -> dict:
     url = f"{bdo_base_url}/api/WasteRegister/WasteTransferCard/v1/Kpo/create/plannedcard"
+
+
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {access_token}'
     }
-    response = requests.post(url, headers=headers, json=data)
+
+    response = requests.post(url, headers=headers, json=data.model_dump())
     response.raise_for_status()
     return response.json()
 

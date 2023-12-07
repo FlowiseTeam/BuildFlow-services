@@ -1,8 +1,9 @@
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import Response
 from bson import ObjectId
+
 from src.mongodb import get_database
-from src.kpo.schemas import Card, CardCreate, CardCollection
+from src.keo.schemas import CreateRecord
 
 router = APIRouter(
     tags=['KPO']
@@ -12,34 +13,23 @@ db = get_database()
 keo_collection = db.get_collection('keo')
 
 
-@router.get('/')
-def get_cards() -> CardCollection:
-    return CardCollection(cards=keo_collection.find(limit=1000))
-
-
-@router.get('/{card_id}')
-def show_card(card_id: str) -> Card:
-    return keo_collection.find_one({"_id": ObjectId(card_id)})
-
-
 @router.post('/', status_code=201)
-def create_new_card(card: CardCreate) -> dict:
-    card_dict = card.model_dump()
-    result = keo_collection.insert_one(card_dict)
+def create_new_record(record: CreateRecord) -> dict:
+    record_dict = record.model_dump()
+    result = keo_collection.insert_one(record_dict)
 
-    # Convert ObjectId to string
     return {"created_id": str(result.inserted_id)}
 
 
-@router.put('/{card_id}')
-def update_card(card_id: str):
+@router.put('/{record_id}')
+def update_card(record_id: str):
     return "The function is not implemented"
 
 
-@router.delete("/{card_id}")
-def delete_student(card_id: str):
-    delete_result = keo_collection.delete_one({"_id": ObjectId(card_id)})
+@router.delete("/{record_id}")
+def delete_record(record_id: str):
+    delete_result = keo_collection.delete_one({"_id": ObjectId(record_id)})
 
     if delete_result.deleted_count == 1:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
-    raise HTTPException(status_code=404, detail=f"Card {card_id} not found")
+    raise HTTPException(status_code=404, detail=f"Card {record_id} not found")
