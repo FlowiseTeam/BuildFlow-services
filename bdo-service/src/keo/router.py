@@ -4,6 +4,8 @@ from bson import ObjectId
 
 from src.mongodb import get_database
 from src.keo.schemas import CreateRecord
+from src.keo import keo
+
 
 router = APIRouter(
     tags=['KPO']
@@ -22,7 +24,7 @@ def create_new_record(record: CreateRecord) -> dict:
 
 
 @router.put('/{record_id}')
-def update_card(record_id: str):
+def update_record(record_id: str):
     return "The function is not implemented"
 
 
@@ -33,3 +35,11 @@ def delete_record(record_id: str):
     if delete_result.deleted_count == 1:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
     raise HTTPException(status_code=404, detail=f"Card {record_id} not found")
+
+
+@router.get("/waste-quantity")
+def get_waste_quantity() -> dict:
+    card_info = keo.get_keo_card_info(access_token, keo_id)
+    waste_mass = card_info.get('WasteMass')
+
+    return {"wasteMass": waste_mass}
