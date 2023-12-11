@@ -15,11 +15,11 @@ module Api
         else
           uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
 
-          auth_header = request.headers['Authorization']
+          #auth_header = request.headers['Authorization']
 
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Get.new(uri)
-          request['Authorization'] = auth_header
+          #request['Authorization'] = auth_header
 
           response = http.request(request)
 
@@ -62,11 +62,11 @@ module Api
           uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
           uri.query = URI.encode_www_form({ 'vehicle_id' => params[:id] })
 
-          auth_header = request.headers['Authorization']
+          #auth_header = request.headers['Authorization']
 
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Get.new(uri)
-          request['Authorization'] = auth_header
+          #request['Authorization'] = auth_header
 
           response = http.request(request)
 
@@ -122,7 +122,7 @@ module Api
 
         @vehicle[:assigned_project] = params[:assigned_project]
 
-        auth_header = request.headers['Authorization']
+        #auth_header = request.headers['Authorization']
 
         uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
         uri.query = URI.encode_www_form({ 'vehicle_id' => params[:id] })
@@ -130,7 +130,7 @@ module Api
         http = Net::HTTP.new(uri.host, uri.port)
 
         delete_request = Net::HTTP::Delete.new(uri.request_uri)
-        delete_request['Authorization'] = auth_header
+        #delete_request['Authorization'] = auth_header
         http.request(delete_request)
 
         unless params[:assigned_project].nil? || params[:assigned_project].empty?
@@ -138,7 +138,7 @@ module Api
           params[:assigned_project].each do |assigned_project|
             logger.info(assigned_project)
             post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
-            post_request['Authorization'] = auth_header
+            #post_request['Authorization'] = auth_header
             post_request.body = { vehicle_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
 
             response = http.request(post_request)
