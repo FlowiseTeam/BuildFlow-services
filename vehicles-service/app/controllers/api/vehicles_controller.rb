@@ -150,6 +150,12 @@ module Api
           @vehicle[:assigned_project] = vehicle_assignments_data
         end
 
+        if params[:assigned_project].empty?
+          @vehicle[:status] = 'Nieprzypisany'
+        else
+          @vehicle[:status] = 'Przypisany'
+        end
+
         if @vehicle.save
           render json: { vehicle: @vehicle }, status: :ok
         else

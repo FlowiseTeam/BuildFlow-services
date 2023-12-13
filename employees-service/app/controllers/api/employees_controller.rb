@@ -155,6 +155,13 @@ module Api
           employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
         @employee[:assigned_project] = employee_assignments_data
+
+        if params[:assigned_project].empty?
+          @employee[:status] = 'Nieprzypisany'
+        else
+          @employee[:status] = 'Przypisany'
+        end
+
         if @employee.save
           render json: { employees: @employee }, status: :ok
         else
