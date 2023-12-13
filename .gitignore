@@ -18,10 +18,13 @@ workspace.xml
 /projects-service/tmp/*
 /vehicles-service/tmp/*
 /vehicles-service/log/.keep
-
+z
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+bdo-service/src/__pycache__/
+bdo-service/src/keo/__pycache__/
+bdo-service/src/kpo/__pycache__/
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -73,7 +76,6 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
-/projects-service/tmp/*
 /employees-service/tmp/*
 /projects-service/log/development.log
 /employees-service/log/development.log
