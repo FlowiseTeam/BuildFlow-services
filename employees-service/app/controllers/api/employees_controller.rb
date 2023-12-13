@@ -16,11 +16,11 @@ module Api
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_ids' => employee_ids.join(',') })
 
-          #auth_header = request.headers['Authorization']
+          # auth_header = request.headers['Authorization']
 
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Get.new(uri)
-          #request['Authorization'] = auth_header
+          # request['Authorization'] = auth_header
 
           response = http.request(request)
 
@@ -66,11 +66,11 @@ module Api
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
-          #auth_header = request.headers['Authorization']
+          # auth_header = request.headers['Authorization']
 
           http = Net::HTTP.new(uri.host, uri.port)
           request = Net::HTTP::Get.new(uri)
-          #request['Authorization'] = auth_header
+          # request['Authorization'] = auth_header
 
           response = http.request(request)
 
@@ -128,7 +128,7 @@ module Api
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
-          #auth_header = request.headers['Authorization']
+          # auth_header = request.headers['Authorization']
 
           http = Net::HTTP.new(uri.host, uri.port)
 
@@ -141,7 +141,7 @@ module Api
             params[:assigned_project].each do |assigned_project|
               logger.info(assigned_project)
               post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
-              #post_request['Authorization'] = auth_header
+              # post_request['Authorization'] = auth_header
               post_request.body = { employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
 
               response = http.request(post_request)
@@ -155,6 +155,12 @@ module Api
           employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
         @employee[:assigned_project] = employee_assignments_data
+        if params[:assigned_project].empty?
+          @employee[:status] = 'Nieprzypisany'
+        else
+          @employee[:status] = 'Przypisany'
+        end
+
         if @employee.save
           render json: { employees: @employee }, status: :ok
         else
