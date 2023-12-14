@@ -4,6 +4,39 @@ info:
   title: API Projects
   version: v1
 paths:
+  "/api/projects/comments/latest":
+    get:
+      summary: latest comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: integer
+                    created_at:
+                      type: string
+                      format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+                    images:
+                      type: array
+                      items:
+                        type: string
+                    message:
+                      type: string
+                    project_id:
+                      type: integer
+                    status:
+                      type: string
   "/api/projects/{project_id}/comments":
     parameters:
     - name: project_id
@@ -16,17 +49,103 @@ paths:
       summary: list comments
       tags:
       - Comments
+      parameters:
+      - name: project_id
+        in: path
+        description: ID of the project for which to list comments
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: date-time
+                        updated_at:
+                          type: string
+                          format: date-time
+                        images:
+                          type: array
+                          items:
+                            type: string
+                        message:
+                          type: string
+                        project_id:
+                          type: integer
+                        status:
+                          type: string
+                  comment_count:
+                    type: integer
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
     post:
       summary: create comment
       tags:
       - Comments
-      parameters: []
+      parameters:
+      - name: project_id
+        in: path
+        description: ID of the project to which the comment is being added
+        required: true
+        schema:
+          type: string
       responses:
-        '200':
+        '201':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: integer
+                  message:
+                    type: string
+                  status:
+                    type: string
+                  images:
+                    type: array
+                    items:
+                      type: string
+        '422':
+          description: unprocessable entity
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd
       requestBody:
         content:
           application/json:
@@ -62,65 +181,270 @@ paths:
       summary: delete comment
       tags:
       - Comments
+      parameters:
+      - name: project_id
+        in: path
+        description: ID of the project from which the comment is being deleted
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: ID of the comment to delete
+        required: true
+        schema:
+          type: string
       responses:
-        '200':
-          description: successful
+        '204':
+          description: no content
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
   "/api/projects/employee_assignments":
     get:
       summary: show employee_assignment
       tags:
-      - Employee assigments
+      - EmployeeAssignments
       parameters:
-      - name: employee_id
-        in: query
-        description: Employee ID
-        schema:
-          type: string
       - name: project_id
         in: query
-        description: Project ID
+        required: false
+        description: ID of the project
+        schema:
+          type: string
+      - name: employee_id
+        in: query
+        required: false
+        description: ID of the employee
         schema:
           type: string
       responses:
         '200':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee_assignments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: date-time
+                        employee_id:
+                          type: integer
+                        project_id:
+                          type: integer
+                        project_name:
+                          type: string
+                        updated_at:
+                          type: string
+                          format: date-time
+                      required:
+                      - _id
+                      - created_at
+                      - employee_id
+                      - project_id
+                      - project_name
+                      - updated_at
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: 'Missing parameter: either project_id or employee_id must
+                    be provided'
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
     post:
       summary: create employee_assignment
       tags:
-      - Employee assigments
-      parameters: []
-      responses:
-        '200':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                project_id:
-                  type: integer
-                employee_id:
-                  type: integer
-                project_name:
-                  type: string
-              required:
-              - project_id
-              - employee_id
-              - project_name
-    delete:
-      summary: delete employee_assignment
-      tags:
-      - Employee assigments
+      - EmployeeAssignments
       parameters:
-      - name: id
+      - name: project_id
         in: query
-        description: Employee Assignment ID
+        required: true
+        description: ID of the project
+        schema:
+          type: integer
+      - name: employee_id
+        in: query
+        required: true
+        description: ID of the employee
+        schema:
+          type: integer
+      - name: project_name
+        in: query
+        required: true
+        description: Name of the project
         schema:
           type: string
       responses:
-        '200':
-          description: successful
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee_assignments:
+                    type: object
+                    properties:
+                      _id:
+                        type: integer
+                      project_id:
+                        type: integer
+                      employee_id:
+                        type: integer
+                      project_name:
+                        type: string
+                      created_at:
+                        type: string
+                        format: date-time
+                      updated_at:
+                        type: string
+                        format: date-time
+                    required:
+                    - _id
+                    - project_id
+                    - employee_id
+                    - project_name
+                    - created_at
+                    - updated_at
+        '422':
+          description: unprocessable entity
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+    delete:
+      summary: delete employee_assignment
+      tags:
+      - EmployeeAssignments
+      parameters:
+      - name: project_id
+        in: query
+        required: false
+        description: ID of the project
+        schema:
+          type: integer
+      - name: employee_id
+        in: query
+        required: false
+        description: ID of the employee
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: no content
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: 'Missing parameter: either project_id or employee_id must
+                    be provided'
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
   "/api/projects":
     get:
       summary: list projects
@@ -129,14 +453,123 @@ paths:
       responses:
         '200':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projects:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: integer
+                        employees:
+                          type: array
+                          items:
+                            type: integer
+                        subcontractors:
+                          type: array
+                          items:
+                            type: integer
+                        city:
+                          type: string
+                        client:
+                          type: string
+                        start_date:
+                          type: string
+                          format: date-time
+                        end_date:
+                          type: string
+                          format: date-time
+                        name:
+                          type: string
+                        status:
+                          type: string
+                        street:
+                          type: string
+                        zipcode:
+                          type: string
+                        updated_at:
+                          type: string
+                          format: date-time
+                        created_at:
+                          type: string
+                          format: date-time
+                        vehicles:
+                          type: array
+                          items:
+                            type: integer
+                  project_count:
+                    type: integer
+                required:
+                - projects
+                - project_count
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
     post:
       summary: create project
       tags:
       - Projects
       parameters: []
       responses:
-        '200':
+        '201':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  project:
+                    type: object
+                    properties:
+                      _id:
+                        type: integer
+                      city:
+                        type: string
+                      client:
+                        type: string
+                      start_date:
+                        type: string
+                        format: date-time
+                      end_date:
+                        type: string
+                        format: date-time
+                      name:
+                        type: string
+                      status:
+                        type: string
+                      street:
+                        type: string
+                      zipcode:
+                        type: string
+        '422':
+          description: unprocessable entity
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
       requestBody:
         content:
           application/json:
@@ -149,10 +582,10 @@ paths:
                   type: string
                 start_date:
                   type: string
-                  format: date
+                  format: date-time
                 end_date:
                   type: string
-                  format: date
+                  format: date-time
                 name:
                   type: string
                 status:
@@ -182,24 +615,215 @@ paths:
       summary: show project
       tags:
       - Projects
+      parameters:
+      - name: id
+        in: path
+        description: ID of the project to retrieve
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projects:
+                    type: object
+                    properties:
+                      _id:
+                        type: integer
+                      city:
+                        type: string
+                      client:
+                        type: string
+                      start_date:
+                        type: string
+                        format: date-time
+                      end_date:
+                        type: string
+                        format: date-time
+                      name:
+                        type: string
+                      status:
+                        type: string
+                      street:
+                        type: string
+                      zipcode:
+                        type: string
+                      updated_at:
+                        type: string
+                        format: date-time
+                      created_at:
+                        type: string
+                        format: date-time
+                      employees:
+                        type: array
+                        items:
+                          type: integer
+                      vehicles:
+                        type: array
+                        items:
+                          type: integer
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
     delete:
       summary: delete project
       tags:
       - Projects
+      parameters:
+      - name: id
+        in: path
+        description: ID of the project to delete
+        required: true
+        schema:
+          type: string
       responses:
-        '200':
-          description: successful
+        '204':
+          description: no content
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
     put:
       summary: update project
       tags:
       - Projects
-      parameters: []
+      parameters:
+      - name: id
+        in: path
+        description: ID of the project to update
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projects:
+                    type: object
+                    properties:
+                      _id:
+                        type: integer
+                      city:
+                        type: string
+                      client:
+                        type: string
+                      start_date:
+                        type: string
+                        format: date-time
+                      end_date:
+                        type: string
+                        format: date-time
+                      name:
+                        type: string
+                      status:
+                        type: string
+                      street:
+                        type: string
+                      zipcode:
+                        type: string
+                      employees:
+                        type: array
+                        items:
+                          type: integer
+                      vehicles:
+                        type: array
+                        items:
+                          type: integer
+                      subcontractors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            email:
+                              type: string
+                            address:
+                              type: string
+                            phone:
+                              type: string
+        '422':
+          description: unprocessable entity
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
       requestBody:
         content:
           application/json:
@@ -212,10 +836,10 @@ paths:
                   type: string
                 start_date:
                   type: string
-                  format: date
+                  format: date-time
                 end_date:
                   type: string
-                  format: date
+                  format: date-time
                 name:
                   type: string
                 status:
@@ -224,6 +848,27 @@ paths:
                   type: string
                 zipcode:
                   type: string
+                employees:
+                  type: array
+                  items:
+                    type: integer
+                vehicles:
+                  type: array
+                  items:
+                    type: integer
+                subcontractors:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      address:
+                        type: string
+                      phone:
+                        type: string
               required:
               - city
               - client
@@ -233,6 +878,226 @@ paths:
               - status
               - street
               - zipcode
+  "/api/projects/vehicle_assignments":
+    get:
+      summary: show vehicle_assignment
+      tags:
+      - VehicleAssignments
+      parameters:
+      - name: project_id
+        in: query
+        required: false
+        description: ID of the project
+        schema:
+          type: integer
+      - name: vehicle_id
+        in: query
+        required: false
+        description: ID of the vehicle
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicle_assignments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: date-time
+                        project_id:
+                          type: integer
+                        project_name:
+                          type: string
+                        updated_at:
+                          type: string
+                          format: date-time
+                        vehicle_id:
+                          type: integer
+                      required:
+                      - _id
+                      - created_at
+                      - project_id
+                      - project_name
+                      - updated_at
+                      - vehicle_id
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: 'Missing parameter: either project_id or vehicle_id must
+                    be provided'
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+    post:
+      summary: create vehicle_assignment
+      tags:
+      - VehicleAssignments
+      parameters:
+      - name: project_id
+        in: query
+        required: true
+        description: ID of the project
+        schema:
+          type: integer
+      - name: vehicle_id
+        in: query
+        required: true
+        description: ID of the vehicle
+        schema:
+          type: integer
+      - name: project_name
+        in: query
+        required: true
+        description: Name of the project
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicle_assignments:
+                    type: object
+                    properties:
+                      _id:
+                        type: integer
+                      created_at:
+                        type: string
+                        format: date-time
+                      project_id:
+                        type: integer
+                      project_name:
+                        type: string
+                      updated_at:
+                        type: string
+                        format: date-time
+                      vehicle_id:
+                        type: integer
+                    required:
+                    - _id
+                    - project_id
+                    - vehicle_id
+                    - project_name
+        '422':
+          description: unprocessable entity
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
+    delete:
+      summary: delete vehicle_assignment
+      tags:
+      - VehicleAssignments
+      parameters:
+      - name: project_id
+        in: query
+        required: false
+        description: ID of the project
+        schema:
+          type: integer
+      - name: vehicle_id
+        in: query
+        required: false
+        description: ID of the vehicle
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: no content
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: 'Missing parameter: either project_id or vehicle_id must
+                    be provided'
+        '404':
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Nie znaleziono rekordu
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+                example:
+                  error: Wystąpił błąd serwera
 servers:
 - url: http://{defaultHost}
   variables:

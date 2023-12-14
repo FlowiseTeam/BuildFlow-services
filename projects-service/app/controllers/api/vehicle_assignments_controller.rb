@@ -8,7 +8,7 @@ module Api
         elsif params[:vehicle_id].present?
           @vehicle_assignments = VehicleAssignment.where(vehicle_id: params[:vehicle_id])
         else
-          return render json: { error: "Missing parameter: either project_id or vehicle_id must be provided" }, status: :bad_request
+          @vehicle_assignments = VehicleAssignment.all
         end
 
         if @vehicle_assignments.empty?
@@ -33,16 +33,12 @@ module Api
         )
 
         if @vehicle_assignments.save
-          render json: {
-            vehicle_assignments: @vehicle_assignments
-          }, status: :created
+          render json: { vehicle_assignments: @vehicle_assignments }, status: :created
         else
-          render json: {
-            error: @vehicle_assignments.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @vehicle_assignments.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 

@@ -28,6 +28,8 @@ group :test do
   gem 'webmock'
 end
 
+gem 'jwt'
+
 gem 'logger'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]

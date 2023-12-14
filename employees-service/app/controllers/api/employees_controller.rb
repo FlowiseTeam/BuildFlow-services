@@ -10,21 +10,31 @@ module Api
         @employees_count = Employee.count
 
         if @employees_count.zero?
-          render json: { error: 'Brak rekordów' }, status: :not_found
+          render json: { employees: [] }, status: :ok
         else
-          employees_with_assigned_projects = @employees.map do |employee|
-            begin
-            uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-            uri.query = URI.encode_www_form({'employee_id' => employee['_id']})
-            response = Net::HTTP.get_response(uri)
+          employee_ids = @employees.map { |employee| employee['_id'] }
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
+          uri.query = URI.encode_www_form({ 'employee_ids' => employee_ids.join(',') })
 
-            if response.is_a?(Net::HTTPSuccess)
-              data = JSON.parse(response.body)
-              employee_assignments_data = data['employee_assignments']
-            end
-            rescue StandardError => e
-              employee_assignments_data = ['Błąd brak połączenia z serwisem']
-            end
+          auth_header = request.headers['Authorization']
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri)
+          request['Authorization'] = auth_header
+
+          response = http.request(request)
+
+          assignments = if response.is_a?(Net::HTTPSuccess)
+                          JSON.parse(response.body)['employee_assignments'] || []
+                        else
+                          []
+                        end
+
+          assignments_map = assignments.each_with_object({}) do |assignment, map|
+            (map[assignment['employee_id']] ||= []) << assignment
+          end
+
+          employees_with_assigned_projects = @employees.map do |employee|
             {
               _id: employee['_id'],
               created_at: employee['created_at'],
@@ -33,12 +43,12 @@ module Api
               last_name: employee['last_name'],
               role: employee['role'],
               qualifications: employee['qualifications'],
-              assigned_project: employee_assignments_data,
+              assigned_project: assignments_map[employee['_id']] || [],
               status: employee['status']
             }
           end
 
-          render json: { employees: employees_with_assigned_projects, employees_count: @employees_count }
+          render json: { employees: employees_with_assigned_projects, employees_count: @employees_count }, status: :ok
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
@@ -54,9 +64,15 @@ module Api
         begin
           "#{ENV['PROJECTS_SERVICE']}/employee_assignments"
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
 
-          response = Net::HTTP.get_response(uri)
+          auth_header = request.headers['Authorization']
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri)
+          request['Authorization'] = auth_header
+
+          response = http.request(request)
 
           if response.is_a?(Net::HTTPSuccess)
             data = JSON.parse(response.body)
@@ -67,44 +83,39 @@ module Api
         end
         @employee[:assigned_project] = employee_assignments_data
 
-        render json: {employee: @employee}
+        render json: { employee: @employee }, status: :ok
       rescue Mongoid::Errors::DocumentNotFound
-        render(json: { error: 'Nie znaleziono rekordu' }, status: :not_found)
+        render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
-
 
     # POST /employees
     def create
       begin
-        @employees = Employee.create(
-          first_name:params[:first_name],
-          last_name:params[:last_name],
+        @employee = Employee.new(
+          first_name: params[:first_name],
+          last_name: params[:last_name],
           role: params[:role],
-          status:params[:status],
+          status: params[:status],
           qualifications: params[:qualifications]
         )
-        if @employees.save
-          render json: {
-            employees: @employees
-          }, status: :created
+        if @employee.save
+          render json: { employee: @employee }, status: :created
         else
-          render json: {
-            error: @employees.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @employee.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
     # PATCH/PUT /employees/1
     def update
       begin
-        @employees = Employee.find(params[:id])
-        @employees.update(
+        @employee = Employee.find(params[:id])
+        @employee.update(
           first_name: params[:first_name],
           last_name: params[:last_name],
           role: params[:role],
@@ -112,23 +123,28 @@ module Api
           qualifications: params[:qualifications]
         )
 
-        @employees[:assigned_project] = params[:assigned_project]
+        @employee[:assigned_project] = params[:assigned_project]
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
-          uri.query = URI.encode_www_form({'employee_id' => params[:id]})
+          uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
+
+          auth_header = request.headers['Authorization']
 
           http = Net::HTTP.new(uri.host, uri.port)
-          request = Net::HTTP::Delete.new(uri.request_uri)
 
-          http.request(request)
+          delete_request = Net::HTTP::Delete.new(uri.request_uri)
+          delete_request['Authorization'] = auth_header
+          http.request(delete_request)
 
           unless params[:assigned_project].nil? || params[:assigned_project].empty?
             employee_assignments_data = []
             params[:assigned_project].each do |assigned_project|
               logger.info(assigned_project)
-              request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-              request.body = {employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
-              response = http.request(request)
+              post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
+              post_request['Authorization'] = auth_header
+              post_request.body = { employee_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
+
+              response = http.request(post_request)
               if response.is_a?(Net::HTTPSuccess)
                 data = JSON.parse(response.body)
                 employee_assignments_data << data['employee_assignments']
@@ -138,15 +154,18 @@ module Api
         rescue StandardError => e
           employee_assignments_data = ['Błąd brak połączenia z serwisem']
         end
-        @employees[:assigned_project] = employee_assignments_data
-        if @employees.save
-          render json: {
-            employees: @employees
-          }, status: :ok
+        @employee[:assigned_project] = employee_assignments_data
+
+        if params[:assigned_project].empty?
+          @employee[:status] = 'Nieprzypisany'
         else
-          render json: {
-            error: @employees.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          @employee[:status] = 'Przypisany'
+        end
+
+        if @employee.save
+          render json: { employees: @employee }, status: :ok
+        else
+          render json: { error: @employee.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found

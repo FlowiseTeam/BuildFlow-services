@@ -11,24 +11,26 @@ module Api
         @vehicles_count = Vehicle.count
 
         if @vehicles_count.zero?
-          render json: { message: 'Nie znaleziono' }, status: :not_found
+          render json: { vehicles: [] }, status: :ok
         else
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
+
+          auth_header = request.headers['Authorization']
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri)
+          request['Authorization'] = auth_header
+
+          response = http.request(request)
+
+          if response.is_a?(Net::HTTPSuccess)
+            data = JSON.parse(response.body)
+            vehicle_assignments_data = data['vehicle_assignments']
+          else
+            vehicle_assignments_data = [uri, puts(ENV['PROJECTS_SERVICE'])]
+          end
+
           vehicles_with_assigned_projects = @vehicles.map do |vehicle|
-            begin
-            uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-            uri.query = URI.encode_www_form({'vehicle_id' => vehicle['_id']})
-            response = Net::HTTP.get_response(uri)
-
-            if response.is_a?(Net::HTTPSuccess)
-               data = JSON.parse(response.body)
-               vehicles_assignments_data = data['vehicle_assignments']
-            else
-              vehicles_assignments_data = [uri,puts(ENV['PROJECTS_SERVICE'])]
-            end
-            rescue StandardError => e
-              vehicles_assignments_data = ['Błąd brak połączenia z serwisem']
-            end
-
             {
               _id: vehicle['_id'],
               created_at: vehicle['created_at'],
@@ -38,12 +40,12 @@ module Api
               mileage: vehicle['mileage'],
               reg_number: vehicle['reg_number'],
               rev_date: vehicle['rev_date'],
-              assigned_project: vehicles_assignments_data,
+              assigned_project: vehicle_assignments_data.select { |assignment| assignment['vehicle_id'] == vehicle['_id'] },
               capacity: vehicle['capacity'],
             }
           end
 
-          render json: { vehicles: vehicles_with_assigned_projects, vehicles_count: @vehicles_count }
+          render json: { vehicles: vehicles_with_assigned_projects, vehicles_count: @vehicles_count }, status: :ok
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
@@ -55,28 +57,35 @@ module Api
     # GET /vehicles/1
     def show
       begin
-        @vehicles = Vehicle.find(params[:id])
+        @vehicle = Vehicle.find(params[:id])
         begin
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-        uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
-        response = Net::HTTP.get_response(uri)
+          uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
+          uri.query = URI.encode_www_form({ 'vehicle_id' => params[:id] })
 
-        if response.is_a?(Net::HTTPSuccess)
-          data = JSON.parse(response.body)
-          vehicle_assignments_data = data['vehicle_assignments']
-        else
-          vehicle_assignments_data = []
-        end
+          auth_header = request.headers['Authorization']
+
+          http = Net::HTTP.new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri)
+          request['Authorization'] = auth_header
+
+          response = http.request(request)
+
+          if response.is_a?(Net::HTTPSuccess)
+            data = JSON.parse(response.body)
+            vehicle_assignments_data = data['vehicle_assignments']
+          else
+            vehicle_assignments_data = []
+          end
         rescue StandardError => e
           vehicle_assignments_data = ['Błąd brak połączenia z serwisem']
         end
-        @vehicles[:assigned_project] = vehicle_assignments_data
+        @vehicle[:assigned_project] = vehicle_assignments_data
 
-        render json: {vehicle: @vehicles}
+        render json: { vehicle: @vehicle }, status: :ok
       rescue Mongoid::Errors::DocumentNotFound
-        render(json: { error: 'Nie znaleziono' }, status: :not_found)
+        render json: { error: 'Nie znaleziono' }, status: :not_found
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
@@ -84,83 +93,86 @@ module Api
     # POST /vehicles.json
     def create
       begin
-        @vehicles = Vehicle.create(
-          name:params[:name],
-          status:params[:status],
+        @vehicle = Vehicle.create(
+          name: params[:name],
+          status: params[:status],
           mileage: params[:mileage],
-          reg_number:params[:reg_number]
+          reg_number: params[:reg_number]
         )
-        if @vehicles.save
-          render json: {
-            vehicles: @vehicles
-          }, status: :created
+        if @vehicle.save
+          render json: { vehicles: @vehicle }, status: :created
         else
-          render json: {
-            error: @vehicles.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          render json: { error: @vehicle.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue StandardError => e
-        render(json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error)
+        render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
       end
     end
 
     # PATCH/PUT /vehicles/1
     def update
       begin
-        @vehicles = Vehicle.find(params[:id])
-        @vehicles.update(
-          name:params[:name],
-          status:params[:status],
+        @vehicle = Vehicle.find(params[:id])
+        @vehicle.update(
+          name: params[:name],
+          status: params[:status],
           mileage: params[:mileage],
-          reg_number:params[:reg_number]
+          reg_number: params[:reg_number]
         )
 
-        @vehicles[:assigned_project] = params[:assigned_project]
+        @vehicle[:assigned_project] = params[:assigned_project]
+
+        auth_header = request.headers['Authorization']
 
         uri = URI("#{ENV['PROJECTS_SERVICE']}/vehicle_assignments")
-        uri.query = URI.encode_www_form({'vehicle_id' => params[:id]})
+        uri.query = URI.encode_www_form({ 'vehicle_id' => params[:id] })
 
         http = Net::HTTP.new(uri.host, uri.port)
-        request = Net::HTTP::Delete.new(uri.request_uri)
 
-        response = http.request(request)
+        delete_request = Net::HTTP::Delete.new(uri.request_uri)
+        delete_request['Authorization'] = auth_header
+        http.request(delete_request)
 
         unless params[:assigned_project].nil? || params[:assigned_project].empty?
           vehicle_assignments_data = []
           params[:assigned_project].each do |assigned_project|
             logger.info(assigned_project)
-            request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-            request.body = {vehicle_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name]}.to_json
-            response = http.request(request)
+            post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
+            post_request['Authorization'] = auth_header
+            post_request.body = { vehicle_id: params[:id], project_id: assigned_project[:project_id], project_name: assigned_project[:project_name] }.to_json
+
+            response = http.request(post_request)
             if response.is_a?(Net::HTTPSuccess)
               data = JSON.parse(response.body)
               vehicle_assignments_data << data['vehicle_assignments']
             end
           end
-          @vehicles[:assigned_project] = vehicle_assignments_data
+          @vehicle[:assigned_project] = vehicle_assignments_data
         end
 
-        if @vehicles.save
-          render json: {
-            vehicles: @vehicles
-          }, status: :ok
+        if params[:assigned_project].empty?
+          @vehicle[:status] = 'Nieprzypisany'
         else
-          render json: {
-            error: @vehicles.errors.full_messages.to_sentence
-          }, status: :unprocessable_entity
+          @vehicle[:status] = 'Przypisany'
+        end
+
+        if @vehicle.save
+          render json: { vehicle: @vehicle }, status: :ok
+        else
+          render json: { error: @vehicle.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
       rescue StandardError => e
         render json: { error: 'Wystąpił błąd serwera' }, status: :internal_server_error
-         end
+      end
     end
 
     # DELETE /vehicles/1
     def destroy
       begin
-        @vehicles = Vehicle.find(params[:id])
-        @vehicles.destroy
+        @vehicle = Vehicle.find(params[:id])
+        @vehicle.destroy
         head :no_content
       rescue Mongoid::Errors::DocumentNotFound
         render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
@@ -170,9 +182,10 @@ module Api
     end
 
     private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle
-      @vehicles = Vehicle.find(params[:id])
+      @vehicle = Vehicle.find(params[:id])
     rescue Mongoid::Errors::DocumentNotFound
       render json: { error: 'Nie znaleziono rekordu' }, status: :not_found
     rescue StandardError => e
