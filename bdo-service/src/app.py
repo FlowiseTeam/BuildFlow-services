@@ -16,5 +16,5 @@ main_router.include_router(bdo_info_router.router, prefix='/bdo-info')
 
 app = FastAPI()
 
-app.middleware("http")(jwt_middleware)
+# app.middleware("http")(jwt_middleware)
 app.include_router(main_router)

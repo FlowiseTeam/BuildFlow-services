@@ -20,15 +20,16 @@ keo_collection = db.get_collection('keo')
 
 @router.post('/', status_code=201)
 def create_new_record(record: CreateRecord, access_token: str = Depends(token.fetch_token)) -> dict:
-    try:
-        created_record = keo.create_generated_record(access_token, record)
-    except requests.exceptions.RequestException as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+    # try:
+    #     created_record = keo.create_generated_record(access_token, record)
+    # except requests.exceptions.RequestException as e:
+    #     raise HTTPException(status_code=400, detail=str(e))
+    # except Exception as e:
+    #     raise HTTPException(status_code=500, detail="Internal Server Error")
 
     record_dict = record.model_dump()
-    record_dict['KeoGeneratedId'] = created_record['keoGeneratedId']
+    record_dict['KeoGeneratedId'] = "test response"
+
 
     result = keo_collection.insert_one(record_dict)
 
@@ -44,12 +45,12 @@ def update_record(record_id: str):
 def delete_record(record_id: str, access_token: str = Depends(token.fetch_token)) -> Response:
     keo_generated_id = keo_collection.find_one({"_id": ObjectId(record_id)}).get('KeoGeneratedId')
 
-    try:
-        keo.delete_generated_record(access_token, keo_generated_id)
-    except requests.exceptions.RequestException as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+    # try:
+    #     keo.delete_generated_record(access_token, keo_generated_id)
+    # except requests.exceptions.RequestException as e:
+    #     raise HTTPException(status_code=400, detail=str(e))
+    # except Exception as e:
+    #     raise HTTPException(status_code=500, detail="Internal Server Error")
 
     delete_result = keo_collection.delete_one({"_id": ObjectId(record_id)})
 

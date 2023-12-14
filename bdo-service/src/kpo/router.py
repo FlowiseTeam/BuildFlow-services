@@ -26,10 +26,10 @@ def show_card(card_id: str) -> Card:
 
 @router.post('/', status_code=201)
 def create_new_card(card: BdoCardCreate, access_token: str = Depends(token.fetch_token)) -> dict:
-    created_card = kpo.create_planned_card(access_token, card)
+    # created_card = kpo.create_planned_card(access_token, card)
 
     card_dict = card.model_dump()
-    card_dict['KpoId'] = created_card['kpoId']
+    card_dict['KpoId'] ="reponse_id"
 
     result = kpo_collection.insert_one(card_dict)
 
@@ -44,7 +44,7 @@ def update_card(card_id: str):
 @router.delete("/{card_id}")
 def delete_card(card_id: str, access_token: str = Depends(token.fetch_token)):
     kpo_id = kpo_collection.find_one({"_id": ObjectId(card_id)})['KpoId']
-    kpo.delete_planned_card(access_token, kpo_id)
+    # kpo.delete_planned_card(access_token, kpo_id)
 
     delete_result = kpo_collection.delete_one({"_id": ObjectId(card_id)})
 
