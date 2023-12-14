@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -15,6 +16,17 @@ main_router.include_router(keo_router.router, prefix='/keo')
 main_router.include_router(bdo_info_router.router, prefix='/bdo-info')
 
 app = FastAPI()
+
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # app.middleware("http")(jwt_middleware)
 app.include_router(main_router)

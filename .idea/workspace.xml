@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e732acba-e25e-4f04-955b-1c0d208bdf4d" name="Changes" comment="Fix one endpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/DockerFile" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdo-service/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/keo/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/keo/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/kpo/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/kpo/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employees-service/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/employees-service/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicles-service/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/vehicles-service/Gemfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
