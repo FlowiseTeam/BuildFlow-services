@@ -13,17 +13,12 @@ class BdoCardCreate(BaseModel):
     WasteCodeId: int
     VehicleRegNumber: str
     WasteMass: int
-    PlannedTransportTime: datetime
-    WasteProcessId: int
-    CertificateNumberAndBoxNumbers: str
+    PlannedTransportTime: str
     AdditionalInfo: str
-    WasteCodeExtended: bool
-    WasteCodeExtendedDescription: str
-    HazardousWasteReclassification: bool = True
-    HazardousWasteReclassificationDescription: str
+    WasteCodeExtended: bool = False
+    HazardousWasteReclassification: bool = False
     IsWasteGenerating: bool = False
     WasteGeneratedTerytPk: str
-    WasteGeneratingAdditionalInfo: str
 
 
 PyObjectId = Annotated[str, BeforeValidator(str)]
@@ -38,17 +33,11 @@ class Card(BaseModel):
     WasteCodeId: int
     VehicleRegNumber: str
     WasteMass: int
-    PlannedTransportTime: datetime
-    WasteProcessId: int
-    CertificateNumberAndBoxNumbers: str
+    PlannedTransportTime: str
     AdditionalInfo: str
-    WasteCodeExtended: bool
-    WasteCodeExtendedDescription: str
-    HazardousWasteReclassification: bool = True
-    HazardousWasteReclassificationDescription: str
+    WasteCodeExtended: bool = False
+    HazardousWasteReclassification: bool = False
     IsWasteGenerating: bool = False
-    WasteGeneratedTerytPk: str
-    WasteGeneratingAdditionalInfo: str
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
 

@@ -59,12 +59,14 @@ class WasteCode(BaseModel):
     code: str
     description: str
     type: str
+    WasteCodeId: int
 
 
 class CreateWasteCode(BaseModel):
     code: str
     description: str
     type: str
+    WasteCodeId: int
 
 
 class BdoInfoResponse(BaseModel):

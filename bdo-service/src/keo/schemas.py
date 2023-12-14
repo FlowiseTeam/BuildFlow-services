@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from pydantic import BaseModel, Field, ConfigDict
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional, List, Annotated
@@ -15,8 +13,8 @@ class Record(BaseModel):
     WasteMassInstallation: int
     WasteMassExcludingInstallation: str
     WasteFromServices: bool = True
-    # CommuneId: str ???
-    ManufactureDate: datetime
+    CommuneId: str
+    ManufactureDate: str
     HazardousWasteReclassification: bool
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
@@ -26,8 +24,8 @@ class CreateRecord(BaseModel):
     WasteMassInstallation: int
     WasteMassExcludingInstallation: str
     WasteFromServices: bool = True
-    # CommuneId: str ???
-    ManufactureDate: datetime
+    CommuneId: str
+    ManufactureDate: str
     HazardousWasteReclassification: bool
 
 

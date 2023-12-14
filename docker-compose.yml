@@ -39,5 +39,18 @@ services:
     networks:
       - flowiseNetwork
 
+  bdo-service:
+    build:
+      context: ./bdo-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./bdo-service:/bdo-service
+    ports:
+      - "3003:3000"
+    environment:
+      - RAILS_ENV=development
+    networks:
+      - flowiseNetwork
+
 networks:
   flowiseNetwork:
