@@ -29,7 +29,7 @@ def create_new_card(card: BdoCardCreate, access_token: str = Depends(token.fetch
     # created_card = kpo.create_planned_card(access_token, card)
 
     card_dict = card.model_dump()
-    card_dict['KpoId'] ="reponse_id"
+    card_dict['KpoId'] ="12345"
 
     result = kpo_collection.insert_one(card_dict)
 

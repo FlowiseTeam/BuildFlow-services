@@ -18,7 +18,7 @@ class BdoCardCreate(BaseModel):
     WasteCodeExtended: bool = False
     HazardousWasteReclassification: bool = False
     IsWasteGenerating: bool = False
-    WasteGeneratedTerytPk: str
+    WasteGeneratedTerytPk: Optional[str] = None
 
 
 PyObjectId = Annotated[str, BeforeValidator(str)]
@@ -38,6 +38,7 @@ class Card(BaseModel):
     WasteCodeExtended: bool = False
     HazardousWasteReclassification: bool = False
     IsWasteGenerating: bool = False
+    WasteGeneratedTerytPk: Optional[str] = None
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
 

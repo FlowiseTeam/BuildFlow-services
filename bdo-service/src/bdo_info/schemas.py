@@ -62,6 +62,13 @@ class WasteCode(BaseModel):
     WasteCodeId: int
 
 
+class Common(BaseModel):
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    commonId: int
+    name: str
+    type: str
+
+
 class CreateWasteCode(BaseModel):
     code: str
     description: str
@@ -73,6 +80,7 @@ class BdoInfoResponse(BaseModel):
     carriers: List[CarrierInfo]
     receivers: List[ReceiverInfo]
     wasteCodes: List[WasteCode]
+    commons: List[Common]
 
 
 class Card(BaseModel):
@@ -88,3 +96,4 @@ class Card(BaseModel):
 
 class CardCollection(BaseModel):
     cards: List[Card]
+    commons: List[Common]

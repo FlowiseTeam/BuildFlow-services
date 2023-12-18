@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e732acba-e25e-4f04-955b-1c0d208bdf4d" name="Changes" comment="Fix one endpoint">
+    <list default="true" id="e732acba-e25e-4f04-955b-1c0d208bdf4d" name="Changes" comment="Fixed tests in all services">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/src/bdo_info/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/bdo_info/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/src/bdo_info/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/bdo_info/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/src/keo/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/keo/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/src/keo/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/keo/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/src/kpo/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/kpo/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/src/kpo/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/kpo/schemas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,22 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/erwin/Flowise/BuildFlow-services/bdo-service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ruby.rails.projectView.checked": "true",
-    "ruby.structure.view.model.defaults.configured": "true",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Less",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/erwin/Flowise/BuildFlow-services/bdo-service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
+    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Less&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bdo-service" />
@@ -141,6 +146,7 @@
       <workItem from="1700513599640" duration="1197000" />
       <workItem from="1701194196040" duration="13299000" />
       <workItem from="1701385130041" duration="4514000" />
+      <workItem from="1702928671314" duration="2688000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

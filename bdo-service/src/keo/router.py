@@ -28,7 +28,7 @@ def create_new_record(record: CreateRecord, access_token: str = Depends(token.fe
     #     raise HTTPException(status_code=500, detail="Internal Server Error")
 
     record_dict = record.model_dump()
-    record_dict['KeoGeneratedId'] = "test response"
+    record_dict['KeoGeneratedId'] = "12345"
 
 
     result = keo_collection.insert_one(record_dict)
