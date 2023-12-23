@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e732acba-e25e-4f04-955b-1c0d208bdf4d" name="Changes" comment="Fixed tests in all services">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/bdo_info/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/bdo_info/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/bdo_info/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/bdo_info/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdo-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdo-service/src/keo/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/keo/router.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdo-service/src/keo/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/keo/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/kpo/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/kpo/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/kpo/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/kpo/schemas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +143,7 @@
       <workItem from="1700513599640" duration="1197000" />
       <workItem from="1701194196040" duration="13299000" />
       <workItem from="1701385130041" duration="4514000" />
-      <workItem from="1702928671314" duration="2688000" />
+      <workItem from="1702928671314" duration="5719000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

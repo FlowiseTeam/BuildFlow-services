@@ -29,5 +29,5 @@ class CreateRecord(BaseModel):
     HazardousWasteReclassification: bool
 
 
-class RecordsCollection(BaseModel):
+class RecordCollection(BaseModel):
     records: List[Record]

@@ -5,7 +5,7 @@ from fastapi.responses import Response
 from bson import ObjectId
 
 from src.mongodb import get_database
-from src.keo.schemas import CreateRecord
+from src.keo.schemas import CreateRecord, RecordCollection
 from src import token
 from src.keo import keo
 
@@ -16,6 +16,11 @@ router = APIRouter(
 
 db = get_database()
 keo_collection = db.get_collection('keo')
+
+
+@router.get('/')
+def get_records() -> RecordCollection:
+    return RecordCollection(records=keo_collection.find(limit=100))
 
 
 @router.post('/', status_code=201)
