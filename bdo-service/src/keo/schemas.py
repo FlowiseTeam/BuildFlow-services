@@ -11,7 +11,7 @@ class Record(BaseModel):
     KeoId: str
     KeoGeneratedId: str
     WasteMassInstallation: int
-    WasteMassExcludingInstallation: str
+    WasteMassExcludingInstallation: int
     WasteFromServices: bool = True
     CommuneId: Optional[str] = None
     ManufactureDate: str
@@ -22,7 +22,7 @@ class Record(BaseModel):
 class CreateRecord(BaseModel):
     KeoId: str
     WasteMassInstallation: int
-    WasteMassExcludingInstallation: str
+    WasteMassExcludingInstallation: int
     WasteFromServices: bool = True
     CommuneId: Optional[str] = None
     ManufactureDate: str
