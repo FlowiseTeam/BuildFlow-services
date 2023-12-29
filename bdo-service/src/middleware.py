@@ -17,7 +17,7 @@ async def jwt_middleware(request: Request, call_next):
         token = request.headers.get('Authorization').split(' ')[1]
 
         try:
-            payload = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"], audience='postman_test')
+            payload = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"], audience='flowise')
             request.state.user = payload
         except JWTError as e:
             return JSONResponse(
