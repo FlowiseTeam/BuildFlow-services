@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # Set the environment variable for the microservice URL
-  ENV['PROJECTS_SERVICE'] = 'http://127.0.0.1:3000/api/projects'
+  ENV['PROJECTS_SERVICE'] = 'http://164.92.248.54:3000/api/projects'
 
   # Set trusted hosts:
   config.hosts << "projects-service"
