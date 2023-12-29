@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e09516-e446-49c3-8f35-f485e8df8072" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdo-service/src/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/middleware.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1703699587345</updated>
       <workItem from="1703699592459" duration="6211000" />
-      <workItem from="1703879035347" duration="219000" />
+      <workItem from="1703879035347" duration="792000" />
     </task>
     <servers />
   </component>
