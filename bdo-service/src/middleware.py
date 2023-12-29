@@ -26,9 +26,13 @@ async def remove_slash(request: Request, call_next):
 async def jwt_middleware(request: Request, call_next):
     if 'Authorization' in request.headers:
         token = request.headers.get('Authorization').split(' ')[1]
-
+        print(token)
+        print("test")
+        print("test")
         try:
             payload = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"], audience='flowise')
+            print("testinside")
+            print(payload)
             request.state.user = payload
         except JWTError as e:
             return JSONResponse(
