@@ -28,5 +28,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.middleware("http")(jwt_middleware)
+app.middleware("http")(jwt_middleware)
 app.include_router(main_router)
