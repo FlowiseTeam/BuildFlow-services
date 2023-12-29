@@ -13,22 +13,12 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvw1OL5m/b+f44VNYl8Jt6bZ/cq/qDA7azYp6
 
 
 @app.middleware("http")
-async def remove_slash(request: Request, call_next):
-    if request.url.path.endswith("/"):
-        url = request.url.copy_with(path=request.url.path.rstrip("/"))
-        if url != request.url:
-            return RedirectResponse(url=url, status_code=307)
-    response = await call_next(request)
-    return response
-
-
-@app.middleware("http")
 async def jwt_middleware(request: Request, call_next):
     if 'Authorization' in request.headers:
         token = request.headers.get('Authorization').split(' ')[1]
 
         try:
-            payload = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"], audience='flowise')
+            payload = jwt.decode(token, PUBLIC_KEY, algorithms=["RS256"], audience='account')
 
             request.state.user = payload
         except JWTError as e:
