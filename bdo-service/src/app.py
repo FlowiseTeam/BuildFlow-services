@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
-from src.middleware import jwt_middleware
+from src.middleware import jwt_middleware, remove_slash
 from src.kpo import router as kpo_router
 from src.keo import router as keo_router
 from src.bdo_info import router as bdo_info_router
@@ -28,5 +28,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.middleware("http")(remove_slash)
 app.middleware("http")(jwt_middleware)
 app.include_router(main_router)
