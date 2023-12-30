@@ -97,7 +97,9 @@ module Api
           name: params[:name],
           status: params[:status],
           mileage: params[:mileage],
-          reg_number: params[:reg_number]
+          reg_number: params[:reg_number],
+          rev_date: params[:rev_date],
+          capacity: params[:capacity]
         )
         if @vehicle.save
           render json: { vehicles: @vehicle }, status: :created
@@ -117,7 +119,9 @@ module Api
           name: params[:name],
           status: params[:status],
           mileage: params[:mileage],
-          reg_number: params[:reg_number]
+          reg_number: params[:reg_number],
+          rev_date: params[:rev_date],
+          capacity: params[:capacity]
         )
 
         @vehicle[:assigned_project] = params[:assigned_project]
@@ -150,10 +154,12 @@ module Api
           @vehicle[:assigned_project] = vehicle_assignments_data
         end
 
-        if params[:assigned_project].empty?
-          @vehicle[:status] = 'Nieprzypisany'
+        if params[:status] == 'W serwisie'
+          @vehicle[:status] = 'W serwisie'
+        elsif params[:assigned_project].empty?
+          @vehicle[:status] = 'Wolny'
         else
-          @vehicle[:status] = 'Przypisany'
+          @vehicle[:status] = 'W użyciu'
         end
 
         if @vehicle.save
