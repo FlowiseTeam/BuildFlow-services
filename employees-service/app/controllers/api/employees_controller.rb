@@ -156,10 +156,17 @@ module Api
         end
         @employee[:assigned_project] = employee_assignments_data
 
-        if params[:assigned_project].empty?
+        if params[:status] == 'Urlop'
+          @employee[:status] = 'Urlop'
+        elsif params[:assigned_project].empty?
           @employee[:status] = 'Nieprzypisany'
         else
           @employee[:status] = 'Przypisany'
+        end
+
+        if params[:assigned_project].empty?
+          @employee[:qualifications] = []
+          @employee[:assigned_project] = []
         end
 
         if @employee.save
