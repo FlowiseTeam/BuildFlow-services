@@ -164,6 +164,11 @@ module Api
           @employee[:status] = 'Przypisany'
         end
 
+        if params[:assigned_project].empty?
+          @employee[:qualifications] = []
+          @employee[:assigned_project] = []
+        end
+
         if @employee.save
           render json: { employees: @employee }, status: :ok
         else

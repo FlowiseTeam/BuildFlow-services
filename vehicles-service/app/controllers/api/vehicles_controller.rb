@@ -162,6 +162,11 @@ module Api
           @vehicle[:status] = 'W użyciu'
         end
 
+        if params[:assigned_project].empty?
+          @vehicle[:assigned_project] = []
+        end
+
+
         if @vehicle.save
           render json: { vehicle: @vehicle }, status: :ok
         else
