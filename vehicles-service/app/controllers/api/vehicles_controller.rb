@@ -124,7 +124,7 @@ module Api
           capacity: params[:capacity]
         )
 
-        @vehicle[:assigned_project] = params[:assigned_project]
+        @vehicle[:assigned_project] = params[:assigned_project] || []
 
         auth_header = request.headers['Authorization']
 

@@ -120,10 +120,10 @@ module Api
           last_name: params[:last_name],
           role: params[:role],
           status: params[:status],
-          qualifications: params[:qualifications]
+          qualifications: params[:qualifications] || []
         )
 
-        @employee[:assigned_project] = params[:assigned_project]
+        @employee[:assigned_project] = params[:assigned_project] || []
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
@@ -165,7 +165,6 @@ module Api
         end
 
         if params[:assigned_project].empty?
-          @employee[:qualifications] = []
           @employee[:assigned_project] = []
         end
 
