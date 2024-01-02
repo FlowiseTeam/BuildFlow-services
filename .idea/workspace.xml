@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e09516-e446-49c3-8f35-f485e8df8072" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/projects-service/config/buildflow-calendar-key.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdo-service/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdo-service/src/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdo-service/src/middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/config/initializers/jwt_auth.rb" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/config/initializers/jwt_auth.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects-service/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/projects-service/log/development.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,14 +33,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ruby.rails.projectView.checked": "true",
+    "ruby.structure.view.model.defaults.configured": "true",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projects-service/config" />
+      <recent name="$PROJECT_DIR$/projects-service/app/controllers/api" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,6 +65,7 @@
       <updated>1703699587345</updated>
       <workItem from="1703699592459" duration="6211000" />
       <workItem from="1703879035347" duration="1172000" />
+      <workItem from="1704220460206" duration="3438000" />
     </task>
     <servers />
   </component>

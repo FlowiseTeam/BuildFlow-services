@@ -1,8 +1,9 @@
-module JwtAuth
+#module JwtAuth
+=begin
   class Middleware
 
     KEYCLOAK_PUBLIC_KEY = "-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvw1OL5m/b+f44VNYl8Jt6bZ/cq/qDA7azYp64c4wFSqMp9gns0ZtwgPIban0j8t+zwUuePRfZdOnoHR/cNh09dy/6Fku9/d9xNWoxePYcvPidpbBKEksffuOURifN7Qn/WBQyaPWpyoTwfGrPImHigWqkbmRRTlFg0FhKfZDfC84tub0S2T6A25hwPdUmtQrR6RAAWzhS4PSFry3a8EoiwU5KhnFLs3AFg76tejmtGG0WQqtPFmBdTAY6oCGMOT7cdfEusORpqWLpGg6dmKqqLC6vof6Jik5Dyt1mJmZwExIUTV3tUrZ8dlhAE9K+316A+Q1BF2K6d9C+FWpMBgfcwIDAQAB
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo+Qp0gVd4gFHzjCcQtJCekufLT4UkF+o+qy0doblqTUpc4O/2H79Sjk0OOQGr2DuX3TwEmSa6A4v/3XA4xb7Fa84YiyER0viZaGyO/nGCGlMY2WOxpPYQ8nIjkWP3UDtlT0PsSom+OhJPrtus1o2OiIhXSMoIyr3pX5euIh6GtFrb1KUYuD9PHu7YxtGopPnSukIbZ+H/sdlxQKv/9xnA+oJn7bwoK68wbsiu8iVdd/yG3FolYeKXfGVAM88ZB7x3LhsgkMeWDMsvqgZ4jtdcwUsAzm22xoEYnGQc2EISyPR9utKmr/qjWpaN5PW2/KrY2BjQ+Vm3m2Oet28VwLRZQIDAQAB
 -----END PUBLIC KEY-----"
 
     def initialize(app)
@@ -29,6 +30,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvw1OL5m/b+f44VNYl8Jt6bZ/cq/qDA7azYp6
     end
   end
 end
+=end
 
 
-Rails.application.config.middleware.use JwtAuth::Middleware
+#Rails.application.config.middleware.use JwtAuth::Middleware

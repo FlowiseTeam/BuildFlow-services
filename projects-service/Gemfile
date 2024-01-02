@@ -26,6 +26,8 @@ gem "puma", "~> 5.0"
 
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
+gem 'google-api-client', '~> 0.53.0'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

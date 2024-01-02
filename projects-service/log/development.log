@@ -3768,3 +3768,586 @@ Started GET "/favicon.ico" for 127.0.0.1 at 2023-06-03 21:10:19 +0200
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+Started GET "/" for 127.0.0.1 at 2024-01-02 19:51:53 +0100
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:51:53 +0100
+Started GET "/" for 127.0.0.1 at 2024-01-02 19:56:33 +0100
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:56:33 +0100
+Started GET "/" for 127.0.0.1 at 2024-01-02 19:56:34 +0100
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:56:34 +0100
+Started GET "/api/projects" for 127.0.0.1 at 2024-01-02 19:56:43 +0100
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:56:43 +0100
+Started GET "/api/projects" for 127.0.0.1 at 2024-01-02 19:57:40 +0100
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:57:40 +0100
+Started GET "/api/projects" for 127.0.0.1 at 2024-01-02 19:57:42 +0100
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:57:42 +0100
+Started GET "/api/projects" for 127.0.0.1 at 2024-01-02 19:57:50 +0100
+Processing by Api::ProjectsController#index as JSON
+Overwriting existing field _id in class Project.
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Server ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Waiting for up to 29.36 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017,ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017,name=atlas-6jddfr-shard-0,v=8,e=7fffffff000000000000020d] servers=[#<Server address=ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 UNKNOWN>,#<Server address=ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 PRIMARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>,#<Server address=ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 SECONDARY replica_set=atlas-6jddfr-shard-0 pool=#<ConnectionPool size=0 (0-20) used=0 avail=0 pending=0>>]>
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:10 conn:1:1 sconn:3947 | admin.saslStart | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:10 | admin.saslStart | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:11 conn:1:1 sconn:3947 | admin.saslContinue | STARTED | {}
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:11 | admin.saslContinue | SUCCEEDED | 0.029s
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:12 conn:1:1 sconn:3947 | BuildFlow.aggregate | STARTED | {"aggregate"=>"projects", "pipeline"=>[{"$match"=>{}}, {"$group"=>{"_id"=>1, "n"=>{"$sum"=>1}}}], "cursor"=>{}, "$db"=>"BuildFlow", "lsid"=>{"id"=><BSON::Binary:0x73300 type=uuid data=0xd91511ca2c5a4073...>}}
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:12 | BuildFlow.aggregate | SUCCEEDED | 0.028s
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:13 conn:1:1 sconn:3947 | BuildFlow.find | STARTED | {"find"=>"projects", "filter"=>{}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000001065fa378 @seconds=1704221871, @increment=35>, "signature"=>{"hash"=><BSON::Binary:0x73320 type=generic data=0xbbda73ec94a8fa13...>, "key...
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:13 | BuildFlow.find | SUCCEEDED | 0.030s
+Overwriting existing field _id in class EmployeeAssignment.
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:14 conn:1:1 sconn:3947 | BuildFlow.find | STARTED | {"find"=>"employee_assignments", "filter"=>{"project_id"=>{"$in"=>[1, 2, 3, 4, 5]}}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000001065d16a8 @seconds=1704221871, @increment=38>, "signature"=>{"hash"=><BSON::Binary:0x73...
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:14 | BuildFlow.find | SUCCEEDED | 0.028s
+Overwriting existing field _id in class VehicleAssignment.
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:15 conn:1:1 sconn:3947 | BuildFlow.find | STARTED | {"find"=>"vehicle_assignments", "filter"=>{"project_id"=>{"$in"=>[1, 2, 3, 4, 5]}}, "$db"=>"BuildFlow", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000010490f2e0 @seconds=1704221871, @increment=39>, "signature"=>{"hash"=><BSON::Binary:0x734...
+MONGODB | ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 req:15 | BuildFlow.find | SUCCEEDED | 0.027s
+Completed 200 OK in 1241ms (Views: 0.4ms | ActiveRecord: 0.0ms | MongoDB: 0.2ms | Allocations: 38641)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-01-02 19:57:51 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+MONGODB | Server description for ac-rhii5us-shard-00-01.fic9xoa.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-02.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for ac-rhii5us-shard-00-00.fic9xoa.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/api/calendar/event" for 127.0.0.1 at 2024-01-02 19:58:26 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/api/calendar/event"):
+  
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 19:58:28 +0100
+  
+Zeitwerk::NameError (expected file /Users/erwin/Flowise/BuildFlow-services/projects-service/app/controllers/api/calendar_controller.rb to define constant Api::CalendarController, but didn't):
+  
+zeitwerk (2.6.8) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.6.8) lib/zeitwerk/kernel.rb:31:in `require'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `const_get'
+activesupport (7.0.4.3) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (7.0.4.3) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.0.4.3) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (7.0.4.3) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.0.4.3) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (2.0.1) lib/rack/cors.rb:102:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:02:01 +0100
+  
+TypeError (superclass mismatch for class CalendarController):
+  
+app/controllers/api/calendar_controller.rb:7:in `<main>'
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:02:27 +0100
+Processing by Api::CalendarController#list_events as JSON
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A02%3A27%2B01%3A00
+200
+#<HTTP::Message:0x0000000106f94c58 @http_body=#<HTTP::Message::Body:0x0000000106f94c08 @body="{\n" + " \"kind\": \"calendar#events\",\n" + " \"etag\": \"\\\"p33oepdsvmavo60o\\\"\",\n" + " \"summary\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + " \"description\": \"\",\n" + " \"updated\": \"2024-01-02T19:02:31.014Z\",\n" + " \"timeZone\": \"UTC\",\n" + " \"accessRole\": \"owner\",\n" + " \"defaultReminders\": [],\n" + " \"items\": []\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x00000001066fac00 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Content-Type", "application/json; charset=UTF-8"], ["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Expires", "Tue, 02 Jan 2024 19:02:31 GMT"], ["Date", "Tue, 02 Jan 2024 19:02:31 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x17ed0 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A02%3A27%2B01%3A00>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Events:0x0000000107853d08
+ @access_role="owner",
+ @default_reminders=[],
+ @description="",
+ @etag="\"p33oepdsvmavo60o\"",
+ @items=[],
+ @kind="calendar#events",
+ @summary="buildflow@buildflow-410015.iam.gserviceaccount.com",
+ @time_zone="UTC",
+ @updated=Tue, 02 Jan 2024 19:02:31 +0000>
+
+Completed 200 OK in 3735ms (Views: 0.4ms | MongoDB: 0.0ms | Allocations: 62805)
+
+
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:03:35 +0100
+Processing by Api::CalendarController#list_events as JSON
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A03%3A35%2B01%3A00
+200
+#<HTTP::Message:0x00000001079924a8 @http_body=#<HTTP::Message::Body:0x0000000107992458 @body="{\n" + " \"kind\": \"calendar#events\",\n" + " \"etag\": \"\\\"p33oepdsvmavo60o\\\"\",\n" + " \"summary\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + " \"description\": \"\",\n" + " \"updated\": \"2024-01-02T19:02:31.014Z\",\n" + " \"timeZone\": \"UTC\",\n" + " \"accessRole\": \"owner\",\n" + " \"defaultReminders\": [],\n" + " \"items\": []\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106322768 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:03:36 GMT"], ["Expires", "Tue, 02 Jan 2024 19:03:36 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x18268 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A03%3A35%2B01%3A00>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Events:0x0000000106264ce0
+ @access_role="owner",
+ @default_reminders=[],
+ @description="",
+ @etag="\"p33oepdsvmavo60o\"",
+ @items=[],
+ @kind="calendar#events",
+ @summary="buildflow@buildflow-410015.iam.gserviceaccount.com",
+ @time_zone="UTC",
+ @updated=Tue, 02 Jan 2024 19:02:31 +0000>
+
+Completed 200 OK in 349ms (Views: 0.2ms | MongoDB: 0.0ms | Allocations: 7978)
+
+
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:07:09 +0100
+Processing by Api::CalendarController#list_events as JSON
+Completed 500 Internal Server Error in 2ms (MongoDB: 0.0ms | Allocations: 220)
+
+
+  
+RuntimeError (missing client_email):
+  
+app/controllers/api/calendar_controller.rb:77:in `google_calendar_service'
+app/controllers/api/calendar_controller.rb:10:in `list_events'
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:16:13 +0100
+Processing by Api::CalendarController#list_events as JSON
+Completed 500 Internal Server Error in 1ms (MongoDB: 0.0ms | Allocations: 192)
+
+
+  
+RuntimeError (missing client_email):
+  
+app/controllers/api/calendar_controller.rb:77:in `google_calendar_service'
+app/controllers/api/calendar_controller.rb:10:in `list_events'
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:16:26 +0100
+Processing by Api::CalendarController#list_events as JSON
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A16%3A26%2B01%3A00
+200
+#<HTTP::Message:0x0000000107bfef70 @http_body=#<HTTP::Message::Body:0x0000000107bfef20 @body="{\n" + " \"kind\": \"calendar#events\",\n" + " \"etag\": \"\\\"p33oepdsvmavo60o\\\"\",\n" + " \"summary\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + " \"description\": \"\",\n" + " \"updated\": \"2024-01-02T19:02:31.014Z\",\n" + " \"timeZone\": \"UTC\",\n" + " \"accessRole\": \"owner\",\n" + " \"defaultReminders\": [],\n" + " \"items\": []\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x00000001069b3988 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Expires", "Tue, 02 Jan 2024 19:16:26 GMT"], ["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:16:26 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x1a798 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A16%3A26%2B01%3A00>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Events:0x00000001069b2628
+ @access_role="owner",
+ @default_reminders=[],
+ @description="",
+ @etag="\"p33oepdsvmavo60o\"",
+ @items=[],
+ @kind="calendar#events",
+ @summary="buildflow@buildflow-410015.iam.gserviceaccount.com",
+ @time_zone="UTC",
+ @updated=Tue, 02 Jan 2024 19:02:31 +0000>
+
+Completed 200 OK in 357ms (Views: 0.7ms | MongoDB: 0.0ms | Allocations: 7840)
+
+
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:17:49 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ", "calendar"=>{"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  "}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+400
+#<HTTP::Message:0x00000001079960f8 @http_body=#<HTTP::Message::Body:0x00000001079960a8 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"required\",\n" + "    \"message\": \"Missing end time.\"\n" + "   }\n" + "  ],\n" + "  \"code\": 400,\n" + "  \"message\": \"Missing end time.\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106878d48 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Content-Type", "application/json; charset=UTF-8"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Pragma", "no-cache"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Date", "Tue, 02 Jan 2024 19:17:49 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Bad Request", @request_absolute_uri=nil, @request_method="POST", @request_query=nil, @request_uri=#<Addressable::URI:0x1ab94 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @status_code=400>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time. status_code: 400 header: #<HTTP::Message::Headers:0x0000000106877448 @http_version="1.1", @body_size=0, @chunked=false, @request_method="POST", @request_uri=#<Addressable::URI:0x1ab94 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @request_query=nil, @request_absolute_uri=nil, @status_code=400, @reason_phrase="Bad Request", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Content-Type", "application/json; charset=UTF-8"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Pragma", "no-cache"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Date", "Tue, 02 Jan 2024 19:17:49 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"required\",\n    \"message\": \"Missing end time.\"\n   }\n  ],\n  \"code\": 400,\n  \"message\": \"Missing end time.\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 317ms (MongoDB: 0.0ms | Allocations: 8539)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/controllers/api/calendar_controller.rb:40:in `create_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:17:49 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  ", "calendar"=>{"query"=>"\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  "}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+400
+#<HTTP::Message:0x000000010715e8e0 @http_body=#<HTTP::Message::Body:0x000000010715e890 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"required\",\n" + "    \"message\": \"Missing end time.\"\n" + "   }\n" + "  ],\n" + "  \"code\": 400,\n" + "  \"message\": \"Missing end time.\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106a79c50 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Date", "Tue, 02 Jan 2024 19:17:50 GMT"], ["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Bad Request", @request_absolute_uri=nil, @request_method="POST", @request_query=nil, @request_uri=#<Addressable::URI:0x1abe4 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @status_code=400>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time. status_code: 400 header: #<HTTP::Message::Headers:0x0000000106a78a30 @http_version="1.1", @body_size=0, @chunked=false, @request_method="POST", @request_uri=#<Addressable::URI:0x1abe4 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @request_query=nil, @request_absolute_uri=nil, @status_code=400, @reason_phrase="Bad Request", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Date", "Tue, 02 Jan 2024 19:17:50 GMT"], ["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"required\",\n    \"message\": \"Missing end time.\"\n   }\n  ],\n  \"code\": 400,\n  \"message\": \"Missing end time.\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 277ms (MongoDB: 0.0ms | Allocations: 7755)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/controllers/api/calendar_controller.rb:40:in `create_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:19:30 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-01T10:00:00-07:00", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-01T10:00:00-07:00"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+400
+#<HTTP::Message:0x0000000107a197a0 @http_body=#<HTTP::Message::Body:0x0000000107a19750 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"required\",\n" + "    \"message\": \"Missing end time.\"\n" + "   }\n" + "  ],\n" + "  \"code\": 400,\n" + "  \"message\": \"Missing end time.\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x000000010673fa08 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Date", "Tue, 02 Jan 2024 19:19:30 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Bad Request", @request_absolute_uri=nil, @request_method="POST", @request_query=nil, @request_uri=#<Addressable::URI:0x1b0f8 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @status_code=400>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time. status_code: 400 header: #<HTTP::Message::Headers:0x000000010673db68 @http_version="1.1", @body_size=0, @chunked=false, @request_method="POST", @request_uri=#<Addressable::URI:0x1b0f8 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @request_query=nil, @request_absolute_uri=nil, @status_code=400, @reason_phrase="Bad Request", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Date", "Tue, 02 Jan 2024 19:19:30 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"required\",\n    \"message\": \"Missing end time.\"\n   }\n  ],\n  \"code\": 400,\n  \"message\": \"Missing end time.\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 318ms (MongoDB: 0.0ms | Allocations: 7549)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/controllers/api/calendar_controller.rb:40:in `create_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:19:41 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+400
+#<HTTP::Message:0x0000000107c9ba00 @http_body=#<HTTP::Message::Body:0x0000000107c9b9b0 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"required\",\n" + "    \"message\": \"Missing end time.\"\n" + "   }\n" + "  ],\n" + "  \"code\": 400,\n" + "  \"message\": \"Missing end time.\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000107053900 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:19:42 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Bad Request", @request_absolute_uri=nil, @request_method="POST", @request_query=nil, @request_uri=#<Addressable::URI:0x1b1e8 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @status_code=400>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error required: Missing end time.
+Error - #<Google::Apis::ClientError: required: Missing end time. status_code: 400 header: #<HTTP::Message::Headers:0x00000001070526e0 @http_version="1.1", @body_size=0, @chunked=false, @request_method="POST", @request_uri=#<Addressable::URI:0x1b1e8 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @request_query=nil, @request_absolute_uri=nil, @status_code=400, @reason_phrase="Bad Request", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:19:42 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"required\",\n    \"message\": \"Missing end time.\"\n   }\n  ],\n  \"code\": 400,\n  \"message\": \"Missing end time.\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 320ms (MongoDB: 0.0ms | Allocations: 7936)
+
+
+  
+Google::Apis::ClientError (required: Missing end time.):
+  
+app/controllers/api/calendar_controller.rb:40:in `create_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:22:34 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Completed 500 Internal Server Error in 1ms (MongoDB: 0.0ms | Allocations: 315)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/api/calendar_controller.rb:25:in `new'
+app/controllers/api/calendar_controller.rb:25:in `create_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:23:46 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Completed 500 Internal Server Error in 1ms (MongoDB: 0.0ms | Allocations: 319)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/api/calendar_controller.rb:25:in `new'
+app/controllers/api/calendar_controller.rb:25:in `create_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:23:58 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+200
+#<HTTP::Message:0x0000000107bfbf00 @http_body=#<HTTP::Message::Body:0x0000000107bfbeb0 @body="{\n" + " \"kind\": \"calendar#event\",\n" + " \"etag\": \"\\\"3408446877902000\\\"\",\n" + " \"id\": \"8t20vmmg6dgh0f1g2fhnvnbj7s\",\n" + " \"status\": \"confirmed\",\n" + " \"htmlLink\": \"https://www.google.com/calendar/event?eid=OHQyMHZtbWc2ZGdoMGYxZzJmaG52bmJqN3MgYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20\",\n" + " \"created\": \"2024-01-02T19:23:58.000Z\",\n" + " \"updated\": \"2024-01-02T19:23:58.951Z\",\n" + " \"summary\": \"test\",\n" + " \"description\": \"Opis testowy\",\n" + " \"location\": \"Warszawa\",\n" + " \"creator\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"organizer\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"start\": {\n" + "  \"dateTime\": \"2024-01-01T16:00:00Z\",\n" + "  \"timeZone\": \"Europe/Warsaw\"\n" + " },\n" + " \"end\": {\n" + "  \"dateTime\": \"2024-01-06T17:00:00Z\",\n" + "  \"timeZone\": \"Europe/Warsaw\"\n" + " },\n" + " \"iCalUID\": \"8t20vmmg6dgh0f1g2fhnvnbj7s@google.com\",\n" + " \"sequence\": 0,\n" + " \"reminders\": {\n" + "  \"useDefault\": true\n" + " },\n" + " \"eventType\": \"default\"\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x00000001066b2d10 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:23:59 GMT"], ["ETag", "\"3408446877902000\""], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Pragma", "no-cache"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="POST", @request_query=nil, @request_uri=#<Addressable::URI:0x236e0 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Event:0x0000000107bf4610
+ @created=Tue, 02 Jan 2024 19:23:58 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x0000000107416b00
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @description="Opis testowy",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00000001073ffb58
+   @date_time=Sat, 06 Jan 2024 17:00:00 +0000,
+   @time_zone="Europe/Warsaw">,
+ @etag="\"3408446877902000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=OHQyMHZtbWc2ZGdoMGYxZzJmaG52bmJqN3MgYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="8t20vmmg6dgh0f1g2fhnvnbj7s@google.com",
+ @id="8t20vmmg6dgh0f1g2fhnvnbj7s",
+ @kind="calendar#event",
+ @location="Warszawa",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x00000001073f57e8
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00000001074bf408
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x00000001074bc140
+   @date_time=Mon, 01 Jan 2024 16:00:00 +0000,
+   @time_zone="Europe/Warsaw">,
+ @status="confirmed",
+ @summary="test",
+ @updated=Tue, 02 Jan 2024 19:23:58 +0000>
+
+Completed 200 OK in 511ms (Views: 0.9ms | MongoDB: 0.0ms | Allocations: 16902)
+
+
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:24:05 +0100
+Processing by Api::CalendarController#list_events as JSON
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A24%3A05%2B01%3A00
+200
+#<HTTP::Message:0x0000000107a1fe20 @http_body=#<HTTP::Message::Body:0x0000000107a1fdd0 @body="{\n" + " \"kind\": \"calendar#events\",\n" + " \"etag\": \"\\\"p33ca9ic5muvo60o\\\"\",\n" + " \"summary\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + " \"description\": \"\",\n" + " \"updated\": \"2024-01-02T19:23:58.951Z\",\n" + " \"timeZone\": \"UTC\",\n" + " \"accessRole\": \"owner\",\n" + " \"defaultReminders\": [],\n" + " \"items\": [\n" + "  {\n" + "   \"kind\": \"calendar#event\",\n" + "   \"etag\": \"\\\"3408446877902000\\\"\",\n" + "   \"id\": \"8t20vmmg6dgh0f1g2fhnvnbj7s\",\n" + "   \"status\": \"confirmed\",\n" + "   \"htmlLink\": \"https://www.google.com/calendar/event?eid=OHQyMHZtbWc2ZGdoMGYxZzJmaG52bmJqN3MgYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20\",\n" + "   \"created\": \"2024-01-02T19:23:58.000Z\",\n" + "   \"updated\": \"2024-01-02T19:23:58.951Z\",\n" + "   \"summary\": \"test\",\n" + "   \"description\": \"Opis testowy\",\n" + "   \"location\": \"Warszawa\",\n" + "   \"creator\": {\n" + "    \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "    \"self\": true\n" + "   },\n" + "   \"organizer\": {\n" + "    \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "    \"self\": true\n" + "   },\n" + "   \"start\": {\n" + "    \"dateTime\": \"2024-01-01T16:00:00Z\",\n" + "    \"timeZone\": \"Europe/Warsaw\"\n" + "   },\n" + "   \"end\": {\n" + "    \"dateTime\": \"2024-01-06T17:00:00Z\",\n" + "    \"timeZone\": \"Europe/Warsaw\"\n" + "   },\n" + "   \"iCalUID\": \"8t20vmmg6dgh0f1g2fhnvnbj7s@google.com\",\n" + "   \"sequence\": 0,\n" + "   \"reminders\": {\n" + "    \"useDefault\": true\n" + "   },\n" + "   \"eventType\": \"default\"\n" + "  }\n" + " ]\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x00000001061201e0 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:24:05 GMT"], ["Expires", "Tue, 02 Jan 2024 19:24:05 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x23758 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A24%3A05%2B01%3A00>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Events:0x00000001060abcc8
+ @access_role="owner",
+ @default_reminders=[],
+ @description="",
+ @etag="\"p33ca9ic5muvo60o\"",
+ @items=
+  [#<Google::Apis::CalendarV3::Event:0x00000001060abc28
+    @created=Tue, 02 Jan 2024 19:23:58 +0000,
+    @creator=
+     #<Google::Apis::CalendarV3::Event::Creator:0x000000010793fe38
+      @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+      @self=true>,
+    @description="Opis testowy",
+    @end=
+     #<Google::Apis::CalendarV3::EventDateTime:0x000000010793db60
+      @date_time=Sat, 06 Jan 2024 17:00:00 +0000,
+      @time_zone="Europe/Warsaw">,
+    @etag="\"3408446877902000\"",
+    @html_link=
+     "https://www.google.com/calendar/event?eid=OHQyMHZtbWc2ZGdoMGYxZzJmaG52bmJqN3MgYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+    @i_cal_uid="8t20vmmg6dgh0f1g2fhnvnbj7s@google.com",
+    @id="8t20vmmg6dgh0f1g2fhnvnbj7s",
+    @kind="calendar#event",
+    @location="Warszawa",
+    @organizer=
+     #<Google::Apis::CalendarV3::Event::Organizer:0x0000000107937530
+      @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+      @self=true>,
+    @reminders=
+     #<Google::Apis::CalendarV3::Event::Reminders:0x0000000107934240
+      @use_default=true>,
+    @sequence=0,
+    @start=
+     #<Google::Apis::CalendarV3::EventDateTime:0x00000001079324e0
+      @date_time=Mon, 01 Jan 2024 16:00:00 +0000,
+      @time_zone="Europe/Warsaw">,
+    @status="confirmed",
+    @summary="test",
+    @updated=Tue, 02 Jan 2024 19:23:58 +0000>],
+ @kind="calendar#events",
+ @summary="buildflow@buildflow-410015.iam.gserviceaccount.com",
+ @time_zone="UTC",
+ @updated=Tue, 02 Jan 2024 19:23:58 +0000>
+
+Completed 200 OK in 460ms (Views: 0.3ms | MongoDB: 0.0ms | Allocations: 13581)
+
+
+Started DELETE "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:25:01 +0100
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/calendar/events"):
+  
+Started DELETE "/api/calendar/events/8t20vmmg6dgh0f1g2fhnvnbj7s" for 127.0.0.1 at 2024-01-02 20:25:12 +0100
+Processing by Api::CalendarController#delete_event as JSON
+  Parameters: {"event_id"=>"8t20vmmg6dgh0f1g2fhnvnbj7s"}
+Sending HTTP delete https://www.googleapis.com/calendar/v3/calendars/primary/events/8t20vmmg6dgh0f1g2fhnvnbj7s?
+204
+#<HTTP::Message:0x00000001071b8c00 @http_body=#<HTTP::Message::Body:0x00000001071b8bb0 @body="", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106fff828 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Date", "Tue, 02 Jan 2024 19:25:12 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Content-Length", "0"], ["Pragma", "no-cache"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Type", "text/html"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"]], @http_version="1.1", @is_request=false, @reason_phrase="No Content", @request_absolute_uri=nil, @request_method="DELETE", @request_query=nil, @request_uri=#<Addressable::URI:0x23adc URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/8t20vmmg6dgh0f1g2fhnvnbj7s?>, @status_code=204>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - ""
+
+Completed 200 OK in 510ms (Views: 0.7ms | MongoDB: 0.0ms | Allocations: 6171)
+
+
+Started GET "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:25:16 +0100
+Processing by Api::CalendarController#list_events as JSON
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A25%3A16%2B01%3A00
+200
+#<HTTP::Message:0x00000001071962e0 @http_body=#<HTTP::Message::Body:0x0000000107196290 @body="{\n" + " \"kind\": \"calendar#events\",\n" + " \"etag\": \"\\\"p32g9pm58muvo60o\\\"\",\n" + " \"summary\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + " \"description\": \"\",\n" + " \"updated\": \"2024-01-02T19:25:12.596Z\",\n" + " \"timeZone\": \"UTC\",\n" + " \"accessRole\": \"owner\",\n" + " \"defaultReminders\": [],\n" + " \"items\": []\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106d1fd38 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Expires", "Tue, 02 Jan 2024 19:25:16 GMT"], ["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Date", "Tue, 02 Jan 2024 19:25:16 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x23b40 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2024-01-02T20%3A25%3A16%2B01%3A00>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Events:0x0000000106d1e938
+ @access_role="owner",
+ @default_reminders=[],
+ @description="",
+ @etag="\"p32g9pm58muvo60o\"",
+ @items=[],
+ @kind="calendar#events",
+ @summary="buildflow@buildflow-410015.iam.gserviceaccount.com",
+ @time_zone="UTC",
+ @updated=Tue, 02 Jan 2024 19:25:12 +0000>
+
+Completed 200 OK in 268ms (Views: 1.2ms | MongoDB: 0.0ms | Allocations: 7660)
+
+
+Started DELETE "/api/calendar/events/%7Bid]" for 127.0.0.1 at 2024-01-02 20:25:24 +0100
+Processing by Api::CalendarController#delete_event as JSON
+  Parameters: {"event_id"=>"{id]"}
+Sending HTTP delete https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?
+404
+#<HTTP::Message:0x000000010713bef8 @http_body=#<HTTP::Message::Body:0x000000010713bea8 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"notFound\",\n" + "    \"message\": \"Not Found\"\n" + "   }\n" + "  ],\n" + "  \"code\": 404,\n" + "  \"message\": \"Not Found\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106abfa20 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Date", "Tue, 02 Jan 2024 19:25:25 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Not Found", @request_absolute_uri=nil, @request_method="DELETE", @request_query=nil, @request_uri=#<Addressable::URI:0x23bf4 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?>, @status_code=404>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error notFound: Not Found
+Error - #<Google::Apis::ClientError: notFound: Not Found status_code: 404 header: #<HTTP::Message::Headers:0x0000000106abe760 @http_version="1.1", @body_size=0, @chunked=false, @request_method="DELETE", @request_uri=#<Addressable::URI:0x23bf4 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?>, @request_query=nil, @request_absolute_uri=nil, @status_code=404, @reason_phrase="Not Found", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Date", "Tue, 02 Jan 2024 19:25:25 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"notFound\",\n    \"message\": \"Not Found\"\n   }\n  ],\n  \"code\": 404,\n  \"message\": \"Not Found\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 293ms (MongoDB: 0.0ms | Allocations: 6481)
+
+
+  
+Google::Apis::ClientError (notFound: Not Found):
+  
+app/controllers/api/calendar_controller.rb:50:in `delete_event'
+Started PUT "/api/calendar/events/%7Bid]" for 127.0.0.1 at 2024-01-02 20:25:38 +0100
+Processing by Api::CalendarController#update_event as JSON
+  Parameters: {"event_id"=>"{id]"}
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?
+404
+#<HTTP::Message:0x0000000107c98490 @http_body=#<HTTP::Message::Body:0x0000000107c982b0 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"notFound\",\n" + "    \"message\": \"Not Found\"\n" + "   }\n" + "  ],\n" + "  \"code\": 404,\n" + "  \"message\": \"Not Found\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106bfd5e0 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Pragma", "no-cache"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:25:39 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Not Found", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x23cf8 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?>, @status_code=404>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error notFound: Not Found
+Error - #<Google::Apis::ClientError: notFound: Not Found status_code: 404 header: #<HTTP::Message::Headers:0x0000000106bfc320 @http_version="1.1", @body_size=0, @chunked=false, @request_method="GET", @request_uri=#<Addressable::URI:0x23cf8 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?>, @request_query=nil, @request_absolute_uri=nil, @status_code=404, @reason_phrase="Not Found", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Pragma", "no-cache"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:25:39 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"notFound\",\n    \"message\": \"Not Found\"\n   }\n  ],\n  \"code\": 404,\n  \"message\": \"Not Found\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 303ms (MongoDB: 0.0ms | Allocations: 6510)
+
+
+  
+Google::Apis::ClientError (notFound: Not Found):
+  
+app/controllers/api/calendar_controller.rb:59:in `update_event'
+Started PUT "/api/calendar/events/%7Bid]" for 127.0.0.1 at 2024-01-02 20:25:54 +0100
+Processing by Api::CalendarController#update_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "event_id"=>"{id]", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?
+404
+#<HTTP::Message:0x0000000107159160 @http_body=#<HTTP::Message::Body:0x0000000107159110 @body="{\n" + " \"error\": {\n" + "  \"errors\": [\n" + "   {\n" + "    \"domain\": \"global\",\n" + "    \"reason\": \"notFound\",\n" + "    \"message\": \"Not Found\"\n" + "   }\n" + "  ],\n" + "  \"code\": 404,\n" + "  \"message\": \"Not Found\"\n" + " }\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000107057dc0 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:25:54 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Pragma", "no-cache"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="Not Found", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x23dfc URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?>, @status_code=404>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Caught error notFound: Not Found
+Error - #<Google::Apis::ClientError: notFound: Not Found status_code: 404 header: #<HTTP::Message::Headers:0x0000000107056b00 @http_version="1.1", @body_size=0, @chunked=false, @request_method="GET", @request_uri=#<Addressable::URI:0x23dfc URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/%7Bid%5D?>, @request_query=nil, @request_absolute_uri=nil, @status_code=404, @reason_phrase="Not Found", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:25:54 GMT"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Pragma", "no-cache"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @dumped=false> body: "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"global\",\n    \"reason\": \"notFound\",\n    \"message\": \"Not Found\"\n   }\n  ],\n  \"code\": 404,\n  \"message\": \"Not Found\"\n }\n}\n">
+
+Completed 500 Internal Server Error in 327ms (MongoDB: 0.0ms | Allocations: 6361)
+
+
+  
+Google::Apis::ClientError (notFound: Not Found):
+  
+app/controllers/api/calendar_controller.rb:59:in `update_event'
+Started POST "/api/calendar/events" for 127.0.0.1 at 2024-01-02 20:26:01 +0100
+Processing by Api::CalendarController#create_event as JSON
+  Parameters: {"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "calendar"=>{"summary"=>"test", "location"=>"Warszawa", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/primary/events?
+200
+#<HTTP::Message:0x0000000107ad0b58 @http_body=#<HTTP::Message::Body:0x0000000107ad0b08 @body="{\n" + " \"kind\": \"calendar#event\",\n" + " \"etag\": \"\\\"3408447123484000\\\"\",\n" + " \"id\": \"41f2a38dokmno8hmgofq8v11ao\",\n" + " \"status\": \"confirmed\",\n" + " \"htmlLink\": \"https://www.google.com/calendar/event?eid=NDFmMmEzOGRva21ubzhobWdvZnE4djExYW8gYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20\",\n" + " \"created\": \"2024-01-02T19:26:01.000Z\",\n" + " \"updated\": \"2024-01-02T19:26:01.742Z\",\n" + " \"summary\": \"test\",\n" + " \"description\": \"Opis testowy\",\n" + " \"location\": \"Warszawa\",\n" + " \"creator\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"organizer\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"start\": {\n" + "  \"dateTime\": \"2024-01-01T16:00:00Z\",\n" + "  \"timeZone\": \"Europe/Warsaw\"\n" + " },\n" + " \"end\": {\n" + "  \"dateTime\": \"2024-01-06T17:00:00Z\",\n" + "  \"timeZone\": \"Europe/Warsaw\"\n" + " },\n" + " \"iCalUID\": \"41f2a38dokmno8hmgofq8v11ao@google.com\",\n" + " \"sequence\": 0,\n" + " \"reminders\": {\n" + "  \"useDefault\": true\n" + " },\n" + " \"eventType\": \"default\"\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106733a28 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Date", "Tue, 02 Jan 2024 19:26:01 GMT"], ["ETag", "\"3408447123484000\""], ["Pragma", "no-cache"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="POST", @request_query=nil, @request_uri=#<Addressable::URI:0x23e88 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events?>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Event:0x00000001066fdc20
+ @created=Tue, 02 Jan 2024 19:26:01 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x0000000107450058
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @description="Opis testowy",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x000000010743bb80
+   @date_time=Sat, 06 Jan 2024 17:00:00 +0000,
+   @time_zone="Europe/Warsaw">,
+ @etag="\"3408447123484000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=NDFmMmEzOGRva21ubzhobWdvZnE4djExYW8gYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="41f2a38dokmno8hmgofq8v11ao@google.com",
+ @id="41f2a38dokmno8hmgofq8v11ao",
+ @kind="calendar#event",
+ @location="Warszawa",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x000000010741fe80
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x00000001074178c0
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x0000000107411e98
+   @date_time=Mon, 01 Jan 2024 16:00:00 +0000,
+   @time_zone="Europe/Warsaw">,
+ @status="confirmed",
+ @summary="test",
+ @updated=Tue, 02 Jan 2024 19:26:01 +0000>
+
+Completed 200 OK in 564ms (Views: 1.6ms | MongoDB: 0.0ms | Allocations: 16140)
+
+
+Started PUT "/api/calendar/events/41f2a38dokmno8hmgofq8v11ao" for 127.0.0.1 at 2024-01-02 20:26:14 +0100
+Processing by Api::CalendarController#update_event as JSON
+  Parameters: {"summary"=>"test434", "location"=>"Poznan", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00", "event_id"=>"41f2a38dokmno8hmgofq8v11ao", "calendar"=>{"summary"=>"test434", "location"=>"Poznan", "description"=>"Opis testowy", "start_time"=>"2024-01-01T09:00:00-07:00", "end_time"=>"2024-01-06T10:00:00-07:00"}}
+Sending HTTP get https://www.googleapis.com/calendar/v3/calendars/primary/events/41f2a38dokmno8hmgofq8v11ao?
+200
+#<HTTP::Message:0x0000000107bfe3e0 @http_body=#<HTTP::Message::Body:0x0000000107bfe390 @body="{\n" + " \"kind\": \"calendar#event\",\n" + " \"etag\": \"\\\"3408447123484000\\\"\",\n" + " \"id\": \"41f2a38dokmno8hmgofq8v11ao\",\n" + " \"status\": \"confirmed\",\n" + " \"htmlLink\": \"https://www.google.com/calendar/event?eid=NDFmMmEzOGRva21ubzhobWdvZnE4djExYW8gYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20\",\n" + " \"created\": \"2024-01-02T19:26:01.000Z\",\n" + " \"updated\": \"2024-01-02T19:26:01.742Z\",\n" + " \"summary\": \"test\",\n" + " \"description\": \"Opis testowy\",\n" + " \"location\": \"Warszawa\",\n" + " \"creator\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"organizer\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"start\": {\n" + "  \"dateTime\": \"2024-01-01T16:00:00Z\",\n" + "  \"timeZone\": \"Europe/Warsaw\"\n" + " },\n" + " \"end\": {\n" + "  \"dateTime\": \"2024-01-06T17:00:00Z\",\n" + "  \"timeZone\": \"Europe/Warsaw\"\n" + " },\n" + " \"iCalUID\": \"41f2a38dokmno8hmgofq8v11ao@google.com\",\n" + " \"sequence\": 0,\n" + " \"reminders\": {\n" + "  \"useDefault\": true\n" + " },\n" + " \"eventType\": \"default\"\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x00000001063abd60 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Expires", "Tue, 02 Jan 2024 19:26:15 GMT"], ["Date", "Tue, 02 Jan 2024 19:26:15 GMT"], ["ETag", "\"3408447123484000\""], ["Content-Type", "application/json; charset=UTF-8"], ["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="GET", @request_query=nil, @request_uri=#<Addressable::URI:0x23f78 URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/41f2a38dokmno8hmgofq8v11ao?>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Event:0x00000001063a1400
+ @created=Tue, 02 Jan 2024 19:26:01 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x000000010795a760
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @description="Opis testowy",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x0000000107958488
+   @date_time=Sat, 06 Jan 2024 17:00:00 +0000,
+   @time_zone="Europe/Warsaw">,
+ @etag="\"3408447123484000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=NDFmMmEzOGRva21ubzhobWdvZnE4djExYW8gYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="41f2a38dokmno8hmgofq8v11ao@google.com",
+ @id="41f2a38dokmno8hmgofq8v11ao",
+ @kind="calendar#event",
+ @location="Warszawa",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x0000000107951ed0
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x000000010793ebf0
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x000000010793ceb8
+   @date_time=Mon, 01 Jan 2024 16:00:00 +0000,
+   @time_zone="Europe/Warsaw">,
+ @status="confirmed",
+ @summary="test",
+ @updated=Tue, 02 Jan 2024 19:26:01 +0000>
+
+Sending HTTP put https://www.googleapis.com/calendar/v3/calendars/primary/events/41f2a38dokmno8hmgofq8v11ao?
+200
+#<HTTP::Message:0x0000000107bf0d80 @http_body=#<HTTP::Message::Body:0x0000000107bf0d30 @body="{\n" + " \"kind\": \"calendar#event\",\n" + " \"etag\": \"\\\"3408447150872000\\\"\",\n" + " \"id\": \"41f2a38dokmno8hmgofq8v11ao\",\n" + " \"status\": \"confirmed\",\n" + " \"htmlLink\": \"https://www.google.com/calendar/event?eid=NDFmMmEzOGRva21ubzhobWdvZnE4djExYW8gYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20\",\n" + " \"created\": \"2024-01-02T19:26:01.000Z\",\n" + " \"updated\": \"2024-01-02T19:26:15.436Z\",\n" + " \"summary\": \"test434\",\n" + " \"description\": \"Opis testowy\",\n" + " \"location\": \"Poznan\",\n" + " \"creator\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"organizer\": {\n" + "  \"email\": \"buildflow@buildflow-410015.iam.gserviceaccount.com\",\n" + "  \"self\": true\n" + " },\n" + " \"start\": {\n" + "  \"dateTime\": \"2024-01-01T16:00:00Z\",\n" + "  \"timeZone\": \"UTC\"\n" + " },\n" + " \"end\": {\n" + "  \"dateTime\": \"2024-01-06T17:00:00Z\",\n" + "  \"timeZone\": \"UTC\"\n" + " },\n" + " \"iCalUID\": \"41f2a38dokmno8hmgofq8v11ao@google.com\",\n" + " \"sequence\": 0,\n" + " \"reminders\": {\n" + "  \"useDefault\": true\n" + " },\n" + " \"eventType\": \"default\"\n" + "}\n", @chunk_size=nil, @positions=nil, @size=0>, @http_header=#<HTTP::Message::Headers:0x0000000106324568 @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @body_size=0, @body_type=nil, @chunked=false, @dumped=false, @header_item=[["Pragma", "no-cache"], ["Date", "Tue, 02 Jan 2024 19:26:15 GMT"], ["Content-Type", "application/json; charset=UTF-8"], ["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["ETag", "\"3408447150872000\""], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Vary", "Referer"], ["Content-Encoding", "gzip"], ["Server", "ESF"], ["X-XSS-Protection", "0"], ["X-Frame-Options", "SAMEORIGIN"], ["X-Content-Type-Options", "nosniff"], ["Alt-Svc", "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"], ["Transfer-Encoding", "chunked"]], @http_version="1.1", @is_request=false, @reason_phrase="OK", @request_absolute_uri=nil, @request_method="PUT", @request_query=nil, @request_uri=#<Addressable::URI:0x23f8c URI:https://www.googleapis.com/calendar/v3/calendars/primary/events/41f2a38dokmno8hmgofq8v11ao?>, @status_code=200>, @peer_cert=#<OpenSSL::X509::Certificate subject=#<OpenSSL::X509::Name CN=upload.video.google.com>, issuer=#<OpenSSL::X509::Name CN=GTS CA 1C3,O=Google Trust Services LLC,C=US>, serial=#<OpenSSL::BN 17851553526684096801775809495725313123>, not_before=2023-11-20 08:08:50 UTC, not_after=2024-02-12 08:08:49 UTC>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Event:0x000000010626ea60
+ @created=Tue, 02 Jan 2024 19:26:01 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x0000000107a979e8
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @description="Opis testowy",
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x0000000107a952d8
+   @date_time=Sat, 06 Jan 2024 17:00:00 +0000,
+   @time_zone="UTC">,
+ @etag="\"3408447150872000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=NDFmMmEzOGRva21ubzhobWdvZnE4djExYW8gYnVpbGRmbG93QGJ1aWxkZmxvdy00MTAwMTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20",
+ @i_cal_uid="41f2a38dokmno8hmgofq8v11ao@google.com",
+ @id="41f2a38dokmno8hmgofq8v11ao",
+ @kind="calendar#event",
+ @location="Poznan",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x0000000107b3e0e0
+   @email="buildflow@buildflow-410015.iam.gserviceaccount.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x0000000107b3ae90
+   @use_default=true>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x0000000107b39180
+   @date_time=Mon, 01 Jan 2024 16:00:00 +0000,
+   @time_zone="UTC">,
+ @status="confirmed",
+ @summary="test434",
+ @updated=Tue, 02 Jan 2024 19:26:15 +0000>
+
+Completed 200 OK in 771ms (Views: 1.7ms | MongoDB: 0.0ms | Allocations: 26388)
+
+
