@@ -136,8 +136,8 @@ module Api
           delete_request['Authorization'] = auth_header
           http.request(delete_request)
 
+          employee_assignments_data = []
           unless params[:assigned_project].nil? || params[:assigned_project].empty?
-            employee_assignments_data = []
             params[:assigned_project].each do |assigned_project|
               logger.info(assigned_project)
               post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
@@ -158,14 +158,10 @@ module Api
 
         if params[:status] == 'Urlop'
           @employee[:status] = 'Urlop'
-        elsif params[:assigned_project].empty?
+        elsif params[:assigned_project].nil? || params[:assigned_project].empty?
           @employee[:status] = 'Nieprzypisany'
         else
           @employee[:status] = 'Przypisany'
-        end
-
-        if params[:assigned_project].empty?
-          @employee[:assigned_project] = []
         end
 
         if @employee.save
