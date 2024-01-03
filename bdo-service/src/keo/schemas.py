@@ -10,8 +10,8 @@ class Record(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
     KeoId: str
     KeoGeneratedId: str
-    WasteMassInstallation: int
-    WasteMassExcludingInstallation: int
+    WasteMassInstallation: float
+    WasteMassExcludingInstallation: float
     WasteFromServices: bool = True
     CommuneId: Optional[str] = None
     ManufactureDate: str
@@ -21,8 +21,8 @@ class Record(BaseModel):
 
 class CreateRecord(BaseModel):
     KeoId: str
-    WasteMassInstallation: int
-    WasteMassExcludingInstallation: int
+    WasteMassInstallation: float
+    WasteMassExcludingInstallation: float
     WasteFromServices: bool = True
     CommuneId: Optional[str] = None
     ManufactureDate: str

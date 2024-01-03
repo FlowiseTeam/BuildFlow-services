@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from pydantic import BaseModel, Field, ConfigDict
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional, List
@@ -12,7 +10,7 @@ class BdoCardCreate(BaseModel):
     ReceiverEupId: str
     WasteCodeId: int
     VehicleRegNumber: str
-    WasteMass: int
+    WasteMass: float
     PlannedTransportTime: str
     AdditionalInfo: str
     WasteCodeExtended: bool = False
@@ -32,7 +30,7 @@ class Card(BaseModel):
     ReceiverEupId: str
     WasteCodeId: int
     VehicleRegNumber: str
-    WasteMass: int
+    WasteMass: float
     PlannedTransportTime: str
     AdditionalInfo: str
     WasteCodeExtended: bool = False
