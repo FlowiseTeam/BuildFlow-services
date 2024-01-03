@@ -22,8 +22,8 @@ class CalendarController < ApplicationController
           id: event.id,
           summary: event.summary,
           description: event.description,
-          start: event.start.date_time,
-          end: event.end.date_time,
+          start: event.start.date_time.to_s.sub(/\+\d{2}:\d{2}\z/, ''),
+          end: event.end.date_time.to_s.sub(/\+\d{2}:\d{2}\z/, ''),
           location: event.location
         }
       end
@@ -137,7 +137,6 @@ class CalendarController < ApplicationController
   private
   def append_utc_timezone(datetime)
     datetime_str = datetime.to_s
-    # Append '+00:00' only if it's not already present
     datetime_str.include?('+01:00') ? datetime_str : "#{datetime_str}+01:00"
   end
 end
