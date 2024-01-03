@@ -45,11 +45,11 @@ class CalendarController < ApplicationController
       event.location = params[:location]
       event.description = params[:description]
       event.start = Google::Apis::CalendarV3::EventDateTime.new(
-        date_time: params[:start_time],
+        date_time: append_utc_timezone(params[:start]),
         time_zone: 'Europe/Warsaw'
       )
       event.end = Google::Apis::CalendarV3::EventDateTime.new(
-        date_time: params[:end_time],
+        date_time: append_utc_timezone(params[:end]),
         time_zone: 'Europe/Warsaw'
       )
 
@@ -59,8 +59,8 @@ class CalendarController < ApplicationController
         id: result.id,
         summary: result.summary,
         description: result.description,
-        start: result.start.date_time,
-        end: result.end.date_time,
+        start: result.start.date_time.to_s.sub(/\+\d{2}:\d{2}\z/, ''),
+        end: result.end.date_time.to_s.sub(/\+\d{2}:\d{2}\z/, ''),
         location: result.location
       }
 
@@ -98,9 +98,9 @@ class CalendarController < ApplicationController
       event.location = params[:location] if params[:location]
       event.description = params[:description] if params[:description]
 
-      if params[:start_time] && params[:end_time]
-        event.start = Google::Apis::CalendarV3::EventDateTime.new(date_time: params[:start_time])
-        event.end = Google::Apis::CalendarV3::EventDateTime.new(date_time: params[:end_time])
+      if params[:start] && params[:end]
+        event.start = Google::Apis::CalendarV3::EventDateTime.new(date_time: append_utc_timezone(params[:start]))
+        event.end = Google::Apis::CalendarV3::EventDateTime.new(date_time: append_utc_timezone(params[:end]))
       end
 
       result = service.update_event(CALENDAR_ID, event_id, event)
@@ -108,8 +108,8 @@ class CalendarController < ApplicationController
         id: result.id,
         summary: result.summary,
         description: result.description,
-        start: result.start.date_time,
-        end: result.end.date_time,
+        start: result.start.date_time.to_s.sub(/\+\d{2}:\d{2}\z/, ''),
+        end: result.end.date_time.to_s.sub(/\+\d{2}:\d{2}\z/, ''),
         location: result.location
       }
 
@@ -131,6 +131,14 @@ class CalendarController < ApplicationController
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR
     )
     service
+  end
+
+
+  private
+  def append_utc_timezone(datetime)
+    datetime_str = datetime.to_s
+    # Append '+00:00' only if it's not already present
+    datetime_str.include?('+01:00') ? datetime_str : "#{datetime_str}+01:00"
   end
 end
 end
