@@ -220,7 +220,7 @@ module Api
       body = {
         "summary": "Przegląd pojazdu",
         "location": "Warsztat",
-        "description": f"Przegląd #{name} o numerach rejestracyjnych: #{reg_number} ",
+        "description": "Przegląd #{name} o numerach rejestracyjnych: #{reg_number}",
         "start": start_date,
         "end": end_date
       }.to_json

@@ -10,6 +10,7 @@ class Vehicle
   field :rev_date, type: Date
   field :assigned_project, type: Array, default: []
   field :capacity, type: Integer
+  field :event_id, type: String
 
 
   before_create :set_id
