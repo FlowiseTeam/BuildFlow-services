@@ -28,4 +28,3 @@ app = CORSMiddleware(
     allow_headers=["*"],
     expose_headers=["*"]
 )
-

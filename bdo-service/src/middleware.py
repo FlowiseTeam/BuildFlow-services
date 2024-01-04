@@ -8,17 +8,8 @@ app = FastAPI()
 
 PUBLIC_KEY = '''
 -----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvw1OL5m/b+f44VNYl8Jt6bZ/cq/qDA7azYp64c4wFSqMp9gns0ZtwgPIban0j8t+zwUuePRfZdOnoHR/cNh09dy/6Fku9/d9xNWoxePYcvPidpbBKEksffuOURifN7Qn/WBQyaPWpyoTwfGrPImHigWqkbmRRTlFg0FhKfZDfC84tub0S2T6A25hwPdUmtQrR6RAAWzhS4PSFry3a8EoiwU5KhnFLs3AFg76tejmtGG0WQqtPFmBdTAY6oCGMOT7cdfEusORpqWLpGg6dmKqqLC6vof6Jik5Dyt1mJmZwExIUTV3tUrZ8dlhAE9K+316A+Q1BF2K6d9C+FWpMBgfcwIDAQAB
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAslzqAIV6CjJrnOdhYRSBQp5C6xHPc1LOGFhTWJxatd0YyqNF5ACcB9AERfBOD+Wwez3iL12tJCkaNC5bNiyPAU7aaZOtU7sJLAULVBNJ/vBFScnxU1Wso4Xao8bDOOSOd0cTnuk3NpgCorp4pTHpje8juD9f5VnCLNHSdjTQWKux6tR0jh9Tst1MFhlq3xbKxVu4g//iDUWdwyWOIJ0Ax/BX+OGVI5XdWzke5mePAIEESCUUQyIC0MCtrJwldRKoXD+MEk8dxsq5F/z0/LVgFPrLjtMzBymEaosQIzpcPNKGO072huuSgDgtxBkIFxDinJWKJ2x5CubN3WdyNDe2HQIDAQAB
 -----END PUBLIC KEY-----'''
-
-@app.middleware("http")
-async def remove_slash(request: Request, call_next):
-    if request.url.path.endswith("/"):
-        url = request.url.copy_with(path=request.url.path.rstrip("/"))
-        if url != request.url:
-            return RedirectResponse(url=url, status_code=307)
-    response = await call_next(request)
-    return response
 
 
 @app.middleware("http")

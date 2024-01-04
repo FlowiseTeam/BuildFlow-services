@@ -89,11 +89,6 @@ class Card(BaseModel):
     name: str
 
 
-# class CreateCard(BaseModel): # TODO find way to handle new keo cards
-#     KeoId: str
-#     name: str
-
-
 class CardCollection(BaseModel):
     cards: List[Card]
     commons: List[Common]

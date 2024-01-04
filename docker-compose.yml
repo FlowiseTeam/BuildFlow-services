@@ -23,6 +23,7 @@ services:
       - "3001:3000"
     environment:
       - RAILS_ENV=development
+      - PROJECTS_SERVICE=${PROJECT_SERVICE}
     networks:
       - flowiseNetwork
 
@@ -36,6 +37,7 @@ services:
       - "3002:3000"
     environment:
       - RAILS_ENV=development
+      - PROJECTS_SERVICE=${PROJECT_SERVICE}
     networks:
       - flowiseNetwork
 

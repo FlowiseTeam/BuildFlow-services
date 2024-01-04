@@ -93,14 +93,19 @@ module Api
     # POST /vehicles.json
     def create
       begin
+        event_id = set_rev_date_event(params[:reg_number], params[:rev_date], params[:name])
         @vehicle = Vehicle.create(
           name: params[:name],
           status: params[:status],
           mileage: params[:mileage],
           reg_number: params[:reg_number],
           rev_date: params[:rev_date],
-          capacity: params[:capacity]
+          capacity: params[:capacity],
+          event_id: event_id
         )
+
+
+
         if @vehicle.save
           render json: { vehicles: @vehicle }, status: :created
         else
@@ -206,6 +211,34 @@ module Api
     # Only allow a list of trusted parameters through.
     def vehicle_params
       params.fetch(:vehicle, {})
+    end
+    def set_rev_date_event(reg_number, rev_date, name, event_id=nil)
+      date = Date.strptime(rev_date, '%d-%m-%Y')
+      start_date = date.strftime('%Y-%m-%dT09:00:00')
+      end_date = date.strftime('%Y-%m-%dT10:00:00')
+
+      body = {
+        "summary": "Przegląd pojazdu",
+        "location": "Warsztat",
+        "description": f"Przegląd #{name} o numerach rejestracyjnych: #{reg_number} ",
+        "start": start_date,
+        "end": end_date
+      }.to_json
+
+      if event_id
+        uri = URI("#{ENV['PROJECTS_SERVICE']}/calendar/events/#{event_id}")
+      else
+        uri = URI("#{ENV['PROJECTS_SERVICE']}/calendar/events")
+      end
+
+      http = Net::HTTP.new(uri.host, uri.port)
+      post_request = Net::HTTP::Post.new(uri.request_uri, 'Content-Type' => 'application/json')
+      post_request['Authorization'] = request.headers['Authorization']
+      post_request.body = body
+
+      # Send the request
+      response = http.request(post_request)
+      response['id']
     end
   end
 end

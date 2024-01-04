@@ -5,24 +5,6 @@ import requests
 bdo_base_url = os.getenv('BDO_BASE_URL')
 
 
-def fetch_token(client_id: str, client_secret: str, eup_id: str) -> tuple:
-    url = f"{bdo_base_url}/api/WasteRegister/v1/Auth/generateEupAccessToken"
-    headers = {
-        'accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-    data = {
-        'ClientId': client_id,
-        'ClientSecret': client_secret,
-        'EupId': eup_id
-    }
-    response = requests.post(url, headers=headers, json=data)
-    response.raise_for_status()
-
-    token_data = response.json()
-    return token_data["AccessToken"], token_data["ExpiresIn"]
-
-
 def get_company_details(access_token: str, company_name: str):
     url = f'{bdo_base_url}/api/WasteRegister/v1/Search/searchcompany'
     headers = {

@@ -1,11 +1,11 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.responses import Response
 from bson import ObjectId
 
 from src.mongodb import get_database
 from src.bdo_info.schemas import *
 from src.bdo_info import bdo_info
-
+from src import token
 
 router = APIRouter(
     tags=['KPO']
@@ -43,22 +43,19 @@ def get_bdo_info_for_keo() -> CardCollection:
     return CardCollection(cards=cards, commons=commons)
 
 
+@router.post('/')
+def add_bdo_company(company: AddCompany, access_token: str = Depends(token.fetch_token)) -> dict:
+    company_details = bdo_info.get_company_details(access_token, company.get('name'))
+    company_details['type'] = company.get('type')
 
-# TODO needs access_token
+    if company.get('type') != "receiver":
+        company_dict = CreateCarrierInfo(**company_details).model_dump()
+        return bdo_info_collection.insert_one(company_dict)
 
-# @router.post('/')
-# def add_bdo_company(company: AddCompany) -> dict:
-#     company_details = bdo_info.get_company_details(access_token, company.get('name'))
-#     company_details['type'] = company.get('type')
-#
-#     if company.get('type') != "receiver":
-#         company_dict = CreateCarrierInfo(**company_details).model_dump()
-#         return bdo_info_collection.insert_one(company_dict)
-#
-#     company_details['EupIds'] = bdo_info.get_eup_ids(access_token, company_details['companyId'])
-#     company_dict = CreateReceiverInfo(**company_details).model_dump()
-#
-#     return bdo_info_collection.insert_one(company_dict)
+    company_details['EupIds'] = bdo_info.get_eup_ids(access_token, company_details['companyId'])
+    company_dict = CreateReceiverInfo(**company_details).model_dump()
+
+    return bdo_info_collection.insert_one(company_dict)
 
 
 @router.delete("/{object_id}")
