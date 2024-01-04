@@ -94,6 +94,7 @@ module Api
     def create
       begin
         event_id = set_rev_date_event(params[:reg_number], params[:rev_date], params[:name])
+
         @vehicle = Vehicle.create(
           name: params[:name],
           status: params[:status],
@@ -103,8 +104,6 @@ module Api
           capacity: params[:capacity],
           event_id: event_id
         )
-
-
 
         if @vehicle.save
           render json: { vehicles: @vehicle }, status: :created
@@ -171,6 +170,7 @@ module Api
           @vehicle[:assigned_project] = []
         end
 
+        set_rev_date_event(params[:reg_number], params[:rev_date], params[:name], @vehicle.event_id)
 
         if @vehicle.save
           render json: { vehicle: @vehicle }, status: :ok
@@ -188,6 +188,9 @@ module Api
     def destroy
       begin
         @vehicle = Vehicle.find(params[:id])
+
+        delete_event(@vehicle.event_id)
+
         @vehicle.destroy
         head :no_content
       rescue Mongoid::Errors::DocumentNotFound
@@ -212,10 +215,11 @@ module Api
     def vehicle_params
       params.fetch(:vehicle, {})
     end
+
     def set_rev_date_event(reg_number, rev_date, name, event_id=nil)
-      date = Date.strptime(rev_date, '%d-%m-%Y')
-      start_date = date.strftime('%Y-%m-%dT09:00:00')
-      end_date = date.strftime('%Y-%m-%dT10:00:00')
+      date = Date.strptime(rev_date, '%Y-%m-%d')
+      start_date = date.strftime('%Y-%m-%dT10:00:00')
+      end_date = date.strftime('%Y-%m-%dT11:00:00')
 
       body = {
         "summary": "Przegląd pojazdu",
@@ -225,20 +229,35 @@ module Api
         "end": end_date
       }.to_json
 
+      base_uri = ENV['PROJECTS_SERVICE'].gsub('/projects', '')
+
       if event_id
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/calendar/events/#{event_id}")
+        uri = URI("#{base_uri}/calendar/events/#{event_id}")
+        event_request = Net::HTTP::Put.new(uri.request_uri, 'Content-Type' => 'application/json')
       else
-        uri = URI("#{ENV['PROJECTS_SERVICE']}/calendar/events")
+        uri = URI("#{base_uri}/calendar/events")
+        event_request = Net::HTTP::Post.new(uri.request_uri, 'Content-Type' => 'application/json')
       end
 
       http = Net::HTTP.new(uri.host, uri.port)
-      post_request = Net::HTTP::Post.new(uri.request_uri, 'Content-Type' => 'application/json')
-      post_request['Authorization'] = request.headers['Authorization']
-      post_request.body = body
+      event_request['Authorization'] = request.headers['Authorization']
+      event_request.body = body
 
-      # Send the request
-      response = http.request(post_request)
-      response['id']
+      response = http.request(event_request)
+      parsed_response = JSON.parse(response.body)
+      parsed_response['id']
+    end
+
+    def delete_event(event_id)
+      base_uri = ENV['PROJECTS_SERVICE'].gsub('/projects', '')
+      uri = URI("#{base_uri}/calendar/events/#{event_id}")
+
+      event_request = Net::HTTP::Delete.new(uri.request_uri, 'Content-Type' => 'application/json')
+      event_request['Authorization'] = request.headers['Authorization']
+
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.request(event_request)
+
     end
   end
 end
