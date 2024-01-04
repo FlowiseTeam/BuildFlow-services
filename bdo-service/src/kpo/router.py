@@ -1,9 +1,10 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.responses import Response
 from bson import ObjectId
 from src.mongodb import get_database
 from src.kpo.schemas import Card, BdoCardCreate, CardCollection
 from src.kpo import kpo
+from src import token
 
 router = APIRouter(
     tags=['KPO']
@@ -24,12 +25,12 @@ def show_card(card_id: str) -> Card:
 
 
 @router.post('/', status_code=201)
-def create_new_card(card: BdoCardCreate) -> dict:
-
-    # response = kpo.create_planned_card(access_token, card)
+def create_new_card(card: BdoCardCreate, access_token: str = Depends(token.fetch_token)) -> dict:
+    # created_card = kpo.create_planned_card(access_token, card)
 
     card_dict = card.model_dump()
-    # card_dict['KpoId'] = response['KpoId']
+    card_dict['KpoId'] ="12345"
+
     result = kpo_collection.insert_one(card_dict)
 
     return {"created_id": str(result.inserted_id)}
@@ -41,9 +42,9 @@ def update_card(card_id: str):
 
 
 @router.delete("/{card_id}")
-def delete_card(card_id: str):
-    # kpo_id = kpo_collection.find_one({"_id": ObjectId(card_id)})['kpo_id']
-    # response = kpo.delete_planned_card(access_token, kpo_id)
+def delete_card(card_id: str, access_token: str = Depends(token.fetch_token)):
+    kpo_id = kpo_collection.find_one({"_id": ObjectId(card_id)})['KpoId']
+    # kpo.delete_planned_card(access_token, kpo_id)
 
     delete_result = kpo_collection.delete_one({"_id": ObjectId(card_id)})
 

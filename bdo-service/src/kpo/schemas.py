@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from pydantic import BaseModel, Field, ConfigDict
 from pydantic.functional_validators import BeforeValidator
 from typing import Optional, List
@@ -12,18 +10,13 @@ class BdoCardCreate(BaseModel):
     ReceiverEupId: str
     WasteCodeId: int
     VehicleRegNumber: str
-    WasteMass: int
-    PlannedTransportTime: datetime
-    WasteProcessId: int
-    CertificateNumberAndBoxNumbers: str
+    WasteMass: float
+    PlannedTransportTime: str
     AdditionalInfo: str
-    WasteCodeExtended: bool
-    WasteCodeExtendedDescription: str
-    HazardousWasteReclassification: bool = True
-    HazardousWasteReclassificationDescription: str
+    WasteCodeExtended: bool = False
+    HazardousWasteReclassification: bool = False
     IsWasteGenerating: bool = False
-    WasteGeneratedTerytPk: str
-    WasteGeneratingAdditionalInfo: str
+    WasteGeneratedTerytPk: Optional[str] = None
 
 
 PyObjectId = Annotated[str, BeforeValidator(str)]
@@ -37,18 +30,13 @@ class Card(BaseModel):
     ReceiverEupId: str
     WasteCodeId: int
     VehicleRegNumber: str
-    WasteMass: int
-    PlannedTransportTime: datetime
-    WasteProcessId: int
-    CertificateNumberAndBoxNumbers: str
+    WasteMass: float
+    PlannedTransportTime: str
     AdditionalInfo: str
-    WasteCodeExtended: bool
-    WasteCodeExtendedDescription: str
-    HazardousWasteReclassification: bool = True
-    HazardousWasteReclassificationDescription: str
+    WasteCodeExtended: bool = False
+    HazardousWasteReclassification: bool = False
     IsWasteGenerating: bool = False
-    WasteGeneratedTerytPk: str
-    WasteGeneratingAdditionalInfo: str
+    WasteGeneratedTerytPk: Optional[str] = None
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
 

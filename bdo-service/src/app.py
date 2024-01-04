@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -18,3 +19,13 @@ app = FastAPI()
 
 app.middleware("http")(jwt_middleware)
 app.include_router(main_router)
+
+app = CORSMiddleware(
+    app=app,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"]
+)
+

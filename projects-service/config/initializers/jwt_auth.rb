@@ -1,4 +1,5 @@
-module JwtAuth
+#module JwtAuth
+=begin
   class Middleware
 
     KEYCLOAK_PUBLIC_KEY = "-----BEGIN PUBLIC KEY-----
@@ -29,6 +30,7 @@ MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo+Qp0gVd4gFHzjCcQtJCekufLT4UkF+o+qy0
     end
   end
 end
+=end
 
 
-Rails.application.config.middleware.use JwtAuth::Middleware
+#Rails.application.config.middleware.use JwtAuth::Middleware

@@ -120,10 +120,10 @@ module Api
           last_name: params[:last_name],
           role: params[:role],
           status: params[:status],
-          qualifications: params[:qualifications]
+          qualifications: params[:qualifications] || []
         )
 
-        @employee[:assigned_project] = params[:assigned_project]
+        @employee[:assigned_project] = params[:assigned_project] || []
         begin
           uri = URI("#{ENV['PROJECTS_SERVICE']}/employee_assignments")
           uri.query = URI.encode_www_form({ 'employee_id' => params[:id] })
@@ -136,8 +136,8 @@ module Api
           delete_request['Authorization'] = auth_header
           http.request(delete_request)
 
+          employee_assignments_data = []
           unless params[:assigned_project].nil? || params[:assigned_project].empty?
-            employee_assignments_data = []
             params[:assigned_project].each do |assigned_project|
               logger.info(assigned_project)
               post_request = Net::HTTP::Post.new(uri.path, { 'Content-Type' => 'application/json' })
@@ -158,15 +158,10 @@ module Api
 
         if params[:status] == 'Urlop'
           @employee[:status] = 'Urlop'
-        elsif params[:assigned_project].empty?
+        elsif params[:assigned_project].nil? || params[:assigned_project].empty?
           @employee[:status] = 'Nieprzypisany'
         else
           @employee[:status] = 'Przypisany'
-        end
-
-        if params[:assigned_project].empty?
-          @employee[:qualifications] = []
-          @employee[:assigned_project] = []
         end
 
         if @employee.save

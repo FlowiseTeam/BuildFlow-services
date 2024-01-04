@@ -7,24 +7,6 @@ from src.kpo.schemas import BdoCardCreate
 bdo_base_url = os.getenv('BDO_BASE_URL')
 
 
-def fetch_token(client_id: str, client_secret: str, eup_id: str) -> tuple:
-    url = f"{bdo_base_url}/api/WasteRegister/v1/Auth/generateEupAccessToken"
-    headers = {
-        'accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-    data = {
-        'ClientId': client_id,
-        'ClientSecret': client_secret,
-        'EupId': eup_id
-    }
-    response = requests.post(url, headers=headers, json=data)
-    response.raise_for_status()
-
-    token_data = response.json()
-    return token_data["AccessToken"], token_data["ExpiresIn"]
-
-
 def get_planned_card(access_token:str, card_id: str):
     url = f"{bdo_base_url}/api/WasteRegister/WasteTransferCard/v1/Kpo/planned/card"
     headers = {
@@ -39,8 +21,6 @@ def get_planned_card(access_token:str, card_id: str):
 
 def create_planned_card(access_token: str, data: BdoCardCreate) -> dict:
     url = f"{bdo_base_url}/api/WasteRegister/WasteTransferCard/v1/Kpo/create/plannedcard"
-
-
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
@@ -49,6 +29,7 @@ def create_planned_card(access_token: str, data: BdoCardCreate) -> dict:
 
     response = requests.post(url, headers=headers, json=data.model_dump())
     response.raise_for_status()
+
     return response.json()
 
 
@@ -62,6 +43,5 @@ def delete_planned_card(access_token: str, kpo_id: str):
     data = {
         'KpoId': kpo_id
     }
-    response = requests.delete(url, headers=headers, json=data)
-    response.raise_for_status()
-    return response.json()
+    requests.delete(url, headers=headers, json=data)
+
